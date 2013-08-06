@@ -4,22 +4,21 @@ This module converts UK address fragments into a properly formatted address reco
 
 ![Correct Addressing](https://raw.github.com/cblanc/uk-clear-addressing/master/misc/correct_address.gif)
 
-I believe I've covered all of the (many, many) edge cases with pretty much exhaustive testing
+Originally created in conjunction with Royal Mail Postcode Address File, it maps field name for field name if you were to pull the address straight from this database. If you don't have access to PAF, it can still be used as long as you know which parameters correspond to what data you have available. Parameters listed [below](#parameters)
 
-Originally created in conjunction with Royal Mail Postcode Address File, it maps field name for field name if you were to pull the address straight from this database. If you don't have access to PAF, it can still be used.
-
+For anyone who has tried this, properly formatting addresses to Royal Mail's standard is a bit of a nightmare because of all the edge cases. I've covered as many of them as I could find, these are documented in the test file.
 
 ## Getting Started
 
-Get it
+_Get it_
 
 `npm install uk-clear-addressing`
 
-Test it
+_Test it_
 
 `npm test`
 
-Try it
+_Try it_
 
 ```javascript
 var AddressModel = require('uk-clear-addressing');
@@ -27,32 +26,34 @@ var AddressModel = require('uk-clear-addressing');
 // Pass in your address fragments
 
 var address = new AddressModel({
-	postcode: "OX14 4PG",
-	post_town: "ABINGDON",
-	dependant_locality: "", //Left in some blank parameters for illustrative purposes
+	postcode: "WS11 5SB",
+	post_town: "CANNOCK",
+	dependant_locality: "",
 	double_dependant_locality: "",
-	thoroughfare: "ACACIA AVENUE",
-	building_number: "1",
-	building_name: "",
+	thoroughfare: "PYE GREEN ROAD",
+	building_number: "",
+	building_name: "FLOWER HOUSE 189A",
 	sub_building_name: "",
-	dependant_thoroughfare: ""
+	dependant_thoroughfare: "",
+	organisation_name: "S D ALCOTT FLORISTS",
 });
 
 console.log(address.formattedAddress());
 
-//
-//
-//
-//
-//
-//
-//
+// Lo and behold...
+//  { 
+//		postcode: 'WS11 5SB',
+//  	post_town: 'CANNOCK',
+//  	line_1: 'S D Alcott Florists',
+//	  line_2: 'Flower House',
+//  	line_3: '189a Pye Green Road' 
+//	}
 //
 
 ```
 ## Parameters
 
-Below is a list of address fragments. For the address to be properly formatted, you need to pass in all the address fragments available to you
+Below is a list of address fragments. For the address to be properly formatted, you need to pass in all the address fragments available to you.
 
 _Premises Elements_
 
