@@ -2,7 +2,7 @@
 
 This module converts UK address fragments into a properly formatted address recognised by Royal Mail according to its Clear Addressing Guidelines. This consists of 1-3 address lines, a post town line and a postcode line.
 
-[[misc/correct_address.gif]]
+![Correct Addressing](https://github.com/cblanc/uk-clear-addressing/blob/master/misc/correct_address.gif)
 
 I believe I've covered all of the (many, many) edge cases with pretty much exhaustive testing
 
