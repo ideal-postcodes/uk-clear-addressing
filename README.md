@@ -45,7 +45,7 @@ console.log(address.formattedAddress());
 //		postcode: 'WS11 5SB',
 //  	post_town: 'CANNOCK',
 //  	line_1: 'S D Alcott Florists',
-//	  line_2: 'Flower House',
+//		line_2: 'Flower House',
 //  	line_3: '189a Pye Green Road' 
 //	}
 //
