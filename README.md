@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/cblanc/uk-clear-addressing.png)](https://travis-ci.org/cblanc/uk-clear-addressing)
+[![Build Status](https://travis-ci.org/cblanc/uk-clear-addressing.png)](https://travis-ci.org/cblanc/uk-clear-addressing) 
 
 # UK Clear Addressing
 
