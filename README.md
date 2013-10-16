@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/cblanc/uk-clear-addressing.png)](https://travis-ci.org/cblanc/uk-clear-addressing)
+
 # UK Clear Addressing
 
 This module converts UK address fragments into a properly formatted address recognised by Royal Mail according to its Clear Addressing Guidelines. This consists of 1-3 address lines, a post town line and a postcode line.
