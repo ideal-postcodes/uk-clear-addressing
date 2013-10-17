@@ -1,4 +1,4 @@
-{
+w{
   "name": "uk-clear-addressing",
   "version": "0.1.0",
   "description": "Converts UK address fragments into a properly formatted address recognised by Royal Mails Clear Addressing Guidelines. Maps perfectly from Royal Mails PAF database",
@@ -23,6 +23,7 @@
   "readmeFilename": "README.md",
   "dependencies": {
     "chai": "~1.6.0",
-    "string": "~1.3.0"
+    "string": "~1.3.0",
+    "mocha": "1.9.x"
   }
 }
