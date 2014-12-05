@@ -8,7 +8,7 @@ This module converts UK address fragments into a properly formatted address reco
 
 Originally created in conjunction with Royal Mail Postcode Address File, it maps field name for field name if you were to pull the address straight from this database. If you don't have access to PAF, it can still be used as long as you know which parameters correspond to what data you have available. Parameters listed [below](#parameters)
 
-For anyone who has tried this, properly formatting addresses to Royal Mail's standard is a bit of a nightmare because of all the edge cases. I've covered as many of them as I could find, these are documented in the test file.
+For anyone who has tried this, properly formatting addresses to Royal Mail's standard is a bit of a nightmare because of all the edge cases. I've covered as many of them as I could find, these are documented in the test suite.
 
 ## Getting Started
 
@@ -44,7 +44,8 @@ console.log(address.formattedAddress());
 //  	post_town: 'CANNOCK',
 //  	line_1: 'S D Alcott Florists',
 //		line_2: 'Flower House',
-//  	line_3: '189a Pye Green Road'
+//  	line_3: '189a Pye Green Road',
+//		premise: "Flower House, 189a"
 //	}
 //
 
@@ -87,7 +88,11 @@ _Locality elements_
 
 ## Changelog
 
-0.1.1
+**0.1.2**
+
+- formattedAddress() now returns a premise attribute. This is a computed attribute to isolate the premise name taking into account all available information.
+
+**0.1.1**
 
 - Added fallback for 4 line addresses (very rare edge case): When an address spills over 3 lines, the remaining lines (lines 4 or more) are appended to line 3 and separated by commas
 - Added fallback for address with only a sub_building_name (very rare edge case): See `weirdRule` in index.js
