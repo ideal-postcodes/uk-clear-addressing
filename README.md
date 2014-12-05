@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/cblanc/uk-clear-addressing.png)](https://travis-ci.org/cblanc/uk-clear-addressing) 
+[![Build Status](https://travis-ci.org/cblanc/uk-clear-addressing.png)](https://travis-ci.org/cblanc/uk-clear-addressing) [![Dependency Status](https://david-dm.org/cblanc/uk-clear-addressing.png)](https://david-dm.org/cblanc/uk-clear-addressing) 
 
 # UK Clear Addressing
 
@@ -12,22 +12,18 @@ For anyone who has tried this, properly formatting addresses to Royal Mail's sta
 
 ## Getting Started
 
-_Get it_
-
-`npm install uk-clear-addressing`
-
-_Test it_
-
-`npm test`
+```
+npm install uk-clear-addressing
+```
 
 _Try it_
 
 ```javascript
-var AddressModel = require('uk-clear-addressing');
+var Address = require('uk-clear-addressing');
 
 // Pass in your address fragments
 
-var address = new AddressModel({
+var address = new Address({
 	postcode: "WS11 5SB",
 	post_town: "CANNOCK",
 	dependant_locality: "",
@@ -53,6 +49,17 @@ console.log(address.formattedAddress());
 //
 
 ```
+
+## Testing
+
+As mentioned, many of the regular and edge cases are documented in the test. To run the test suite:
+
+```
+npm test
+```
+
+If you find an edge case, please feel free to make a pull request. However be sure to include a test which documents the specific case being handled.
+
 ## Parameters
 
 Below is a list of address fragments. For the address to be properly formatted, you need to pass in all the address fragments available to you.
