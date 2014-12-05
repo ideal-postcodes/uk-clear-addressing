@@ -42,7 +42,7 @@ var address = new AddressModel({
 
 console.log(address.formattedAddress());
 
-// Lo and behold...
+//	
 //  { 
 //		postcode: 'WS11 5SB',
 //  	post_town: 'CANNOCK',
@@ -77,3 +77,12 @@ _Locality elements_
 - Double Dependent Locality (e.g. ‘Tyre Industrial Estate’)
 - Dependent Locality (e.g. ‘Blantyre’)
 - Post Town (e.g. ‘GLASGOW’)
+
+## Changelog
+
+0.1.1
+
+- Added fallback for 4 line addresses (very rare edge case): When an address spills over 3 lines, the remaining lines (lines 4 or more) are appended to line 3 and separated by commas
+- Added fallback for address with only a sub_building_name (very rare edge case): See `weirdRule` in index.js
+- Performance Improvement: Result of formattedAddress is cached
+- Performance Improvement: Removal of string dependency
