@@ -967,4 +967,47 @@ describe("Formatted Addresses", function () {
 		address_test_battery(sample, expected);
 	});
 
+	describe("Weird rule", function () {
+		it ("Weird Rule: should return the correct address format", function () {
+			sample = { postcode: 'EH4 3AJ',
+			  post_town: 'EDINBURGH',
+			  dependant_locality: '',
+			  double_dependant_locality: '',
+			  thoroughfare: 'Belgrave Crescent',
+			  dependant_thoroughfare: '',
+			  building_number: ' ',
+			  building_name: '',
+			  sub_building_name: '20gf',
+			  po_box: '',
+			  department_name: '',
+			  organisation_name: '',
+			  udprn: 8224574,
+			  postcode_type: 'S',
+			  su_organisation_indicator: ' ',
+			  delivery_point_suffix: '1F',
+			  postcode_inward: '3AJ',
+			  postcode_outward: 'EH4',
+			  county: null,
+			  country: 'Scotland',
+			  district: 'City of Edinburgh',
+			  ward: 'Inverleith',
+			  eastings: 323988,
+			  northings: 674105,
+			  longitude: -3.21889755918115,
+			  latitude: 55.95393929845 
+			};
+			
+			expected = {
+				line_1: "20gf Belgrave Crescent",
+				line_2: "",
+				line_3: "",
+				post_town: "EDINBURGH",
+				postcode: "EH4 3AJ",
+				premise: "20gf"
+			}
+
+			address_test_battery(sample, expected);
+		});
+	});
+
 });
