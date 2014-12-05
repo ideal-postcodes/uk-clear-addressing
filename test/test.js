@@ -98,6 +98,27 @@ describe("Building name exception test", function () {
 describe("Formatted Addresses", function () {
 	var sample, expected;
 
+	it ("should cache formatted addresses", function () {
+		sample = {
+			postcode: "OX14 4PG",
+			post_town: "ABINGDON",
+			dependant_locality: "APPLEFORD",
+			double_dependant_locality: "",
+			thoroughfare: "",
+			building_number: "",
+			building_name: "",
+			sub_building_name: "",
+			dependant_thoroughfare: "",
+			organisation_name: "LEDA ENGINEERING LTD",
+			department_name: "",
+			UDPRN: ""
+		}
+
+		var address = new Address(sample);
+		var	formattedAddress = address.formattedAddress();
+		assert.equal(address.formattedAddressCache, formattedAddress);
+	});
+
 	describe("Rule 1", function () {
 		it ("should return the correct address format", function () {
 			sample = {
