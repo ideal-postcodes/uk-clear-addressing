@@ -9,6 +9,7 @@ var address_test_battery = function(sample, expected) {
   assert.equal(formatted_address.line_3, expected.line_3);
   assert.equal(formatted_address.postcode, expected.postcode);
   assert.equal(formatted_address.post_town, expected.post_town);
+  assert.equal(formatted_address.premise, expected.premise);
 };
 
 describe("Building name exception test", function () {

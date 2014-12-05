@@ -1,6 +1,6 @@
 {
   "name": "uk-clear-addressing",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Converts UK address fragments into a properly formatted address recognised by Royal Mails Clear Addressing Guidelines. Maps perfectly from Royal Mails PAF database",
   "main": "lib/index.js",
   "homepage": "https://github.com/cblanc/uk-clear-addressing",

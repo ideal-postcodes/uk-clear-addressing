@@ -44,7 +44,7 @@ console.log(address.formattedAddress());
 //  	post_town: 'CANNOCK',
 //  	line_1: 'S D Alcott Florists',
 //		line_2: 'Flower House',
-//  	line_3: '189a Pye Green Road' 
+//  	line_3: '189a Pye Green Road'
 //	}
 //
 
