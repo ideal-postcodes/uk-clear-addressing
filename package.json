@@ -1,15 +1,15 @@
 {
   "name": "uk-clear-addressing",
-  "version": "0.1.2",
+  "version": "2.0.0",
   "description": "Converts UK address fragments into a properly formatted address recognised by Royal Mails Clear Addressing Guidelines. Maps perfectly from Royal Mails PAF database",
   "main": "lib/index.js",
-  "homepage": "https://github.com/cblanc/uk-clear-addressing",
+  "homepage": "https://github.com/ideal-postcodes/uk-clear-addressing",
   "scripts": {
     "test": "mocha test"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/cblanc/uk-clear-addressing.git"
+    "url": "https://github.com/ideal-postcodes/uk-clear-addressing.git"
   },
   "keywords": [
     "UK",
@@ -18,7 +18,7 @@
     "Mail",
     "PAF"
   ],
-  "author": "Chris Blanchard",
+  "author": "Ideal Postcodes",
   "license": "MIT",
   "readmeFilename": "README.md",
   "devDependencies": {
