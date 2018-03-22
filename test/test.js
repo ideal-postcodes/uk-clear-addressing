@@ -1,9 +1,11 @@
-var assert = require('chai').assert;
-var	Address = require('../lib/index.js');
+"use strict";
 
-var address_test_battery = function(sample, expected) {
-	address = new Address(sample);
-	var formatted_address = address.formattedAddress();
+const assert = require('chai').assert;
+const Address = require('../lib/index.js');
+
+const address_test_battery = function(sample, expected) {
+	const address = new Address(sample);
+	const formatted_address = address.formattedAddress();
 	assert.equal(formatted_address.line_1, expected.line_1);
   assert.equal(formatted_address.line_2, expected.line_2);
   assert.equal(formatted_address.line_3, expected.line_3);
@@ -13,6 +15,8 @@ var address_test_battery = function(sample, expected) {
 };
 
 describe("Building name exception test", function () {
+	let sample, address;
+	
 	it ("should be true", function () {
 		sample = {
 			building_name: "12A"
@@ -97,7 +101,7 @@ describe("Building name exception test", function () {
 });
 
 describe("Formatted Addresses", function () {
-	var sample, expected;
+	let sample, expected;
 
 	it ("should cache formatted addresses", function () {
 		sample = {
@@ -115,8 +119,8 @@ describe("Formatted Addresses", function () {
 			UDPRN: ""
 		}
 
-		var address = new Address(sample);
-		var	formattedAddress = address.formattedAddress();
+		const address = new Address(sample);
+		const	formattedAddress = address.formattedAddress();
 		assert.equal(address.formattedAddressCache, formattedAddress);
 	});
 
