@@ -5,6 +5,11 @@
   "main": "lib/index.js",
   "homepage": "https://github.com/ideal-postcodes/uk-clear-addressing",
   "scripts": {
+    "test": "npm run mocha && npm run lint",
+    "mocha": "node_modules/.bin/mocha test/ -R spec",
+    "test-ci": "npm run nyc_mocha && npm run lint",
+    "nyc_mocha": "node_modules/.bin/nyc node_modules/.bin/mocha test/ -R spec",
+    "coverage": "node_modules/.bin/nyc report --reporter=text-lcov | node_modules/.bin/coveralls || true",
     "test": "./node_modules/.bin/mocha test",
     "lint": "./node_modules/.bin/jshint ."
   },
