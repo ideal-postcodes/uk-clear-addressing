@@ -1,0 +1,38 @@
+version: 2
+jobs:
+   node6:
+     docker:
+       - image: circleci/node:6.10     
+     steps:
+       - restore_cache:
+           keys:
+             - npm-deps-{{ checksum "package.json" }}
+       - run: npm install
+       - save_cache:
+           key: npm-deps-{{ checksum "package.json" }}
+           paths:
+             - node_modules/
+       - run: npm run test-ci
+       - run: npm run coverage
+       
+   node8:
+     docker:
+       - image: circleci/node:8.8     
+     steps:
+       - restore_cache:
+           keys:
+             - npm-deps-{{ checksum "package.json" }}
+       - run: npm install
+       - save_cache:
+           key: npm-deps-{{ checksum "package.json" }}
+           paths:
+             - node_modules/
+       - run: npm run test-ci
+       - run: npm run coverage
+       
+workflows:
+  version: 2
+  node6_and_node8:
+    jobs:
+      - node6
+      - node8
