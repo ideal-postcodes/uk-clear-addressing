@@ -10,7 +10,6 @@
     "test-ci": "npm run nyc_mocha && npm run lint",
     "nyc_mocha": "node_modules/.bin/nyc node_modules/.bin/mocha test/ -R spec",
     "coverage": "node_modules/.bin/nyc report --reporter=text-lcov | node_modules/.bin/coveralls || true",
-    "test": "./node_modules/.bin/mocha test",
     "lint": "./node_modules/.bin/jshint ."
   },
   "repository": {
