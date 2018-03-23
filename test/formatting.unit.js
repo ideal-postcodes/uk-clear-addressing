@@ -35,7 +35,7 @@ describe("Formatted Addresses", () => {
 
 		const address = new Address(sample);
 		const formattedAddress = address.formattedAddress();
-		assert.equal(address.formattedAddressCache, formattedAddress);
+		assert.equal(address.cache, formattedAddress);
 	});
 
 	describe("Rule 1", () => {
