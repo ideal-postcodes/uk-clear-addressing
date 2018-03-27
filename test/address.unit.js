@@ -67,28 +67,6 @@ describe("Address Model", () => {
 		});
 	});
 
-	describe("#buildingNameException", () => {
-		it ("returns false for unexceptional building name", () => {
-			const address = new Address({ building_name: "foo" });
-			assert.isFalse(address.buildingNameException());
-		});
-		it ("returns true if building name is exception", () => {
-			const address = new Address({ building_name: "1-2" });
-			assert.isTrue(address.buildingNameException());
-		});
-	});
-
-	describe("#subBuildingNameException", () => {
-		it ("returns false for unexceptional sub building name", () => {
-			const address = new Address({ sub_building_name: "foo" });
-			assert.isFalse(address.subBuildingNameException());
-		});
-		it ("returns true if sub building name is exception", () => {
-			const address = new Address({ sub_building_name: "1-2" });
-			assert.isTrue(address.subBuildingNameException());
-		});
-	});
-
 	describe("#formattedAddress", () => {
 		it ("returns and caches an address object", () => {
 			const sample = {
@@ -110,9 +88,16 @@ describe("Address Model", () => {
 			assert.isObject(address);
 			assert.equal(address.cache, formattedAddress);
 		});
+		it ("returns cached object if available", () => {
+			const address = new Address({});
+			address.cache = {};
+			assert.equal(address.cache, address.formattedAddress());
+		});
 	});
 
 	describe(".formatPostcode", () => {
-
+		it ("formats a postcode", () => {
+			assert.equal(Address.formatPostcode("ab 1%20 1BB%20 "), "AB11BB");
+		});
 	});
 });
