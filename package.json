@@ -5,10 +5,12 @@
   "main": "lib/index.js",
   "homepage": "https://github.com/ideal-postcodes/uk-clear-addressing",
   "scripts": {
-    "test": "npm run nyc && npm run lint",
+    "prepublish": "npm test",
+    "test": "npm run build && npm run nyc && npm run lint",
     "nyc": "node_modules/.bin/nyc node_modules/.bin/mocha test/ -R spec",
     "coverage": "node_modules/.bin/nyc report --reporter=text-lcov | node_modules/.bin/coveralls || true",
-    "lint": "./node_modules/.bin/jshint ."
+    "lint": "./node_modules/.bin/jshint .",
+    "build": "./node_modules/.bin/tsc"
   },
   "repository": {
     "type": "git",
@@ -29,7 +31,8 @@
     "coveralls": "~3.0.0",
     "jshint": "~2.9.5",
     "mocha": "~5.0.4",
-    "nyc": "~11.6.0"
+    "nyc": "~11.6.0",
+    "typescript": "^2.8.1"
   },
   "engines": {
     "node": ">6.0.0"
