@@ -1,1 +1,5 @@
 misc
+test
+.circleci
+.jshintrc
+.jshintignore
