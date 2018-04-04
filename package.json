@@ -3,6 +3,7 @@
   "version": "2.0.0",
   "description": "Converts UK address fragments into a properly formatted address recognised by Royal Mails Clear Addressing Guidelines. Maps perfectly from Royal Mails PAF database",
   "main": "lib/index.js",
+  "types": "./lib/index.d.ts",
   "homepage": "https://github.com/ideal-postcodes/uk-clear-addressing",
   "scripts": {
     "prepublish": "npm test",
