@@ -5,6 +5,7 @@
 ### Breaking Changes
 
 - Node.js 6.x and above supported only
+- Premise elements are no longer capitalised by default. PAF data should be appropriately capitalised
 - Address class must be extracted from the library. E.g.
 
 ```
