@@ -6,9 +6,7 @@ This module converts UK address fragments into a properly formatted address reco
 
 ![Correct Addressing](https://raw.github.com/cblanc/uk-clear-addressing/master/misc/correct_address.gif)
 
-Originally created in conjunction with Royal Mail Postcode Address File, it maps field name for field name if you were to pull the address straight from this database. If you don't have access to PAF, it can still be used as long as you know which parameters correspond to what data you have available. Parameters listed [below](#parameters)
-
-For anyone who has tried this, properly formatting addresses to Royal Mail's standard is a bit of a nightmare because of all the edge cases. I've covered as many of them as I could find, these are documented in the test suite.
+Created in conjunction with Royal Mail Postcode Address File, it maps field name for field name if you were to pull the address straight from this database. If you don't have access to PAF, it can still be used as long as you know which parameters correspond to what data you have available. Parameters listed [below](#parameters)
 
 ## Getting Started
 
@@ -16,14 +14,12 @@ For anyone who has tried this, properly formatting addresses to Royal Mail's sta
 npm install uk-clear-addressing
 ```
 
-_Try it_
-
 ```javascript
-var Address = require('uk-clear-addressing');
+const { Address } = require('uk-clear-addressing');
 
 // Pass in your address fragments
 
-var address = new Address({
+const address = new Address({
 	postcode: "WS11 5SB",
 	post_town: "CANNOCK",
 	dependant_locality: "",
@@ -53,7 +49,7 @@ console.log(address.formattedAddress());
 
 ## Testing
 
-As mentioned, many of the regular and edge cases are documented in the test. To run the test suite:
+Many of the regular and edge cases are documented in the test. To run the test suite:
 
 ```
 npm test
@@ -65,7 +61,7 @@ If you find an edge case, please feel free to make a pull request. However be su
 
 Below is a list of address fragments. For the address to be properly formatted, you need to pass in all the address fragments available to you.
 
-_Premises Elements_
+### Premises Elements
 
 - Sub Building Name (e.g. ‘Flat 1’) 
 - Building Name (e.g. ‘Rose Cottage’)
@@ -73,15 +69,19 @@ _Premises Elements_
 - Organisation Name (e.g. ‘Cath’s Cakes’)
 - PO Box number
 
-_Thoroughfare elements_
+### Thoroughfare elements
 
 - Dependent Thoroughfare Name (e.g. ‘Cheshunt’)
 - Dependent Thoroughfare Descriptor (e.g. ‘Mews’ or ‘Court’)
 - Thoroughfare Name (e.g. ‘Cypress’)
 - Thoroughfare Descriptor (e.g. ‘Road’ or ‘Street’)
 
-_Locality elements_
+### Locality elements
 
 - Double Dependent Locality (e.g. ‘Tyre Industrial Estate’)
 - Dependent Locality (e.g. ‘Blantyre’)
 - Post Town (e.g. ‘GLASGOW’)
+
+## Licence
+
+MIT
