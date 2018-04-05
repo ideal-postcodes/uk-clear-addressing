@@ -8,7 +8,7 @@ export type AddressElements = string[];
  * formats premise attributes according to certain rules
  */
 export interface AddressFormatter {
-	(address: Address): FormattedPremise
+	(address: Address): FormattedPremise;
 }
 
 const notEmpty = (a: string): boolean => !isEmpty(a);
@@ -22,10 +22,10 @@ const nameExceptionRegex = /^(\d|\d.*\d|\d(.*\d)?[a-z]|[a-z])$/i;
  */
 export const nameException = (n: string): boolean => {
 	return n.match(nameExceptionRegex) !== null;
-}
+};
 
 export const appendOrganisationInfo = (elems: AddressElements, address: Address): void => {
-	const { department_name, organisation_name } = address; 
+	const { department_name, organisation_name } = address;
 	if (isEmpty(organisation_name)) return;
 	if (notEmpty(department_name)) elems.push(department_name);
 	elems.push(organisation_name);
@@ -116,21 +116,21 @@ const SUB_RANGE_REGEX = /^unit\s/i;
 
 /**
  * Rule 3 - Building name only
- * 
- * Check format of Building Name (see note (a) above). If the Exception 
- * Rule applies, the Building Name should appear at the beginning of the 
- * first Thoroughfare line, or the first Locality line if there is no 
+ *
+ * Check format of Building Name (see note (a) above). If the Exception
+ * Rule applies, the Building Name should appear at the beginning of the
+ * first Thoroughfare line, or the first Locality line if there is no
  * Thoroughfare information.
- * 
- * When a building has a name AND a number range, both must be held in the 
- * Building Name field because the Building Number field can only hold numeric 
+ *
+ * When a building has a name AND a number range, both must be held in the
+ * Building Name field because the Building Number field can only hold numeric
  * characters.
- * 
- * If an address has a building name with text followed by a space and then 
- * completed by numerics/numeric ranges with the numeric part an exception 
- * (see Note (a) above), the numerics/numeric range are treated as a building 
- * number, and the text part is treated as the Building Name and the 
- * numerics/numeric range are split off to appear at the beginning of the first 
+ *
+ * If an address has a building name with text followed by a space and then
+ * completed by numerics/numeric ranges with the numeric part an exception
+ * (see Note (a) above), the numerics/numeric range are treated as a building
+ * number, and the text part is treated as the Building Name and the
+ * numerics/numeric range are split off to appear at the beginning of the first
  * Thoroughfare line, or the first Locality line if there is no Thoroughfare.
  */
 export const rule3: AddressFormatter = address => {
@@ -148,7 +148,7 @@ export const rule3: AddressFormatter = address => {
 			result.push(sub_range_match.actual_name);
 		} else {
 			premise = building_name;
-			result.push(premise);	
+			result.push(premise);
 		}
 	}
 	return combinePremise(result, address, premise);
@@ -159,11 +159,11 @@ export const rule3: AddressFormatter = address => {
 
 /**
  * Rule 4 - Building Name and Number
- * 
- * The Building Name should appear on the line preceding the Thoroughfare 
- * and/or Locality information. The Building Number should appear at the 
- * beginning of the first Thoroughfare line. If there is no Thoroughfare 
- * information then the Building Number should appear at the beginning of 
+ *
+ * The Building Name should appear on the line preceding the Thoroughfare
+ * and/or Locality information. The Building Number should appear at the
+ * beginning of the first Thoroughfare line. If there is no Thoroughfare
+ * information then the Building Number should appear at the beginning of
  * the first Locality line.
  */
 export const rule4: AddressFormatter = address => {
@@ -180,10 +180,10 @@ const STARTS_CHAR_REGEX = /^[a-z]$/i;
 /**
  * Rule 5 - Sub Building Name and Building Number
  *
- * The Sub Building Name should appear on the line preceding the Thoroughfare 
- * and Locality information. The Building Number should appear at the beginning 
- * of the first Thoroughfare line. If there is no Thoroughfare information then 
- * the Building Number should appear at the beginning of the first Locality line. 
+ * The Sub Building Name should appear on the line preceding the Thoroughfare
+ * and Locality information. The Building Number should appear at the beginning
+ * of the first Thoroughfare line. If there is no Thoroughfare information then
+ * the Building Number should appear at the beginning of the first Locality line.
  */
 export const rule5: AddressFormatter = address => {
 	const { building_number, sub_building_name } = address;
@@ -202,17 +202,17 @@ export const rule5: AddressFormatter = address => {
 
 /**
  * Rule 6 - Sub building name and building name
- * 
- * Check the format of Sub Building Name (see Note (a) above). If the Exception 
- * Rule applies, the Sub Building Name should appear on the same line as, and 
+ *
+ * Check the format of Sub Building Name (see Note (a) above). If the Exception
+ * Rule applies, the Sub Building Name should appear on the same line as, and
  * before, the Building Name.
- * 
- * Otherwise, the Sub Building Name should appear on a line preceding the Building 
+ *
+ * Otherwise, the Sub Building Name should appear on a line preceding the Building
  * Name, Thoroughfare and Locality information
- * 
- * Check format of Building Name (see note (a) above) If the Exception Rule applies, 
- * the Building Name should appear at the beginning of the first Thoroughfare line, 
- * or the first Locality line if there is no Thoroughfare information. Otherwise, the 
+ *
+ * Check format of Building Name (see note (a) above) If the Exception Rule applies,
+ * the Building Name should appear at the beginning of the first Thoroughfare line,
+ * or the first Locality line if there is no Thoroughfare information. Otherwise, the
  * Building Name should appear on a line preceding the Thoroughfare and Locality information.
  */
 export const rule6: AddressFormatter = address => {
@@ -239,14 +239,14 @@ export const rule6: AddressFormatter = address => {
 
 /**
  * Rule 7 - Sub building name, building name and building number
- * 
- * If the Exception Rule applies, the Sub Building Name should appear on the same 
+ *
+ * If the Exception Rule applies, the Sub Building Name should appear on the same
  * line as and before the Building Name.
  */
 export const rule7: AddressFormatter = address => {
 	const { building_name, building_number, sub_building_name } = address;
 	let result = premiseLocalities(address);
-	let premise; 
+	let premise;
 	prependLocality(result, building_number);
 	if (nameException(sub_building_name)) {
 		premise = `${sub_building_name} ${building_name}, ${building_number}`;
@@ -268,8 +268,8 @@ export const rule7: AddressFormatter = address => {
 /**
  * Undocumented Rule
  *
- * This rule should not exist as it is not listed in the developer docs. But some records 
- * in the wild only have a sub building name 
+ * This rule should not exist as it is not listed in the developer docs. But some records
+ * in the wild only have a sub building name
  */
 export const undocumentedRule: AddressFormatter = address => {
 	const { sub_building_name } = address;
@@ -292,16 +292,16 @@ export const po_box: AddressFormatter = address => {
 export const formatter: AddressFormatter = address => {
 	if (notEmpty(address.po_box)) return po_box(address);
 
-	const number = notEmpty(address.building_number); // Has building number
+	const no = notEmpty(address.building_number); 		// Has building number
 	const name = notEmpty(address.building_name); 		// Has building name
 	const sub = notEmpty(address.sub_building_name); 	// Has sub building name
 
-	if (sub === true  && name === true  && number === true ) return rule7(address);
-	if (sub === true  && name === true  && number === false) return rule6(address);
-	if (sub === true  && name === false && number === true ) return rule5(address);
-	if (sub === true  && name === false && number === false) return undocumentedRule(address);
-	if (sub === false && name === true  && number === true ) return rule4(address);
-	if (sub === false && name === true  && number === false) return rule3(address);
-	if (sub === false && name === false && number === true ) return rule2(address);
+	if (sub === true  && name === true  && no === true ) return rule7(address);
+	if (sub === true  && name === true  && no === false) return rule6(address);
+	if (sub === true  && name === false && no === true ) return rule5(address);
+	if (sub === true  && name === false && no === false) return undocumentedRule(address);
+	if (sub === false && name === true  && no === true ) return rule4(address);
+	if (sub === false && name === true  && no === false) return rule3(address);
+	if (sub === false && name === false && no === true ) return rule2(address);
 	return rule1(address); // No premise elements available
 };

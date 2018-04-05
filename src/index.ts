@@ -16,7 +16,7 @@ export interface FormattedPremise {
 
 export interface FormattedAddress extends FormattedPremise {
 	post_town: string;
-	postcode: string,
+	postcode: string;
 }
 
 /**
@@ -65,7 +65,7 @@ export class Address {
 	readonly merge_sub_and_building: boolean;
 	readonly postcode_inward: string;
 	readonly postcode_outward: string;
-	
+
 	readonly po_box: string;
 	readonly postcode: string;
 	readonly post_town: string;
@@ -164,8 +164,8 @@ export class Address {
 		return postcode
 			.toString()
 			.toUpperCase()
-			.replace(/\s/g,"")
-			.replace(/%20/g,"");
+			.replace(/\s/g, "")
+			.replace(/%20/g, "");
 	}
 
 	static sort(a: Address, b: Address): Number {
