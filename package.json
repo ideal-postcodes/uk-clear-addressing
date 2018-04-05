@@ -11,6 +11,7 @@
     "nyc": "node_modules/.bin/nyc node_modules/.bin/mocha test/ -R spec",
     "coverage": "node_modules/.bin/nyc report --reporter=text-lcov | node_modules/.bin/coveralls || true",
     "lint": "./node_modules/.bin/tslint -c tslint.json src/**/*.ts",
+    "docs": "./node_modules/.bin/typedoc --target ES5 --out docs/ --name 'UK Clear Addressing' --theme minimal src/",
     "build": "./node_modules/.bin/tsc"
   },
   "repository": {
@@ -33,6 +34,7 @@
     "mocha": "~5.0.4",
     "nyc": "~11.6.0",
     "tslint": "~5.9.1",
+    "typedoc": "^0.11.1",
     "typescript": "~2.8.1"
   },
   "engines": {
