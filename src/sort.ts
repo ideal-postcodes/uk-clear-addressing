@@ -1,15 +1,16 @@
-import { nameException } from "./rules.js";
+import { Address } from "./index";
+import { nameException } from "./rules";
 
 /**
  * Returns true if charCode is '.' or numeric
  */
-const isNumeric = i => i === 46 || (i >= 48 && i <= 57);
+const isNumeric = (i: number): boolean => i === 46 || (i >= 48 && i <= 57);
 
 /**
  * Breaks string into an array of continuous number or alphabetical strings
  */
-const chunkify = t => {
-  let result = [];
+const chunkify = (t: string): string[] => {
+  let result: string[] = [];
   let x = 0;
   let y = -1;
   let n = false;
@@ -36,9 +37,9 @@ const chunkify = t => {
  *
  * Based on the Alphanum Algorithm by Brian Huisman (http://www.davekoelle.com/files/alphanum.js)
  */
-const alphaNumSort = (a, b) => {
-  let aa = chunkify(a.toLowerCase());
-  let bb = chunkify(b.toLowerCase());
+const alphaNumSort = (a: string, b: string): number => {
+  const aa = chunkify(a.toLowerCase());
+  const bb = chunkify(b.toLowerCase());
 
   for (let x = 0; aa[x] && bb[x]; x++) {
     if (aa[x] !== bb[x]) {
@@ -56,20 +57,27 @@ const alphaNumSort = (a, b) => {
   return aa.length - bb.length;
 };
 
-const sortingElems = [
+type SortingElems = "building_number" |
+  "building_name" | 
+  "sub_building_name" |
+  "organisation_name" |
+  "department_name" |
+  "po_box"
+
+const sortingElems: SortingElems[] = [
 	"building_number",
 	"building_name", 
 	"sub_building_name",
 	"organisation_name",
 	"department_name",
-	"po_box"
+	"po_box",
 ];
 
 /**
- * Takes an address object and returns a building number, first checking for
+ * Takes an `Address` instance and returns a building number, first checking for
  * name exceptions in building_name and sub_building_name fields
  */
-const extractNumberAttribute = a => {
+const extractIntegerAttribute = (a: Address): string => {
 	if (nameException(a.building_name)) return a.building_name;
 	if (nameException(a.sub_building_name)) return a.sub_building_name;
 	return a.building_number;
@@ -78,13 +86,13 @@ const extractNumberAttribute = a => {
 /**
  * Sorts `Address` objects based on the precedence outlined in `sortingElems`
  */
-export const sort = (a, b) => {
+export const sort = (a: Address, b: Address): number => {
 	for (let i = 0; i < sortingElems.length; i++) {
-		let addressAttribute = sortingElems[i];
+		let addressAttribute: SortingElems = sortingElems[i];
 		let elemA, elemB;
 		if (addressAttribute === "building_number") {
-			elemA = extractNumberAttribute(a);
-			elemB = extractNumberAttribute(b);
+			elemA = extractIntegerAttribute(a);
+			elemB = extractIntegerAttribute(b);
 		} else {
 			elemA = a[addressAttribute];
 			elemB = b[addressAttribute];

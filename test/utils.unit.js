@@ -4,7 +4,7 @@ const { assert } = require("chai");
 const {
 	extract,
 	isEmpty,
-	extractNumber,
+	extractInteger,
 	extractFloat,
 } = require("../lib/utils.js");
 
@@ -53,27 +53,45 @@ describe("Utils", () => {
 		});
 	});
 
-	describe("extractNumber", () => {
+	describe("extractInteger", () => {
 		it ("returns empty string if undefined", () => {
 			const address = { foo: undefined };
 			const elem = "foo";
-			assert.equal(extractNumber(address, elem), "");
+			assert.equal(extractInteger(address, elem), "");
 		});
 		it ("returns empty string if null", () => {
 			const address = { foo: null };
 			const elem = "foo";
-			assert.equal(extractNumber(address, elem), "");
+			assert.equal(extractInteger(address, elem), "");
 		});
 		it ("returns number", () => {
 			const address = { foo: 42 };
 			const elem = "foo";
-			assert.equal(extractNumber(address, elem), 42);
+			assert.equal(extractInteger(address, elem), 42);
+		});
+		it ("returns number if represented as string", () => {
+			const address = { foo: "42" };
+			const elem = "foo";
+			assert.equal(extractInteger(address, elem), 42);
+		});
+		it ("returns empty if numeric representation invalid", () => {
+			const address = { foo: "FOO" };
+			const elem = "foo";
+			assert.equal(extractInteger(address, elem), "");
 		});
 	});
 
 	describe("extractFloat", () => {
 		it ("returns empty string if invalid float", () => {
 			const address = { foo: "bar" };
+			assert.equal(extractFloat(address, "foo"), "");
+		});
+		it ("returns empty string if undefined", () => {
+			const address = { foo: undefined };
+			assert.equal(extractFloat(address, "foo"), "");
+		});
+		it ("returns empty string if null", () => {
+			const address = { foo: null };
 			assert.equal(extractFloat(address, "foo"), "");
 		});
 		it ("returns float", () => {

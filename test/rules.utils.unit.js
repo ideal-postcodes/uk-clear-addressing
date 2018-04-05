@@ -107,16 +107,12 @@ describe("Rules", () => {
 			});
 		});
 		it ("handles empty label array", () => {
-			assert.deepEqual(combinePremise([], {}), {
+			assert.deepEqual(combinePremise([], {}, ""), {
 				line_1: "",
 				line_2: "",
 				line_3: "",
 				premise: "",
 			});
-		});
-		it ("returns empty string for premise if not provided", () => {
-			const result = combinePremise([], {});
-			assert.equal(result.premise, "");
 		});
 	});
 

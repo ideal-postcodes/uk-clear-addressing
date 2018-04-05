@@ -1,1 +1,2 @@
-export declare const sort: (a: any, b: any) => number;
+import { Address } from "./index";
+export declare const sort: (a: Address, b: Address) => number;

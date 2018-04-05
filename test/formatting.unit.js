@@ -1,7 +1,7 @@
 "use strict";
 
 const { assert } = require("chai");
-const Address = require("../lib/index.js");
+const { Address } = require("../lib/index.js");
 
 const address_test_battery = (sample, expected) => {
 	const address = new Address(sample);

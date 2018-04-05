@@ -2,8 +2,8 @@
 
 const fs = require("fs");
 const path = require("path");
-const assert = require("chai").assert;
-const Address = require("../lib/index.js");
+const { assert } = require("chai");
+const { Address } = require("../lib/index.js");
 
 /**
  * Reads JSON files that match `*.sorted.json`
