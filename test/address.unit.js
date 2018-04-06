@@ -2,6 +2,8 @@
 
 const { assert } = require("chai");
 const { Address } = require("../lib/index.js");
+const expectedRawAttributes = require("./data/expected_raw_attributes.json");
+const expectedJsonAttributes = require("./data/expected_json_attributes.json");
 
 describe("Address Model", () => {
 	describe("instantiation", () => {
@@ -66,6 +68,24 @@ describe("Address Model", () => {
 			assert.equal(address.post_town, "FOO");
 		});
 	});
+
+	describe("#raw", () => {
+		it ("returns a new object representing raw address details", () => {
+			const address = new Address({});
+			const result = address.raw();
+			expectedRawAttributes.forEach(attr => assert.isDefined(result[attr]));
+			assert.equal(expectedRawAttributes.length, Object.keys(result).length);
+		});
+	});
+
+	describe("toJSON", () => {
+		it ("returns a publicly consumable JSON representation of address", () => {
+			const address = new Address({});
+			const result = address.toJSON();
+			expectedJsonAttributes.forEach(attr => assert.isDefined(result[attr]));
+			assert.equal(expectedJsonAttributes.length, Object.keys(result).length);
+		});
+	})
 
 	describe("#formattedAddress", () => {
 		it ("returns and caches an address object", () => {

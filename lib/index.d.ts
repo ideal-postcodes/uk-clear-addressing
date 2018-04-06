@@ -33,6 +33,8 @@ export declare class Address {
     readonly latitude: number | t.EmptyString;
     private cache;
     constructor(data: t.AddressRecord);
+    raw(): t.RawAddress;
+    toJSON(): t.AddressJSON;
     formattedAddress(): t.FormattedAddress;
     static formatPostcode(postcode: string): string;
     static sort(a: Address, b: Address): Number;

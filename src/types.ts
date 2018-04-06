@@ -94,3 +94,38 @@ export type EmptyString = "";
 export interface NumericExtractor {
 	(address: AddressRecord, elem: keyof AddressRecord): number|EmptyString;
 }
+
+export interface RawAddress {
+	postcode_inward: string;
+	postcode_outward: string;
+	po_box: string;
+	postcode: string;
+	post_town: string;
+	dependant_locality: string;
+	double_dependant_locality: string;
+	thoroughfare: string;
+	dependant_thoroughfare: string;
+	building_number: string;
+	building_name: string;
+	sub_building_name: string;
+	department_name: string;
+	organisation_name: string;
+	postcode_type: string;
+	su_organisation_indicator: string;
+	delivery_point_suffix: string;
+	county: string;
+	traditional_county: string;
+	administrative_county: string;
+	postal_county: string;
+	district: string;
+	ward: string;
+	country: string;
+	northings: number|EmptyString;
+	eastings: number|EmptyString;
+	udprn: number|EmptyString;
+	umprn: number|EmptyString;
+	longitude: number|EmptyString;
+	latitude: number|EmptyString;
+}
+
+export interface AddressJSON extends RawAddress, FormattedAddress {}

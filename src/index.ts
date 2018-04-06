@@ -163,6 +163,53 @@ export class Address {
 	}
 
 	/**
+	 * Returns object containing raw address attributes
+	 * @hidden
+	 */
+	raw(): t.RawAddress {
+		return {
+			postcode: this.postcode,
+			post_town: this.post_town,
+			dependant_locality: this.dependant_locality,
+			double_dependant_locality: this.double_dependant_locality,
+			thoroughfare: this.thoroughfare,
+			dependant_thoroughfare: this.dependant_thoroughfare,
+			building_number: this.building_number,
+			building_name: this.building_name,
+			sub_building_name: this.sub_building_name,
+			department_name: this.department_name,
+			organisation_name: this.organisation_name,
+			postcode_type: this.postcode_type,
+			su_organisation_indicator: this.su_organisation_indicator,
+			delivery_point_suffix: this.delivery_point_suffix,
+			county: this.county,
+			traditional_county: this.traditional_county,
+			administrative_county: this.administrative_county,
+			postal_county: this.postal_county,
+			district: this.district,
+			ward: this.ward,
+			country: this.country,
+			po_box: this.po_box,
+			udprn: this.udprn,
+			umprn: this.umprn,
+			northings: this.northings,
+			eastings: this.eastings,
+			longitude: this.longitude,
+			latitude: this.latitude,
+			postcode_outward: this.postcode_outward,
+			postcode_inward: this.postcode_inward,
+		};
+	}
+
+	/**
+	 * Returns a complete JSON representation of the `Address` instance
+	 * @return {t.AddressJSON}
+	 */
+	toJSON(): t.AddressJSON {
+		return Object.assign(this.raw(), this.formattedAddress());
+	}
+
+	/**
 	 * Returns an object representing an address with sensibly computed address
 	 * line labels according to Royal Mail's formatting rules
 	 * @return {t.FormattedAddress} [description]
