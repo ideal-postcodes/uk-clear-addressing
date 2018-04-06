@@ -32,10 +32,11 @@ export declare class Address {
     readonly longitude: number | t.EmptyString;
     readonly latitude: number | t.EmptyString;
     private cache;
-    constructor(data: t.AddressRecord);
+    constructor(data: AddressRecord);
     raw(): t.RawAddress;
     toJSON(): t.AddressJSON;
     formattedAddress(): t.FormattedAddress;
     static formatPostcode(postcode: string): string;
     static sort(a: Address, b: Address): Number;
 }
+export declare type AddressRecord = t.AddressRecord;

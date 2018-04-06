@@ -108,9 +108,9 @@ export class Address {
    * 	// "197a Elm Road"
    * 	// "199 Elm Road"
 	 * ```
-	 * @param {t.AddressRecord} data
+	 * @param {AddressRecord} data
 	 */
-	constructor (data: t.AddressRecord) {
+	constructor (data: AddressRecord) {
 		this.postcode = extract(data, "postcode");
 		this.post_town = extract(data, "post_town").toUpperCase();
 		this.dependant_locality = extract(data, "dependant_locality");
@@ -243,3 +243,5 @@ export class Address {
 		return sort(a, b);
 	}
 }
+
+export type AddressRecord = t.AddressRecord;
