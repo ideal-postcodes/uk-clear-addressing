@@ -1,9 +1,6 @@
-import { AddressRecord } from "./index";
-import { AddressElements } from "./rules";
+import * as t from "./types";
 
-export type EmptyString = "";
-
-export const extract = (address: AddressRecord, elem: keyof AddressRecord): string => {
+export const extract = (address: t.AddressRecord, elem: keyof t.AddressRecord): string => {
 	const result = address[elem];
 	if (result === undefined) return "";
 	if (result === null) return "";
@@ -12,7 +9,7 @@ export const extract = (address: AddressRecord, elem: keyof AddressRecord): stri
 	return result;
 };
 
-export const extractInteger = (address: AddressRecord, elem: keyof AddressRecord): number|EmptyString => {
+export const extractInteger: t.NumericExtractor = (address, elem) => {
 	const result = address[elem];
 	if (result === undefined ) return "";
 	if (result === null) return "";
@@ -24,7 +21,7 @@ export const isEmpty = (s: string): boolean => {
 	return !s || s.trim() === "";
 };
 
-export const extractFloat = (address: AddressRecord, elem: keyof AddressRecord): number|EmptyString => {
+export const extractFloat: t.NumericExtractor = (address, elem) => {
 	const result = address[elem];
 	if (result === undefined ) return "";
 	if (result === null) return "";
@@ -35,8 +32,8 @@ export const extractFloat = (address: AddressRecord, elem: keyof AddressRecord):
 /**
  * Non-desctructively return last elem
  */
-export const lastElem = (a: AddressElements): string => a[a.length - 1];
+export const lastElem = (a: t.AddressElements): string => a[a.length - 1];
 
-export const prependLocality = (localities: AddressElements, premise: string): void => {
+export const prependLocality = (localities: t.AddressElements, premise: string): void => {
 	localities[localities.length - 1] = `${premise} ${lastElem(localities)}`;
 };

@@ -1,24 +1,17 @@
-import { Address, FormattedPremise } from "./index";
-export declare type AddressElements = string[];
-export interface AddressFormatter {
-    (address: Address): FormattedPremise;
-}
+import { Address } from "./index";
+import * as t from "./types";
 export declare const nameException: (n: string) => boolean;
 export declare const appendOrganisationInfo: (elems: string[], address: Address) => void;
-export declare const combinePremise: (elems: string[], address: Address, premise: string) => FormattedPremise;
+export declare const combinePremise: (elems: string[], address: Address, premise: string) => t.FormattedPremise;
 export declare const premiseLocalities: (address: Address) => string[];
-export declare const rule1: AddressFormatter;
-export declare const rule2: AddressFormatter;
-export interface BuildingRangeMatch {
-    range: string;
-    actual_name: string;
-}
-export declare const checkBuildingRange: (building_name: string) => BuildingRangeMatch | null;
-export declare const rule3: AddressFormatter;
-export declare const rule4: AddressFormatter;
-export declare const rule5: AddressFormatter;
-export declare const rule6: AddressFormatter;
-export declare const rule7: AddressFormatter;
-export declare const undocumentedRule: AddressFormatter;
-export declare const po_box: AddressFormatter;
-export declare const formatter: AddressFormatter;
+export declare const rule1: t.AddressFormatter;
+export declare const rule2: t.AddressFormatter;
+export declare const checkBuildingRange: (building_name: string) => t.BuildingRangeMatch | null;
+export declare const rule3: t.AddressFormatter;
+export declare const rule4: t.AddressFormatter;
+export declare const rule5: t.AddressFormatter;
+export declare const rule6: t.AddressFormatter;
+export declare const rule7: t.AddressFormatter;
+export declare const undocumentedRule: t.AddressFormatter;
+export declare const po_box: t.AddressFormatter;
+export declare const formatter: t.AddressFormatter;

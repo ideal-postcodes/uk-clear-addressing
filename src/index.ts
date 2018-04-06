@@ -1,65 +1,7 @@
-import {
-	extract,
-	EmptyString,
-	extractFloat,
-	extractInteger,
-} from "./utils";
+import * as t from "./types";
 import { sort } from "./sort";
 import { formatter } from "./rules";
-
-export interface FormattedPremise {
-	premise: string;
-	line_1: string;
-	line_2: string;
-	line_3: string;
-}
-
-export interface FormattedAddress extends FormattedPremise {
-	post_town: string;
-	postcode: string;
-}
-
-/**
- * Implements a raw record which can be found on Royal Mail's Postcode Address
- * File
- */
-export interface PafRecord {
-	udprn: number;
-	umprn?: number;
-	postcode: string;
-	building_number: string;
-	building_name: string;
-	sub_building_name: string;
-	department_name: string;
-	organisation_name: string;
-	po_box: string;
-	post_town: string;
-	dependant_locality: string;
-	double_dependant_locality: string;
-	thoroughfare: string;
-	dependant_thoroughfare: string;
-	postcode_type: string;
-	su_organisation_indicator: string;
-	delivery_point_suffix: string;
-}
-
-/**
- * AddressRecord includes PAF attributes as well as optional attributes from
- * third party sources
- */
-export interface AddressRecord extends PafRecord {
-	northings?: number;
-	eastings?: number;
-	longitude?: number;
-	latitude?: number;
-	county?: string;
-	traditional_county?: string;
-	administrative_county?: string;
-	postal_county?: string;
-	district?: string;
-	ward?: string;
-	country?: string;
-}
+import { extract, extractFloat, extractInteger } from "./utils";
 
 export class Address {
 	readonly merge_sub_and_building: boolean;
@@ -89,17 +31,86 @@ export class Address {
 	readonly ward: string;
 	readonly country: string;
 
-	readonly northings: number|EmptyString;
-	readonly eastings: number|EmptyString;
-	readonly udprn: number|EmptyString;
-	readonly umprn: number|EmptyString;
+	readonly northings: number|t.EmptyString;
+	readonly eastings: number|t.EmptyString;
+	readonly udprn: number|t.EmptyString;
+	readonly umprn: number|t.EmptyString;
 
-	readonly longitude: number|EmptyString;
-	readonly latitude: number|EmptyString;
+	readonly longitude: number|t.EmptyString;
+	readonly latitude: number|t.EmptyString;
 
-	public cache: FormattedAddress|null;
+	private cache: t.FormattedAddress|null;
 
-	constructor (data: AddressRecord) {
+	/**
+	 * The `Address` class is designed to wrap a Postcode Address File (PAF)
+	 * record and provide utility methods to make this data more readily
+	 * consumable for humans
+	 *
+	 * `Address` requires an object of type `AddressRecord` to be instantiated
+	 * which is comprised of fields readily found on PAF
+	 *
+	 * `Address` can be used to
+	 * - Compute address lines based on premise and locality information
+	 * - Sensibly compute a `premise` label based on (sub) building name and number
+	 * - Sensibly sort an array of addresses
+	 *
+	 * @example
+	 * ```typescript
+	 * // Formatting an address
+	 *
+   * const address = new Address({
+   * 	postcode: "WS11 5SB",
+   * 	post_town: "CANNOCK",
+   * 	dependant_locality: "",
+   * 	double_dependant_locality: "",
+   * 	thoroughfare: "Pye Green Road",
+   * 	building_number: "",
+   * 	building_name: "Flower House 189A",
+   * 	sub_building_name: "",
+   * 	dependant_thoroughfare: "",
+   * 	organisation_name: 'S D Alcott Florists',
+   * });
+   *
+   * console.log(address.formattedAddress());
+   *
+   * //
+   * //	{
+   * //		postcode: 'WS11 5SB',
+   * //		post_town: 'CANNOCK',
+   * //		line_1: 'S D Alcott Florists',
+   * //		line_2: 'Flower House',
+   * //		line_3: '189a Pye Green Road',
+   * //		premise: "Flower House, 189a"
+   * //	}
+   * //
+	 * ```
+	 *
+	 * @example
+	 * ```typescript
+	 * // Formatting an address
+	 *
+	 *const addresses = await query("SELECT * FROM postcode_address_file LIMIT 10");
+   *
+   * addresses
+   * 	.map(address => new Address(address)) // Instantiate an `Address` instances
+   * 	.sort(Address.sort)  								  // Now sort
+   *
+   * 	// Print an example to console
+   * 	.forEach(address => console.log(address.line_1));
+   * 	// "190 Elm Road"
+   * 	// "190a Elm Road"
+   * 	// "191 Elm Road"
+   * 	// "191a Elm Road"
+   * 	// "192 Elm Road"
+   * 	// "193 Elm Road"
+   * 	// "193a Elm Road"
+   * 	// "197 Elm Road"
+   * 	// "197a Elm Road"
+   * 	// "199 Elm Road"
+	 * ```
+	 * @param {t.AddressRecord} data
+	 */
+	constructor (data: t.AddressRecord) {
 		this.postcode = extract(data, "postcode");
 		this.post_town = extract(data, "post_town").toUpperCase();
 		this.dependant_locality = extract(data, "dependant_locality");
@@ -151,7 +162,12 @@ export class Address {
 		}
 	}
 
-	formattedAddress(): FormattedAddress {
+	/**
+	 * Returns an object representing an address with sensibly computed address
+	 * line labels according to Royal Mail's formatting rules
+	 * @return {t.FormattedAddress} [description]
+	 */
+	formattedAddress(): t.FormattedAddress {
 		if (this.cache) return this.cache;
 		this.cache = Object.assign({
 			post_town: this.post_town,
@@ -168,6 +184,14 @@ export class Address {
 			.replace(/%20/g, "");
 	}
 
+	/**
+	 * A function which allow two `Address` objects to be compared.
+	 * This function can be readily fed into `Array.prototype.sort`
+	 * @example `addresses.sort(Address.sort)`
+	 * @param  {Address} a [description]
+	 * @param  {Address} b [description]
+	 * @return {Number}    [description]
+	 */
 	static sort(a: Address, b: Address): Number {
 		return sort(a, b);
 	}

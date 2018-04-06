@@ -1,5 +1,6 @@
 import { Address } from "./index";
 import { nameException } from "./rules";
+import * as t from "./types";
 
 /**
  * Returns true if charCode is '.' or numeric
@@ -57,14 +58,7 @@ const alphaNumSort = (a: string, b: string): number => {
 	return aa.length - bb.length;
 };
 
-type SortingElems = "building_number" |
-	"building_name" |
-	"sub_building_name" |
-	"organisation_name" |
-	"department_name" |
-	"po_box";
-
-const sortingElems: SortingElems[] = [
+const sortingElems: t.SortingElems[] = [
 	"building_number",
 	"building_name",
 	"sub_building_name",
@@ -88,7 +82,7 @@ const extractIntegerAttribute = (a: Address): string => {
  */
 export const sort = (a: Address, b: Address): number => {
 	for (let i = 0; i < sortingElems.length; i++) {
-		let addressAttribute: SortingElems = sortingElems[i];
+		let addressAttribute: t.SortingElems = sortingElems[i];
 		let elemA, elemB;
 		if (addressAttribute === "building_number") {
 			elemA = extractIntegerAttribute(a);

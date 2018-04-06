@@ -1,15 +1,6 @@
 import { isEmpty, prependLocality } from "./utils";
-import { Address, FormattedPremise } from "./index";
-
-export type AddressElements = string[];
-
-/**
- * Function implements Address Formatter. It takes an `Address` instance and
- * formats premise attributes according to certain rules
- */
-export interface AddressFormatter {
-	(address: Address): FormattedPremise;
-}
+import { Address } from "./index";
+import * as t from "./types";
 
 const notEmpty = (a: string): boolean => !isEmpty(a);
 
@@ -24,7 +15,7 @@ export const nameException = (n: string): boolean => {
 	return n.match(nameExceptionRegex) !== null;
 };
 
-export const appendOrganisationInfo = (elems: AddressElements, address: Address): void => {
+export const appendOrganisationInfo = (elems: t.AddressElements, address: Address): void => {
 	const { department_name, organisation_name } = address;
 	if (isEmpty(organisation_name)) return;
 	if (notEmpty(department_name)) elems.push(department_name);
@@ -35,7 +26,7 @@ export const appendOrganisationInfo = (elems: AddressElements, address: Address)
  * Merges premise elements ordered by precedence into a formatted address
  * object
  */
-export const combinePremise = (elems: AddressElements, address: Address, premise: string): FormattedPremise => {
+export const combinePremise = (elems: t.AddressElements, address: Address, premise: string): t.FormattedPremise => {
 	const premiseElements = elems.slice();
 	appendOrganisationInfo(premiseElements, address);
 	const [line_1, line_2, ...line_3] = premiseElements.reverse();
@@ -47,12 +38,7 @@ export const combinePremise = (elems: AddressElements, address: Address, premise
 	};
 };
 
-type LocalityElements = "dependant_locality" |
-	"double_dependant_locality" |
-	"thoroughfare" |
-	"dependant_thoroughfare";
-
-const localityElements: LocalityElements[] = [
+const localityElements: t.LocalityElements[] = [
 	"dependant_locality",
 	"double_dependant_locality",
 	"thoroughfare",
@@ -63,7 +49,7 @@ const localityElements: LocalityElements[] = [
  * Returns an array of localities according to precedent recorded in
  * `localityElements`
  */
-export const premiseLocalities = (address: Address): AddressElements => {
+export const premiseLocalities = (address: Address): t.AddressElements => {
 	return localityElements
 		.map(elem => address[elem])
 		.filter(notEmpty);
@@ -75,31 +61,26 @@ export const premiseLocalities = (address: Address): AddressElements => {
  * Rule 1 - No building name, number or sub building name
  * No premise elements detected (typically organisation name)
  */
-export const rule1: AddressFormatter = address => {
+export const rule1: t.AddressFormatter = address => {
 	return combinePremise(premiseLocalities(address), address, "");
 };
 
 /**
  * Rule 2 - Building number only
  */
-export const rule2: AddressFormatter = address => {
+export const rule2: t.AddressFormatter = address => {
 	const { building_number } = address;
 	const result = premiseLocalities(address);
 	prependLocality(result, building_number);
 	return combinePremise(result, address, building_number);
 };
 
-export interface BuildingRangeMatch {
-	range: string;
-	actual_name: string;
-}
-
 const BUILDING_RANGE_REGEX = /^(\d.*\D.*\d|\d(.*\d)?[a-z]|[a-z])$/i;
 
 /**
  * Detects whether a building name contains a range
  */
-export const checkBuildingRange = (building_name: string): BuildingRangeMatch|null => {
+export const checkBuildingRange = (building_name: string): t.BuildingRangeMatch|null => {
 	const name_split = building_name.split(" ");
 	let last_elem = name_split.pop();
 	if (last_elem === undefined) last_elem = ""; // Placate typescript
@@ -133,7 +114,7 @@ const SUB_RANGE_REGEX = /^unit\s/i;
  * numerics/numeric range are split off to appear at the beginning of the first
  * Thoroughfare line, or the first Locality line if there is no Thoroughfare.
  */
-export const rule3: AddressFormatter = address => {
+export const rule3: t.AddressFormatter = address => {
 	const { building_name } = address;
 	let premise;
 	const result = premiseLocalities(address);
@@ -166,7 +147,7 @@ export const rule3: AddressFormatter = address => {
  * information then the Building Number should appear at the beginning of
  * the first Locality line.
  */
-export const rule4: AddressFormatter = address => {
+export const rule4: t.AddressFormatter = address => {
 	const { building_name, building_number } = address;
 	const result = premiseLocalities(address);
 	const premise = `${building_name}, ${building_number}`;
@@ -185,7 +166,7 @@ const STARTS_CHAR_REGEX = /^[a-z]$/i;
  * of the first Thoroughfare line. If there is no Thoroughfare information then
  * the Building Number should appear at the beginning of the first Locality line.
  */
-export const rule5: AddressFormatter = address => {
+export const rule5: t.AddressFormatter = address => {
 	const { building_number, sub_building_name } = address;
 	let premise;
 	const result = premiseLocalities(address);
@@ -215,7 +196,7 @@ export const rule5: AddressFormatter = address => {
  * or the first Locality line if there is no Thoroughfare information. Otherwise, the
  * Building Name should appear on a line preceding the Thoroughfare and Locality information.
  */
-export const rule6: AddressFormatter = address => {
+export const rule6: t.AddressFormatter = address => {
 	const { sub_building_name, building_name } = address;
 	let premise;
 	const result = premiseLocalities(address);
@@ -243,7 +224,7 @@ export const rule6: AddressFormatter = address => {
  * If the Exception Rule applies, the Sub Building Name should appear on the same
  * line as and before the Building Name.
  */
-export const rule7: AddressFormatter = address => {
+export const rule7: t.AddressFormatter = address => {
 	const { building_name, building_number, sub_building_name } = address;
 	let result = premiseLocalities(address);
 	let premise;
@@ -271,7 +252,7 @@ export const rule7: AddressFormatter = address => {
  * This rule should not exist as it is not listed in the developer docs. But some records
  * in the wild only have a sub building name
  */
-export const undocumentedRule: AddressFormatter = address => {
+export const undocumentedRule: t.AddressFormatter = address => {
 	const { sub_building_name } = address;
 	const premise = sub_building_name;
 	const result = premiseLocalities(address);
@@ -282,14 +263,14 @@ export const undocumentedRule: AddressFormatter = address => {
 /**
  * PO Box Rule
  */
-export const po_box: AddressFormatter = address => {
+export const po_box: t.AddressFormatter = address => {
 	const result = premiseLocalities(address);
 	const premise = `PO Box ${address.po_box}`;
 	result.push(premise);
 	return combinePremise(result, address, premise);
 };
 
-export const formatter: AddressFormatter = address => {
+export const formatter: t.AddressFormatter = address => {
 	if (notEmpty(address.po_box)) return po_box(address);
 
 	const no = notEmpty(address.building_number); 		// Has building number
