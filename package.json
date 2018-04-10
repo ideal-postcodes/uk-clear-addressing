@@ -34,7 +34,7 @@
     "mocha": "~5.0.4",
     "nyc": "~11.6.0",
     "tslint": "~5.9.1",
-    "typedoc": "^0.11.1",
+    "typedoc": "~0.11.1",
     "typescript": "~2.8.1"
   },
   "engines": {
