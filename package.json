@@ -1,15 +1,22 @@
 {
   "name": "uk-clear-addressing",
-  "version": "0.1.2",
+  "version": "2.0.0",
   "description": "Converts UK address fragments into a properly formatted address recognised by Royal Mails Clear Addressing Guidelines. Maps perfectly from Royal Mails PAF database",
   "main": "lib/index.js",
-  "homepage": "https://github.com/cblanc/uk-clear-addressing",
+  "types": "./lib/index.d.ts",
+  "homepage": "https://github.com/ideal-postcodes/uk-clear-addressing",
   "scripts": {
-    "test": "mocha test"
+    "prepublish": "npm test",
+    "test": "npm run build && npm run nyc && npm run lint",
+    "nyc": "node_modules/.bin/nyc node_modules/.bin/mocha test/ -R spec",
+    "coverage": "node_modules/.bin/nyc report --reporter=text-lcov | node_modules/.bin/coveralls || true",
+    "lint": "./node_modules/.bin/tslint -c tslint.json src/**/*.ts",
+    "docs": "./node_modules/.bin/typedoc --target ES5 --out docs/ --name 'UK Clear Addressing' --theme minimal src/",
+    "build": "./node_modules/.bin/tsc"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/cblanc/uk-clear-addressing.git"
+    "url": "https://github.com/ideal-postcodes/uk-clear-addressing.git"
   },
   "keywords": [
     "UK",
@@ -18,11 +25,19 @@
     "Mail",
     "PAF"
   ],
-  "author": "Chris Blanchard",
+  "author": "Ideal Postcodes",
   "license": "MIT",
   "readmeFilename": "README.md",
   "devDependencies": {
-    "chai": "~1.10.0",
-    "mocha": "~2.0.1"
+    "chai": "~4.1.2",
+    "coveralls": "~3.0.0",
+    "mocha": "~5.0.4",
+    "nyc": "~11.6.0",
+    "tslint": "~5.9.1",
+    "typedoc": "~0.11.1",
+    "typescript": "~2.8.1"
+  },
+  "engines": {
+    "node": ">6.0.0"
   }
 }

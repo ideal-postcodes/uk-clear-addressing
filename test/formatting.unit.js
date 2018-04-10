@@ -1,9 +1,11 @@
-var assert = require('chai').assert;
-var	Address = require('../lib/index.js');
+"use strict";
 
-var address_test_battery = function(sample, expected) {
-	address = new Address(sample);
-	var formatted_address = address.formattedAddress();
+const { assert } = require("chai");
+const { Address } = require("../lib/index.js");
+
+const address_test_battery = (sample, expected) => {
+	const address = new Address(sample);
+	const formatted_address = address.formattedAddress();
 	assert.equal(formatted_address.line_1, expected.line_1);
   assert.equal(formatted_address.line_2, expected.line_2);
   assert.equal(formatted_address.line_3, expected.line_3);
@@ -12,130 +14,46 @@ var address_test_battery = function(sample, expected) {
   assert.equal(formatted_address.premise, expected.premise);
 };
 
-describe("Building name exception test", function () {
-	it ("should be true", function () {
-		sample = {
-			building_name: "12A"
-		};
-		address = new Address(sample);
-		assert.equal(address.buildingNameException(), true);
-	});
-	it ("should be true", function () {
-		sample = {
-			building_name: "100:1"
-		};
-		address = new Address(sample);
-		assert.equal(address.buildingNameException(), true);
-	});
-	it ("should be true", function () {
-		sample = {
-			building_name: "1to1"
-		};
-		address = new Address(sample);
-		assert.equal(address.buildingNameException(), true);
-	});
-	it ("should be true", function () {
-		sample = {
-			building_name: "A"
-		};
-		address = new Address(sample);
-		assert.equal(address.buildingNameException(), true);
-	});
-	it ("should be true", function () {
-		sample = {
-			building_name: "a"
-		};
-		address = new Address(sample);
-		assert.equal(address.buildingNameException(), true);
-	});
-	it ("should be true", function () {
-		sample = {
-			building_name: "1A"
-		};
-		address = new Address(sample);
-		assert.equal(address.buildingNameException(), true);
-	});
-	it ("should be true", function () {
-		sample = {
-			building_name: "1a"
-		};
-		address = new Address(sample);
-		assert.equal(address.buildingNameException(), true);
-	});
-	it ("should be true", function () {
-		sample = {
-			building_name: "11A"
-		};
-		address = new Address(sample);
-		assert.equal(address.buildingNameException(), true);
-	});
-	
-	// SHOULD THIS BE A CONSIDERATION? PLAIN DIGITS?
-	//
-	it ("should be true", function () {  
-		sample = {
-			building_name: "1"
-		};
-		address = new Address(sample);
-		assert.equal(address.buildingNameException(), true);
-	});
-	
-	it ("should be true", function () {  
-		sample = {
-			building_name: "10"
-		};
-		address = new Address(sample);
-		assert.equal(address.buildingNameException(), true);
-	});
-	it ("should be true", function () {  
-		sample = {
-			building_name: "100"
-		};
-		address = new Address(sample);
-		assert.equal(address.buildingNameException(), true);
-	});
-});
+describe("Formatted Addresses", () => {
+	let sample, expected;
 
-describe("Formatted Addresses", function () {
-	var sample, expected;
-
-	it ("should cache formatted addresses", function () {
+	it ("should cache formatted addresses", () => {
 		sample = {
 			postcode: "OX14 4PG",
 			post_town: "ABINGDON",
-			dependant_locality: "APPLEFORD",
+			dependant_locality: "Appleford",
 			double_dependant_locality: "",
 			thoroughfare: "",
 			building_number: "",
 			building_name: "",
 			sub_building_name: "",
 			dependant_thoroughfare: "",
-			organisation_name: "LEDA ENGINEERING LTD",
+			organisation_name: "Leda Engineering Ltd",
 			department_name: "",
 			UDPRN: ""
-		}
+		};
 
-		var address = new Address(sample);
-		var	formattedAddress = address.formattedAddress();
-		assert.equal(address.formattedAddressCache, formattedAddress);
+		const address = new Address(sample);
+		const formattedAddress = address.formattedAddress();
+		assert.equal(address.cache, formattedAddress);
 	});
 
-	describe("Rule 1", function () {
-		it ("should return the correct address format", function () {
+	describe("Rule 1", () => {
+		it ("should return the correct address format", () => {
 			sample = {
 				postcode: "OX14 4PG",
 				post_town: "ABINGDON",
-				dependant_locality: "APPLEFORD",
+				dependant_locality: "Appleford",
 				double_dependant_locality: "",
 				thoroughfare: "",
 				building_number: "",
 				building_name: "",
 				sub_building_name: "",
 				dependant_thoroughfare: "",
-				organisation_name: "LEDA ENGINEERING LTD",
+				organisation_name: "Leda Engineering Ltd",
 				department_name: "",
 				UDPRN: ""
-			}
+			};
 			
 			expected = {
 				line_1: "Leda Engineering Ltd",
@@ -144,26 +62,26 @@ describe("Formatted Addresses", function () {
 				post_town: "ABINGDON",
 				postcode: "OX14 4PG",
 				premise: ""
-			}
+			};
 
 			address_test_battery(sample, expected);
 		});
 
-		it ("should return the correct address format", function () {
+		it ("should return the correct address format", () => {
 			sample = {
 				postcode: "OX14 4PG",
 				post_town: "ABINGDON",
-				dependant_locality: "APPLEFORD",
+				dependant_locality: "Appleford",
 				double_dependant_locality: "",
 				thoroughfare: "",
 				building_number: "",
 				building_name: "",
 				sub_building_name: "",
 				dependant_thoroughfare: "",
-				organisation_name: "LEDA ENGINEERING LTD",
+				organisation_name: "Leda Engineering Ltd",
 				department_name: "Engineering Department",
 				UDPRN: ""
-			}
+			};
 			
 			expected = {
 				line_1: "Leda Engineering Ltd",
@@ -172,20 +90,20 @@ describe("Formatted Addresses", function () {
 				post_town: "ABINGDON",
 				postcode: "OX14 4PG",
 				premise: ""
-			}
+			};
 
 			address_test_battery(sample, expected);
 		});
 	});
 
-	describe("Rule 2", function () {
-		it ("should return the correct address format", function () {
+	describe("Rule 2", () => {
+		it ("should return the correct address format", () => {
 			sample = {
 				postcode: "OX14 4PG",
 				post_town: "ABINGDON",
 				dependant_locality: "",
 				double_dependant_locality: "",
-				thoroughfare: "ACACIA AVENUE",
+				thoroughfare: "Acacia Avenue",
 				building_number: "1",
 				building_name: "",
 				sub_building_name: "",
@@ -193,7 +111,7 @@ describe("Formatted Addresses", function () {
 				organisation_name: "",
 				department_name: "",
 				UDPRN: ""
-			}
+			};
 			
 			expected = {
 				line_1: "1 Acacia Avenue",
@@ -202,16 +120,16 @@ describe("Formatted Addresses", function () {
 				post_town: "ABINGDON",
 				postcode: "OX14 4PG",
 				premise: "1"
-			}
+			};
 
 			address_test_battery(sample, expected);
 		});
 
-		it ("should return the correct address format", function () {
+		it ("should return the correct address format", () => {
 			sample = {
 				postcode: "OX14 4PG",
 				post_town: "ABINGDON",
-				dependant_locality: "LOCALITY NAME",
+				dependant_locality: "Locality Name",
 				double_dependant_locality: "",
 				thoroughfare: "",
 				building_number: "1",
@@ -221,7 +139,7 @@ describe("Formatted Addresses", function () {
 				organisation_name: "",
 				department_name: "",
 				UDPRN: ""
-			}
+			};
 			
 			expected = {
 				line_1: "1 Locality Name",
@@ -230,17 +148,17 @@ describe("Formatted Addresses", function () {
 				post_town: "ABINGDON",
 				postcode: "OX14 4PG",
 				premise: "1"
-			}
+			};
 
 			address_test_battery(sample, expected);
 		});
 
-		it ("should return the correct address format", function () {
+		it ("should return the correct address format", () => {
 			sample = {
 				postcode: "OX14 4PG",
 				post_town: "ABINGDON",
-				dependant_locality: "LOCALITY NAME",
-				double_dependant_locality: "DEP LOCALITY NAME",
+				dependant_locality: "Locality Name",
+				double_dependant_locality: "Dep Locality Name",
 				thoroughfare: "",
 				building_number: "1",
 				building_name: "",
@@ -249,7 +167,7 @@ describe("Formatted Addresses", function () {
 				organisation_name: "",
 				department_name: "",
 				UDPRN: ""
-			}
+			};
 			
 			expected = {
 				line_1: "1 Dep Locality Name",
@@ -258,18 +176,18 @@ describe("Formatted Addresses", function () {
 				post_town: "ABINGDON",
 				postcode: "OX14 4PG",
 				premise: "1"
-			}
+			};
 
 			address_test_battery(sample, expected);
 		});
 
-		it ("should return the correct address format", function () {
+		it ("should return the correct address format", () => {
 			sample = {
 				postcode: "OX14 4PG",
 				post_town: "ABINGDON",
-				dependant_locality: "LOCALITY NAME",
-				double_dependant_locality: "DEP LOCALITY NAME",
-				thoroughfare: "ACACIA AVENUE",
+				dependant_locality: "Locality Name",
+				double_dependant_locality: "Dep Locality Name",
+				thoroughfare: "Acacia Avenue",
 				building_number: "1",
 				building_name: "",
 				sub_building_name: "",
@@ -277,7 +195,7 @@ describe("Formatted Addresses", function () {
 				organisation_name: "",
 				department_name: "",
 				UDPRN: ""
-			}
+			};
 			
 			expected = {
 				line_1: "1 Acacia Avenue",
@@ -286,28 +204,28 @@ describe("Formatted Addresses", function () {
 				post_town: "ABINGDON",
 				postcode: "OX14 4PG",
 				premise: "1"
-			}
+			};
 
 			address_test_battery(sample, expected);
 		});
 	});
 
-	describe("Rule 3", function () {
-		it ("should return the correct address format", function () {
+	describe("Rule 3", () => {
+		it ("should return the correct address format", () => {
 			sample = {
 				postcode: "NR25 7HG",
 				post_town: "HOLT",
 				dependant_locality: "",
 				double_dependant_locality: "",
-				thoroughfare: "STATION ROAD",
+				thoroughfare: "Station Road",
 				building_number: "",
 				building_name: "1A",
 				sub_building_name: "",
-				dependant_thoroughfare: "SEASTONE COURT",
+				dependant_thoroughfare: "Seastone Court",
 				organisation_name: "",
 				department_name: "",
 				UDPRN: ""
-			}
+			};
 			
 			expected = {
 				line_1: "1a Seastone Court",
@@ -316,26 +234,54 @@ describe("Formatted Addresses", function () {
 				post_town: "HOLT",
 				postcode: "NR25 7HG",
 				premise: "1a"
-			}
+			};
 
 			address_test_battery(sample, expected);
 		});
 
-		it ("should return the correct address format", function () {
+		it ("should return the correct address format", () => {
+			sample = {
+				postcode: "CV8 2UE",
+				post_town: "KENILWORTH",
+				dependant_locality: "",
+				double_dependant_locality: "",
+				thoroughfare: "Cotton Drive",
+				building_number: "",
+				building_name: "Unit 3-4",
+				sub_building_name: "",
+				dependant_thoroughfare: "Dalehouse Lane Industrial Estate",
+				organisation_name: "Imperial Candles",
+				department_name: "",
+				UDPRN: ""
+			};
+			
+			expected = {
+				line_1: "Imperial Candles",
+				line_2: "Unit 3-4",
+				line_3: "Dalehouse Lane Industrial Estate, Cotton Drive",
+				post_town: "KENILWORTH",
+				postcode: "CV8 2UE",
+				premise: "Unit 3-4"
+			};
+
+			address_test_battery(sample, expected);
+		});
+
+		it ("should return the correct address format", () => {
 			sample = {
 				postcode: "RH6 0HP",
 				post_town: "HORLEY",
 				dependant_locality: "",
 				double_dependant_locality: "",
-				thoroughfare: "UPPER HILL",
+				thoroughfare: "Upper Hill",
 				building_number: "",
-				building_name: "THE MANOR",
+				building_name: "The Manor",
 				sub_building_name: "",
 				dependant_thoroughfare: "",
 				organisation_name: "",
 				department_name: "",
 				UDPRN: ""
-			}
+			};
 			
 			expected = {
 				line_1: "The Manor",
@@ -344,26 +290,26 @@ describe("Formatted Addresses", function () {
 				post_town: "HORLEY",
 				postcode: "RH6 0HP",
 				premise: "The Manor"
-			}
+			};
 
 			address_test_battery(sample, expected);
 		});
 
-		it ("should return the correct address format", function () {
+		it ("should return the correct address format", () => {
 			sample = {
 				postcode: "WS11 5SB",
 				post_town: "CANNOCK",
 				dependant_locality: "",
 				double_dependant_locality: "",
-				thoroughfare: "PYE GREEN ROAD",
+				thoroughfare: "Pye Green Road",
 				building_number: "",
-				building_name: "FLOWER HOUSE 189A",
+				building_name: "Flower House 189A",
 				sub_building_name: "",
 				dependant_thoroughfare: "",
-				organisation_name: "S D ALCOTT FLORISTS",
+				organisation_name: "S D Alcott Florists",
 				department_name: "",
 				UDPRN: ""
-			}
+			};
 			
 			expected = {
 				line_1: "S D Alcott Florists",
@@ -372,26 +318,26 @@ describe("Formatted Addresses", function () {
 				post_town: "CANNOCK",
 				postcode: "WS11 5SB",
 				premise: "Flower House, 189a"
-			}
+			};
 
 			address_test_battery(sample, expected);
 		});
 
-		it ("should return the correct address format", function () {
+		it ("should return the correct address format", () => {
 			sample = {
 				postcode: "ME16 0LP",
 				post_town: "GRAFTON",
 				dependant_locality: "",
 				double_dependant_locality: "",
-				thoroughfare: "ST. LAURENCE AVENUE",
+				thoroughfare: "St. Laurence Avenue",
 				building_number: "",
-				building_name: "CENTRE 30",
+				building_name: "Centre 30",
 				sub_building_name: "",
 				dependant_thoroughfare: "",
-				organisation_name: "JAMES VILLA HOLIDAYS",
+				organisation_name: "James Villa Holidays",
 				department_name: "",
 				UDPRN: ""
-			}
+			};
 			
 			expected = {
 				line_1: "James Villa Holidays",
@@ -400,22 +346,22 @@ describe("Formatted Addresses", function () {
 				post_town: "GRAFTON",
 				postcode: "ME16 0LP",
 				premise: "Centre 30"
-			}
+			};
 
 			address_test_battery(sample, expected);
 		});
 	});
 
-	describe("Rule 4", function () {
-		it ("RULE 4: should return the correct address format", function () {
+	describe("Rule 4", () => {
+		it ("RULE 4: should return the correct address format", () => {
 			sample = {
 				postcode: "BH23 6AA",
 				post_town: "CHRISTCHURCH",
 				dependant_locality: "",
 				double_dependant_locality: "",
-				thoroughfare: "THE STREET",
+				thoroughfare: "The Street",
 				building_number: "15",
-				building_name: "VICTORIA HOUSE",
+				building_name: "Victoria House",
 				sub_building_name: "",
 				dependant_thoroughfare: "",
 				organisation_name: "",
@@ -436,22 +382,22 @@ describe("Formatted Addresses", function () {
 		});
 	});
 
-	describe("Rule 5", function () {
-		it ("RULE 5: should return the correct address format", function () {
+	describe("Rule 5", () => {
+		it ("RULE 5: should return the correct address format", () => {
 			sample = {
 				postcode: "BS8 4AB",
 				post_town: "BRISTOL",
 				dependant_locality: "",
 				double_dependant_locality: "",
-				thoroughfare: "LIME TREE AVENUE",
+				thoroughfare: "Lime Tree Avenue",
 				building_number: "12",
 				building_name: "",
-				sub_building_name: "FLAT 1",
+				sub_building_name: "Flat 1",
 				dependant_thoroughfare: "",
 				organisation_name: "",
 				department_name: "",
 				UDPRN: ""
-			}
+			};
 			
 			expected = {
 				line_1: "Flat 1",
@@ -460,18 +406,18 @@ describe("Formatted Addresses", function () {
 				post_town: "BRISTOL",
 				postcode: "BS8 4AB",
 				premise: "Flat 1, 12"
-			}
+			};
 
 			address_test_battery(sample, expected);
 		});
 
-		it ("RULE 5: should return the correct address format", function () {
+		it ("RULE 5: should return the correct address format", () => {
 			sample = {
 				postcode: "SP5 4NA",
 				post_town: "SALISBURY",
-				dependant_locality: "COOMBE BISSETT",
+				dependant_locality: "Coombe Bissett",
 				double_dependant_locality: "",
-				thoroughfare: "HIGH STREET NORTH",
+				thoroughfare: "High Street North",
 				building_number: "12",
 				building_name: "",
 				sub_building_name: "A",
@@ -479,7 +425,7 @@ describe("Formatted Addresses", function () {
 				organisation_name: "",
 				department_name: "",
 				UDPRN: ""
-			}
+			};
 			
 			expected = {
 				line_1: "12A High Street North",
@@ -488,20 +434,20 @@ describe("Formatted Addresses", function () {
 				post_town: "SALISBURY",
 				postcode: "SP5 4NA",
 				premise: "12A"
-			}
+			};
 
 			address_test_battery(sample, expected);
 		});
 	});
 
-	describe("Rule 6", function () {
-		it ("should return the correct address format", function () {
+	describe("Rule 6", () => {
+		it ("should return the correct address format", () => {
 			sample = {
 				postcode: "B6 5BA",
 				post_town: "BIRMINGHAM",
 				dependant_locality: "",
 				double_dependant_locality: "",
-				thoroughfare: "ESTONE WALK",
+				thoroughfare: "Estone Walk",
 				building_number: "",
 				building_name: "Barry Jackson Tower",
 				sub_building_name: "10B",
@@ -509,7 +455,7 @@ describe("Formatted Addresses", function () {
 				organisation_name: "",
 				department_name: "",
 				UDPRN: ""
-			}
+			};
 			
 			expected = {
 				line_1: "10B Barry Jackson Tower",
@@ -518,26 +464,26 @@ describe("Formatted Addresses", function () {
 				post_town: "BIRMINGHAM",
 				postcode: "B6 5BA",
 				premise: "10B Barry Jackson Tower"
-			}
+			};
 
 			address_test_battery(sample, expected);
 		});
 
-		it ("should return the correct address format", function () {
+		it ("should return the correct address format", () => {
 			sample = {
 				postcode: "BS1 2AW",
 				post_town: "BRISTOL",
 				dependant_locality: "",
 				double_dependant_locality: "",
-				thoroughfare: "HIGH STREET WEST",
+				thoroughfare: "High Street West",
 				building_number: "",
 				building_name: "110-114",
-				sub_building_name: "CARETAKERS FLAT",
+				sub_building_name: "Caretakers Flat",
 				dependant_thoroughfare: "",
 				organisation_name: "",
 				department_name: "",
 				UDPRN: ""
-			}
+			};
 			
 			expected = {
 				line_1: "Caretakers Flat",
@@ -546,26 +492,26 @@ describe("Formatted Addresses", function () {
 				post_town: "BRISTOL",
 				postcode: "BS1 2AW",
 				premise: "Caretakers Flat, 110-114"
-			}
+			};
 
 			address_test_battery(sample, expected);
 		});
 
-		it ("should return the correct address format", function () {
+		it ("should return the correct address format", () => {
 			sample = {
 				postcode: "RH6 0HP",
 				post_town: "HORLEY",
 				dependant_locality: "",
 				double_dependant_locality: "",
-				thoroughfare: "UPPER HILL",
+				thoroughfare: "Upper Hill",
 				building_number: "",
-				building_name: "THE MANOR",
-				sub_building_name: "STABLES FLAT",
+				building_name: "The Manor",
+				sub_building_name: "Stables Flat",
 				dependant_thoroughfare: "",
 				organisation_name: "",
 				department_name: "",
 				UDPRN: ""
-			}
+			};
 			
 			expected = {
 				line_1: "Stables Flat",
@@ -574,28 +520,72 @@ describe("Formatted Addresses", function () {
 				post_town: "HORLEY",
 				postcode: "RH6 0HP",
 				premise: "Stables Flat, The Manor"
-			}
+			};
 
 			address_test_battery(sample, expected);
 		});
 	});
 
-	describe("Rule 7", function () {
-		it ("RULE 7: should return the correct address format", function () {
+	describe("Weird rule", () => {
+		it ("Weird Rule: should return the correct address format", () => {
+			sample = {
+				postcode: "EH4 3AJ",
+			  post_town: "EDINBURGH",
+			  dependant_locality: "",
+			  double_dependant_locality: "",
+			  thoroughfare: "Belgrave Crescent",
+			  dependant_thoroughfare: "",
+			  building_number: " ",
+			  building_name: "",
+			  sub_building_name: "20gf",
+			  po_box: "",
+			  department_name: "",
+			  organisation_name: "",
+			  udprn: 8224574,
+			  postcode_type: "S",
+			  su_organisation_indicator: " ",
+			  delivery_point_suffix: "1F",
+			  postcode_inward: "3AJ",
+			  postcode_outward: "EH4",
+			  county: null,
+			  country: "Scotland",
+			  district: "City of Edinburgh",
+			  ward: "Inverleith",
+			  eastings: 323988,
+			  northings: 674105,
+			  longitude: -3.21889755918115,
+			  latitude: 55.95393929845 
+			};
+			
+			expected = {
+				line_1: "20gf Belgrave Crescent",
+				line_2: "",
+				line_3: "",
+				post_town: "EDINBURGH",
+				postcode: "EH4 3AJ",
+				premise: "20gf"
+			};
+
+			address_test_battery(sample, expected);
+		});
+	});
+
+	describe("Rule 7", () => {
+		it ("RULE 7: should return the correct address format", () => {
 			sample = {
 				postcode: "SO23 9AP",
 				post_town: "WINCHESTER",
 				dependant_locality: "",
 				double_dependant_locality: "",
-				thoroughfare: "JOHN STREET",
+				thoroughfare: "John Street",
 				building_number: "27",
-				building_name: "THE TOWER",
+				building_name: "The Tower",
 				sub_building_name: "2B",
 				dependant_thoroughfare: "",
 				organisation_name: "",
 				department_name: "",
 				UDPRN: ""
-			}
+			};
 			
 			expected = {
 				line_1: "2B The Tower",
@@ -604,26 +594,26 @@ describe("Formatted Addresses", function () {
 				post_town: "WINCHESTER",
 				postcode: "SO23 9AP",
 				premise: "2B The Tower, 27"
-			}
+			};
 
 			address_test_battery(sample, expected);
 		});
 
-		it ("RULE 7: should return the correct address format", function () {
+		it ("RULE 7: should return the correct address format", () => {
 			sample = {
 				postcode: "BP23 6AA",
 				post_town: "CORYTON",
 				dependant_locality: "",
 				double_dependant_locality: "",
-				thoroughfare: "THE STREET",
+				thoroughfare: "The Street",
 				building_number: "15",
-				building_name: "VICTORIA HOUSE",
-				sub_building_name: "BASEMENT FLAT",
+				building_name: "Victoria House",
+				sub_building_name: "Basement Flat",
 				dependant_thoroughfare: "",
 				organisation_name: "",
 				department_name: "",
 				UDPRN: ""
-			}
+			};
 			
 			expected = {
 				line_1: "Basement Flat",
@@ -632,28 +622,28 @@ describe("Formatted Addresses", function () {
 				post_town: "CORYTON",
 				postcode: "BP23 6AA",
 				premise: "Basement Flat, Victoria House, 15"
-			}
+			};
 
 			address_test_battery(sample, expected);
 		});
 	});
 
 
-	it ("should return the correct address format", function () {
+	it ("should return the correct address format", () => {
 		sample = {
 			postcode: "B39 0DH",
 			post_town: "BIRMINGHAM",
 			dependant_locality: "",
 			double_dependant_locality: "",
-			thoroughfare: "PACKHOUSE LANE",
+			thoroughfare: "Packhouse Lane",
 			building_number: "",
-			building_name: "ROSE COTTAGE",
-			sub_building_name: "(SMITH)",
+			building_name: "Rose Cottage",
+			sub_building_name: "(Smith)",
 			dependant_thoroughfare: "",
 			organisation_name: "",
 			department_name: "",
 			UDPRN: ""
-		}
+		};
 		
 		expected = {
 			line_1: "(Smith)",
@@ -662,27 +652,27 @@ describe("Formatted Addresses", function () {
 			post_town: "BIRMINGHAM",
 			postcode: "B39 0DH",
 			premise: "(Smith), Rose Cottage"
-		}
+		};
 
 		address_test_battery(sample, expected);
 	});
 
 
-	it ("should return the correct address format", function () {
+	it ("should return the correct address format", () => {
 		sample = {
 			postcode: "S64 5BB",
 			post_town: "BRADLEY HEATH",
 			dependant_locality: "",
 			double_dependant_locality: "",
-			thoroughfare: "CROMPTON ROAD",
+			thoroughfare: "Crompton Road",
 			building_number: "",
-			building_name: "(HYNES)",
+			building_name: "(Hynes)",
 			sub_building_name: "",
 			dependant_thoroughfare: "",
 			organisation_name: "",
 			department_name: "",
 			UDPRN: ""
-		}
+		};
 		
 		expected = {
 			line_1: "(Hynes)",
@@ -691,19 +681,19 @@ describe("Formatted Addresses", function () {
 			post_town: "BRADLEY HEATH",
 			postcode: "S64 5BB",
 			premise: "(Hynes)"
-		}
+		};
 
 		address_test_battery(sample, expected);
 	});
 
 
-	it ("should return the correct address format", function () {
+	it ("should return the correct address format", () => {
 		sample = {
 			postcode: "KT6 5BT",
 			post_town: "BRADOCK",
 			dependant_locality: "",
 			double_dependant_locality: "",
-			thoroughfare: "VIXEN ROAD",
+			thoroughfare: "Vixen Road",
 			building_number: "16",
 			building_name: "",
 			sub_building_name: "",
@@ -711,7 +701,7 @@ describe("Formatted Addresses", function () {
 			organisation_name: "",
 			department_name: "",
 			UDPRN: ""
-		}
+		};
 		
 		expected = {
 			line_1: "16 Vixen Road",
@@ -720,27 +710,27 @@ describe("Formatted Addresses", function () {
 			post_town: "BRADOCK",
 			postcode: "KT6 5BT",
 			premise: "16"
-		}
+		};
 
 		address_test_battery(sample, expected);
 	});
 
 
-	it ("should return the correct address format", function () {
+	it ("should return the correct address format", () => {
 		sample = {
 			postcode: "P01 1AF",
 			post_town: "PORTSMOUTH",
 			dependant_locality: "",
 			double_dependant_locality: "",
-			thoroughfare: "HIGH STREET",
+			thoroughfare: "High Street",
 			building_number: "",
-			building_name: "VICTORIA HOUSE",
+			building_name: "Victoria House",
 			sub_building_name: "",
 			dependant_thoroughfare: "",
-			organisation_name: "CATH'S CAKES",
+			organisation_name: "Cath's Cakes",
 			department_name: "",
 			UDPRN: ""
-		}
+		};
 		
 		expected = {
 			line_1: "Cath's Cakes",
@@ -749,27 +739,27 @@ describe("Formatted Addresses", function () {
 			post_town: "PORTSMOUTH",
 			postcode: "P01 1AF",
 			premise: "Victoria House"
-		}
+		};
 
 		address_test_battery(sample, expected);	
 	});
 
 
-	it ("should return the correct address format", function () {
+	it ("should return the correct address format", () => {
 		sample = {
 			postcode: "TN27 8BT",
 			post_town: "ASHFORD",
-			dependant_locality: "BIDDENDEN",
+			dependant_locality: "Biddenden",
 			double_dependant_locality: "",
-			thoroughfare: "OAK AVENUE",
+			thoroughfare: "Oak Avenue",
 			building_number: "0",
-			building_name: "HOLLY HOUSE",
-			sub_building_name: "FLAT 1",
+			building_name: "Holly House",
+			sub_building_name: "Flat 1",
 			dependant_thoroughfare: "",
 			organisation_name: "",
 			department_name: "",
 			UDPRN: ""
-		}
+		};
 		
 		expected = {
 			line_1: "Flat 1, Holly House",
@@ -778,26 +768,26 @@ describe("Formatted Addresses", function () {
 			post_town: "ASHFORD",
 			postcode: "TN27 8BT",
 			premise: "Flat 1, Holly House"
-		}
-			address_test_battery(sample, expected);
-		});
+		};
+		address_test_battery(sample, expected);
+	});
 
 
-	it ("should return the correct address format", function () {
+	it ("should return the correct address format", () => {
 		sample = {
 			postcode: "BH23 6AA",
 			post_town: "CHRISTCHURCH",
 			dependant_locality: "",
 			double_dependant_locality: "",
-			thoroughfare: "THE STREET",
+			thoroughfare: "The Street",
 			building_number: "15",
-			building_name: "VICTORIA HOUSE",
-			sub_building_name: "FLAT 20",
+			building_name: "Victoria House",
+			sub_building_name: "Flat 20",
 			dependant_thoroughfare: "",
 			organisation_name: "",
 			department_name: "",
 			UDPRN: ""
-		}
+		};
 		
 		expected = {
 			line_1: "Flat 20",
@@ -806,26 +796,26 @@ describe("Formatted Addresses", function () {
 			post_town: "CHRISTCHURCH",
 			postcode: "BH23 6AA",
 			premise: "Flat 20, Victoria House, 15"
-		}
-			address_test_battery(sample, expected);
-		});
+		};
+		address_test_battery(sample, expected);
+	});
 
 
-	it ("should return the correct address format", function () {
+	it ("should return the correct address format", () => {
 		sample = {
 			postcode: "BS1 2AW",
 			post_town: "BRISTOL",
 			dependant_locality: "",
 			double_dependant_locality: "",
-			thoroughfare: "HIGH STREET WEST",
+			thoroughfare: "High Street West",
 			building_number: "",
 			building_name: "110-114",
-			sub_building_name: "CARETAKERS FLAT",
+			sub_building_name: "Caretakers Flat",
 			dependant_thoroughfare: "",
 			organisation_name: "",
 			department_name: "",
 			UDPRN: ""
-		}
+		};
 		
 		expected = {
 			line_1: "Caretakers Flat",
@@ -834,20 +824,20 @@ describe("Formatted Addresses", function () {
 			post_town: "BRISTOL",
 			postcode: "BS1 2AW",
 			premise: "Caretakers Flat, 110-114"
-		}
+		};
 
 		address_test_battery(sample, expected);
 	});
 
 
-	it ("should return the correct address format", function () {
+	it ("should return the correct address format", () => {
 		sample = {
 			postcode: "NR25 7HG",
 			post_town: "EMSWORTH",
 			dependant_locality: "",
 			double_dependant_locality: "",
-			thoroughfare: "ANGELICA WAY",
-			thoroughfare_descriptor: "WAY",
+			thoroughfare: "Angelica Way",
+			thoroughfare_descriptor: "Way",
 			building_number: "16",
 			building_name: "",
 			sub_building_name: "",
@@ -855,7 +845,7 @@ describe("Formatted Addresses", function () {
 			organisation_name: "",
 			department_name: "",
 			UDPRN: ""
-		}
+		};
 		
 		expected = {
 			line_1: "16 Angelica Way",
@@ -864,26 +854,26 @@ describe("Formatted Addresses", function () {
 			post_town: "EMSWORTH",
 			postcode: "NR25 7HG",
 			premise: "16"
-		}
+		};
 
 		address_test_battery(sample, expected);
 	});
 
-	it ("should return the correct address format", function () {
+	it ("should return the correct address format", () => {
 		sample = {
 			postcode: "OX1 2AY",
 			post_town: "OXFORD",
 			dependant_locality: "",
 			double_dependant_locality: "",
-			thoroughfare: "GEORGE STREET",
+			thoroughfare: "George Street",
 			building_number: "37",
 			building_name: "",
 			sub_building_name: "",
 			dependant_thoroughfare: "",
-			organisation_name: "O'NEILLS",
+			organisation_name: "O'Neills",
 			department_name: "",
 			UDPRN: ""
-		}
+		};
 		
 		expected = {
 			line_1: "O'Neills",
@@ -892,27 +882,27 @@ describe("Formatted Addresses", function () {
 			post_town: "OXFORD",
 			postcode: "OX1 2AY",
 			premise: "37"
-		}
+		};
 
 		address_test_battery(sample, expected);
 	});
 
 
-	it ("should return the correct address format", function () {
+	it ("should return the correct address format", () => {
 		sample = {
 			postcode: "RH6 0HP",
 			post_town: "HORLEY",
-			dependant_locality: "NORWOOD",
+			dependant_locality: "Norwood",
 			double_dependant_locality: "",
 			thoroughfare: "",
 			building_number: "",
-			building_name: "THE MANOR",
+			building_name: "The Manor",
 			sub_building_name: "",
 			dependant_thoroughfare: "",
 			organisation_name: "",
 			department_name: "",
 			UDPRN: ""
-		}
+		};
 		
 		expected = {
 			line_1: "The Manor",
@@ -921,17 +911,17 @@ describe("Formatted Addresses", function () {
 			post_town: "HORLEY",
 			postcode: "RH6 0HP",
 			premise: "The Manor"
-		}
+		};
 
 		address_test_battery(sample, expected);
 	});
 
-	it ("should return the correct address format", function () {
+	it ("should return the correct address format", () => {
 		sample = {
 			postcode: "PO14 1UX",
 			post_town: "FAREHAM",
 			po_box: "61"
-		}
+		};
 		
 		expected = {
 			line_1: "PO Box 61",
@@ -940,12 +930,12 @@ describe("Formatted Addresses", function () {
 			post_town: "FAREHAM",
 			postcode: "PO14 1UX",
 			premise: "PO Box 61"
-		}
+		};
 
 		address_test_battery(sample, expected);
 	});
 
-	it ("should format addresses with more than 3 lines as a comma separated line 3", function () {
+	it ("should format addresses with more than 3 lines as a comma separated line 3", () => {
 		sample = {
 			"dependant_locality": "Britannia Enterprise Park",
 			"postcode_type": "S",
@@ -975,7 +965,7 @@ describe("Formatted Addresses", function () {
 			"thoroughfare": "Britannia Way",
 			"line_2": "Unit 60",
 			"latitude": 52.6849198703419
-		}
+		};
 		
 		expected = {
 			line_1: "Britannia Park Veterinary Centre",
@@ -984,52 +974,8 @@ describe("Formatted Addresses", function () {
 			post_town: "LICHFIELD",
 			postcode: "WS14 9UY",
 			premise: "Unit 60"
-		}
+		};
 
 		address_test_battery(sample, expected);
 	});
-
-	describe("Weird rule", function () {
-		it ("Weird Rule: should return the correct address format", function () {
-			sample = { postcode: 'EH4 3AJ',
-			  post_town: 'EDINBURGH',
-			  dependant_locality: '',
-			  double_dependant_locality: '',
-			  thoroughfare: 'Belgrave Crescent',
-			  dependant_thoroughfare: '',
-			  building_number: ' ',
-			  building_name: '',
-			  sub_building_name: '20gf',
-			  po_box: '',
-			  department_name: '',
-			  organisation_name: '',
-			  udprn: 8224574,
-			  postcode_type: 'S',
-			  su_organisation_indicator: ' ',
-			  delivery_point_suffix: '1F',
-			  postcode_inward: '3AJ',
-			  postcode_outward: 'EH4',
-			  county: null,
-			  country: 'Scotland',
-			  district: 'City of Edinburgh',
-			  ward: 'Inverleith',
-			  eastings: 323988,
-			  northings: 674105,
-			  longitude: -3.21889755918115,
-			  latitude: 55.95393929845 
-			};
-			
-			expected = {
-				line_1: "20gf Belgrave Crescent",
-				line_2: "",
-				line_3: "",
-				post_town: "EDINBURGH",
-				postcode: "EH4 3AJ",
-				premise: "20gf"
-			}
-
-			address_test_battery(sample, expected);
-		});
-	});
-
 });
