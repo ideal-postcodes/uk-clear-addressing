@@ -8,6 +8,8 @@ This module converts UK address fragments into a properly formatted address reco
 
 Created in conjunction with Royal Mail Postcode Address File, it maps field name for field name if you were to pull the address straight from this database. If you don't have access to PAF, it can still be used as long as you know which parameters correspond to what data you have available. Parameters listed [below](#parameters)
 
+Low level documentation for this library can be found at [https://ideal-postcodes.github.io/uk-clear-addressing/](https://ideal-postcodes.github.io/uk-clear-addressing/)
+
 ## Getting Started
 
 ### Installation
