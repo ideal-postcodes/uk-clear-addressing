@@ -37,6 +37,6 @@ export declare class Address {
     toJSON(): t.AddressJSON;
     formattedAddress(): t.FormattedAddress;
     static formatPostcode(postcode: string): string;
-    static sort(a: Address, b: Address): Number;
+    static sort(a: Address, b: Address): number;
 }
 export declare type AddressRecord = t.AddressRecord;
