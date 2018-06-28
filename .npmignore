@@ -1,6 +1,7 @@
 misc
 test
 docs
+src
 .circleci
 .jshintrc
 .jshintignore
