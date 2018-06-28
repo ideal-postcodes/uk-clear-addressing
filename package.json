@@ -6,7 +6,7 @@
   "types": "./lib/index.d.ts",
   "homepage": "https://github.com/ideal-postcodes/uk-clear-addressing",
   "scripts": {
-    "prepublish": "npm test",
+    "prepublish": "npm test && npm run build",
     "test": "npm run build && npm run nyc && npm run lint",
     "nyc": "node_modules/.bin/nyc node_modules/.bin/mocha test/ -R spec",
     "coverage": "node_modules/.bin/nyc report --reporter=text-lcov | node_modules/.bin/coveralls || true",
