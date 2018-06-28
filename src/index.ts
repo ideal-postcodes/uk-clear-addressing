@@ -239,7 +239,7 @@ export class Address {
 	 * @param  {Address} b [description]
 	 * @return {Number}    [description]
 	 */
-	static sort(a: Address, b: Address): Number {
+	static sort(a: Address, b: Address): number {
 		return sort(a, b);
 	}
 }
