@@ -11,7 +11,7 @@ export const extract = (address: t.AddressRecord, elem: keyof t.AddressRecord): 
 
 export const extractInteger: t.NumericExtractor = (address, elem) => {
 	const result = address[elem];
-	if (result === undefined ) return "";
+	if (result === undefined) return "";
 	if (result === null) return "";
 	if (typeof result !== "number") return parseInt(result, 10) || "";
 	return result;
