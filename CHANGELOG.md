@@ -1,5 +1,9 @@
 # Changelog
 
+## [2.1.1] 2018-07-02
+
+- Fix: Drop nyc_output from npm package
+
 ## [2.1.0] 2018-06-28
 
 - Project reorganisation
