@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.1.0] 2018-06-28
+
+- Project reorganisation
+	- Typescript files omitted from npm package
+	- Compiled js and typing files omitted from project repository
+	- Moved compiled files to `dist/`
+	- Dropped unused assets from npm module
+- Fix: typings for `Address.sort` (previously returned inappropriate type)
+- Fix: address sort comparator
+- Fix: formatting for corner case on rule6
+
 ## [2.0.0] 2018-04-05
 
 ### Breaking Changes
