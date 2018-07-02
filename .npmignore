@@ -11,3 +11,5 @@ tsconfig.json
 mocha.opts
 coverage
 .nyc_output
+*.tgz
+package
