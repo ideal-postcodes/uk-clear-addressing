@@ -80,17 +80,15 @@ const BUILDING_RANGE_REGEX = /^(\d.*\D.*\d|\d(.*\d)?[a-z]|[a-z])$/i;
 /**
  * Detects whether a building name contains a range
  */
-export const checkBuildingRange = (building_name: string): t.BuildingRangeMatch|null => {
-	const name_split = building_name.split(" ");
-	let last_elem = name_split.pop();
-	if (last_elem === undefined) last_elem = ""; // Placate typescript
-	if (last_elem.match(BUILDING_RANGE_REGEX)) {
+export const checkBuildingRange = (building_name: string): t.BuildingRangeMatch|void => {
+	const tokens = building_name.split(" ");
+	const range = tokens.pop() || "";
+	if (range.match(BUILDING_RANGE_REGEX)) {
 		return {
-			range: last_elem,
-			actual_name: name_split.join(" ")
+			range,
+			name: tokens.join(" ")
 		};
 	}
-	return null;
 };
 
 const SUB_RANGE_REGEX = /^unit\s/i;
@@ -124,9 +122,9 @@ export const rule3: t.AddressFormatter = address => {
 	} else {
 		const sub_range_match = checkBuildingRange(building_name);
 		if (sub_range_match && !building_name.match(SUB_RANGE_REGEX)) { // Check if name contains number range
-			premise = `${sub_range_match.actual_name}, ${sub_range_match.range.toLowerCase()}`;
+			premise = `${sub_range_match.name}, ${sub_range_match.range.toLowerCase()}`;
 			prependLocality(result, sub_range_match.range.toLowerCase());
-			result.push(sub_range_match.actual_name);
+			result.push(sub_range_match.name);
 		} else {
 			premise = building_name;
 			result.push(premise);
