@@ -1,9 +1,10 @@
 "use strict";
 
-const { assert } = require("chai");
-const { Address } = require("../lib/index.js");
+import { assert } from "chai";
+import { Address } from "../src/index";
+import { AddressRecord, FormattedAddress } from "../src/types";
 
-const address_test_battery = (sample, expected) => {
+const compare = (sample: AddressRecord, expected: FormattedAddress): void => {
 	const address = new Address(sample);
 	const formatted_address = address.formattedAddress();
 	assert.equal(formatted_address.line_1, expected.line_1);
@@ -15,7 +16,8 @@ const address_test_battery = (sample, expected) => {
 };
 
 describe("Formatted Addresses", () => {
-	let sample, expected;
+	let sample: AddressRecord
+	let expected: FormattedAddress;
 
 	it ("should cache formatted addresses", () => {
 		sample = {
@@ -30,7 +32,7 @@ describe("Formatted Addresses", () => {
 			dependant_thoroughfare: "",
 			organisation_name: "Leda Engineering Ltd",
 			department_name: "",
-			UDPRN: ""
+			udprn: 8,
 		};
 
 		const address = new Address(sample);
@@ -52,7 +54,7 @@ describe("Formatted Addresses", () => {
 				dependant_thoroughfare: "",
 				organisation_name: "Leda Engineering Ltd",
 				department_name: "",
-				UDPRN: ""
+				udprn: 8,
 			};
 			
 			expected = {
@@ -64,7 +66,7 @@ describe("Formatted Addresses", () => {
 				premise: ""
 			};
 
-			address_test_battery(sample, expected);
+			compare(sample, expected);
 		});
 
 		it ("should return the correct address format", () => {
@@ -80,7 +82,7 @@ describe("Formatted Addresses", () => {
 				dependant_thoroughfare: "",
 				organisation_name: "Leda Engineering Ltd",
 				department_name: "Engineering Department",
-				UDPRN: ""
+				udprn: 8,
 			};
 			
 			expected = {
@@ -92,7 +94,7 @@ describe("Formatted Addresses", () => {
 				premise: ""
 			};
 
-			address_test_battery(sample, expected);
+			compare(sample, expected);
 		});
 	});
 
@@ -110,7 +112,7 @@ describe("Formatted Addresses", () => {
 				dependant_thoroughfare: "",
 				organisation_name: "",
 				department_name: "",
-				UDPRN: ""
+				udprn: 8,
 			};
 			
 			expected = {
@@ -122,7 +124,7 @@ describe("Formatted Addresses", () => {
 				premise: "1"
 			};
 
-			address_test_battery(sample, expected);
+			compare(sample, expected);
 		});
 
 		it ("should return the correct address format", () => {
@@ -138,7 +140,7 @@ describe("Formatted Addresses", () => {
 				dependant_thoroughfare: "",
 				organisation_name: "",
 				department_name: "",
-				UDPRN: ""
+				udprn: 8,
 			};
 			
 			expected = {
@@ -150,7 +152,7 @@ describe("Formatted Addresses", () => {
 				premise: "1"
 			};
 
-			address_test_battery(sample, expected);
+			compare(sample, expected);
 		});
 
 		it ("should return the correct address format", () => {
@@ -166,7 +168,7 @@ describe("Formatted Addresses", () => {
 				dependant_thoroughfare: "",
 				organisation_name: "",
 				department_name: "",
-				UDPRN: ""
+				udprn: 8,
 			};
 			
 			expected = {
@@ -178,7 +180,7 @@ describe("Formatted Addresses", () => {
 				premise: "1"
 			};
 
-			address_test_battery(sample, expected);
+			compare(sample, expected);
 		});
 
 		it ("should return the correct address format", () => {
@@ -194,7 +196,7 @@ describe("Formatted Addresses", () => {
 				dependant_thoroughfare: "",
 				organisation_name: "",
 				department_name: "",
-				UDPRN: ""
+				udprn: 8,
 			};
 			
 			expected = {
@@ -206,7 +208,7 @@ describe("Formatted Addresses", () => {
 				premise: "1"
 			};
 
-			address_test_battery(sample, expected);
+			compare(sample, expected);
 		});
 	});
 
@@ -224,7 +226,7 @@ describe("Formatted Addresses", () => {
 				dependant_thoroughfare: "Seastone Court",
 				organisation_name: "",
 				department_name: "",
-				UDPRN: ""
+				udprn: 8,
 			};
 			
 			expected = {
@@ -236,7 +238,7 @@ describe("Formatted Addresses", () => {
 				premise: "1a"
 			};
 
-			address_test_battery(sample, expected);
+			compare(sample, expected);
 		});
 
 		it ("should return the correct address format", () => {
@@ -252,7 +254,7 @@ describe("Formatted Addresses", () => {
 				dependant_thoroughfare: "Dalehouse Lane Industrial Estate",
 				organisation_name: "Imperial Candles",
 				department_name: "",
-				UDPRN: ""
+				udprn: 8,
 			};
 			
 			expected = {
@@ -264,7 +266,7 @@ describe("Formatted Addresses", () => {
 				premise: "Unit 3-4"
 			};
 
-			address_test_battery(sample, expected);
+			compare(sample, expected);
 		});
 
 		it ("should return the correct address format", () => {
@@ -280,7 +282,7 @@ describe("Formatted Addresses", () => {
 				dependant_thoroughfare: "",
 				organisation_name: "",
 				department_name: "",
-				UDPRN: ""
+				udprn: 8,
 			};
 			
 			expected = {
@@ -292,7 +294,7 @@ describe("Formatted Addresses", () => {
 				premise: "The Manor"
 			};
 
-			address_test_battery(sample, expected);
+			compare(sample, expected);
 		});
 
 		it ("should return the correct address format", () => {
@@ -308,7 +310,7 @@ describe("Formatted Addresses", () => {
 				dependant_thoroughfare: "",
 				organisation_name: "S D Alcott Florists",
 				department_name: "",
-				UDPRN: ""
+				udprn: 8,
 			};
 			
 			expected = {
@@ -320,7 +322,7 @@ describe("Formatted Addresses", () => {
 				premise: "Flower House, 189a"
 			};
 
-			address_test_battery(sample, expected);
+			compare(sample, expected);
 		});
 
 		it ("should return the correct address format", () => {
@@ -336,7 +338,7 @@ describe("Formatted Addresses", () => {
 				dependant_thoroughfare: "",
 				organisation_name: "James Villa Holidays",
 				department_name: "",
-				UDPRN: ""
+				udprn: 8,
 			};
 			
 			expected = {
@@ -348,7 +350,7 @@ describe("Formatted Addresses", () => {
 				premise: "Centre 30"
 			};
 
-			address_test_battery(sample, expected);
+			compare(sample, expected);
 		});
 	});
 
@@ -366,7 +368,7 @@ describe("Formatted Addresses", () => {
 				dependant_thoroughfare: "",
 				organisation_name: "",
 				department_name: "",
-				UDPRN: ""
+				udprn: 8,
 			};
 			
 			expected = {
@@ -378,7 +380,7 @@ describe("Formatted Addresses", () => {
 				premise: "Victoria House, 15"
 			};
 
-			address_test_battery(sample, expected);
+			compare(sample, expected);
 		});
 	});
 
@@ -396,7 +398,7 @@ describe("Formatted Addresses", () => {
 				dependant_thoroughfare: "",
 				organisation_name: "",
 				department_name: "",
-				UDPRN: ""
+				udprn: 8,
 			};
 			
 			expected = {
@@ -408,7 +410,7 @@ describe("Formatted Addresses", () => {
 				premise: "Flat 1, 12"
 			};
 
-			address_test_battery(sample, expected);
+			compare(sample, expected);
 		});
 
 		it ("RULE 5: should return the correct address format", () => {
@@ -424,7 +426,7 @@ describe("Formatted Addresses", () => {
 				dependant_thoroughfare: "",
 				organisation_name: "",
 				department_name: "",
-				UDPRN: ""
+				udprn: 8,
 			};
 			
 			expected = {
@@ -436,7 +438,7 @@ describe("Formatted Addresses", () => {
 				premise: "12A"
 			};
 
-			address_test_battery(sample, expected);
+			compare(sample, expected);
 		});
 	});
 
@@ -454,7 +456,7 @@ describe("Formatted Addresses", () => {
 				dependant_thoroughfare: "",
 				organisation_name: "",
 				department_name: "",
-				UDPRN: ""
+				udprn: 8,
 			};
 			
 			expected = {
@@ -466,7 +468,7 @@ describe("Formatted Addresses", () => {
 				premise: "10B Barry Jackson Tower"
 			};
 
-			address_test_battery(sample, expected);
+			compare(sample, expected);
 		});
 
 		it ("should return the correct address format", () => {
@@ -482,7 +484,7 @@ describe("Formatted Addresses", () => {
 				dependant_thoroughfare: "",
 				organisation_name: "",
 				department_name: "",
-				UDPRN: ""
+				udprn: 8,
 			};
 			
 			expected = {
@@ -494,7 +496,7 @@ describe("Formatted Addresses", () => {
 				premise: "Caretakers Flat, 110-114"
 			};
 
-			address_test_battery(sample, expected);
+			compare(sample, expected);
 		});
 
 		it ("should return the correct address format", () => {
@@ -510,7 +512,7 @@ describe("Formatted Addresses", () => {
 				dependant_thoroughfare: "",
 				organisation_name: "",
 				department_name: "",
-				UDPRN: ""
+				udprn: 8,
 			};
 			
 			expected = {
@@ -522,7 +524,7 @@ describe("Formatted Addresses", () => {
 				premise: "Stables Flat, The Manor"
 			};
 
-			address_test_battery(sample, expected);
+			compare(sample, expected);
 		});
 	});
 
@@ -545,9 +547,7 @@ describe("Formatted Addresses", () => {
 			  postcode_type: "S",
 			  su_organisation_indicator: " ",
 			  delivery_point_suffix: "1F",
-			  postcode_inward: "3AJ",
-			  postcode_outward: "EH4",
-			  county: null,
+			  county: "",
 			  country: "Scotland",
 			  district: "City of Edinburgh",
 			  ward: "Inverleith",
@@ -566,7 +566,7 @@ describe("Formatted Addresses", () => {
 				premise: "20gf"
 			};
 
-			address_test_battery(sample, expected);
+			compare(sample, expected);
 		});
 	});
 
@@ -584,7 +584,7 @@ describe("Formatted Addresses", () => {
 				dependant_thoroughfare: "",
 				organisation_name: "",
 				department_name: "",
-				UDPRN: ""
+				udprn: 8,
 			};
 			
 			expected = {
@@ -596,7 +596,7 @@ describe("Formatted Addresses", () => {
 				premise: "2B The Tower, 27"
 			};
 
-			address_test_battery(sample, expected);
+			compare(sample, expected);
 		});
 
 		it ("RULE 7: should return the correct address format", () => {
@@ -612,7 +612,7 @@ describe("Formatted Addresses", () => {
 				dependant_thoroughfare: "",
 				organisation_name: "",
 				department_name: "",
-				UDPRN: ""
+				udprn: 8,
 			};
 			
 			expected = {
@@ -624,7 +624,7 @@ describe("Formatted Addresses", () => {
 				premise: "Basement Flat, Victoria House, 15"
 			};
 
-			address_test_battery(sample, expected);
+			compare(sample, expected);
 		});
 	});
 
@@ -642,7 +642,7 @@ describe("Formatted Addresses", () => {
 			dependant_thoroughfare: "",
 			organisation_name: "",
 			department_name: "",
-			UDPRN: ""
+			udprn: 8,
 		};
 		
 		expected = {
@@ -654,7 +654,7 @@ describe("Formatted Addresses", () => {
 			premise: "(Smith), Rose Cottage"
 		};
 
-		address_test_battery(sample, expected);
+		compare(sample, expected);
 	});
 
 
@@ -671,7 +671,7 @@ describe("Formatted Addresses", () => {
 			dependant_thoroughfare: "",
 			organisation_name: "",
 			department_name: "",
-			UDPRN: ""
+			udprn: 8,
 		};
 		
 		expected = {
@@ -683,7 +683,7 @@ describe("Formatted Addresses", () => {
 			premise: "(Hynes)"
 		};
 
-		address_test_battery(sample, expected);
+		compare(sample, expected);
 	});
 
 
@@ -700,7 +700,7 @@ describe("Formatted Addresses", () => {
 			dependant_thoroughfare: "",
 			organisation_name: "",
 			department_name: "",
-			UDPRN: ""
+			udprn: 8,
 		};
 		
 		expected = {
@@ -712,7 +712,7 @@ describe("Formatted Addresses", () => {
 			premise: "16"
 		};
 
-		address_test_battery(sample, expected);
+		compare(sample, expected);
 	});
 
 
@@ -729,7 +729,7 @@ describe("Formatted Addresses", () => {
 			dependant_thoroughfare: "",
 			organisation_name: "Cath's Cakes",
 			department_name: "",
-			UDPRN: ""
+			udprn: 8,
 		};
 		
 		expected = {
@@ -741,7 +741,7 @@ describe("Formatted Addresses", () => {
 			premise: "Victoria House"
 		};
 
-		address_test_battery(sample, expected);	
+		compare(sample, expected);	
 	});
 
 
@@ -758,7 +758,7 @@ describe("Formatted Addresses", () => {
 			dependant_thoroughfare: "",
 			organisation_name: "",
 			department_name: "",
-			UDPRN: ""
+			udprn: 8,
 		};
 		
 		expected = {
@@ -769,7 +769,7 @@ describe("Formatted Addresses", () => {
 			postcode: "TN27 8BT",
 			premise: "Flat 1, Holly House"
 		};
-		address_test_battery(sample, expected);
+		compare(sample, expected);
 	});
 
 
@@ -786,7 +786,7 @@ describe("Formatted Addresses", () => {
 			dependant_thoroughfare: "",
 			organisation_name: "",
 			department_name: "",
-			UDPRN: ""
+			udprn: 8,
 		};
 		
 		expected = {
@@ -797,7 +797,7 @@ describe("Formatted Addresses", () => {
 			postcode: "BH23 6AA",
 			premise: "Flat 20, Victoria House, 15"
 		};
-		address_test_battery(sample, expected);
+		compare(sample, expected);
 	});
 
 
@@ -814,7 +814,7 @@ describe("Formatted Addresses", () => {
 			dependant_thoroughfare: "",
 			organisation_name: "",
 			department_name: "",
-			UDPRN: ""
+			udprn: 8,
 		};
 		
 		expected = {
@@ -826,7 +826,7 @@ describe("Formatted Addresses", () => {
 			premise: "Caretakers Flat, 110-114"
 		};
 
-		address_test_battery(sample, expected);
+		compare(sample, expected);
 	});
 
 
@@ -837,14 +837,13 @@ describe("Formatted Addresses", () => {
 			dependant_locality: "",
 			double_dependant_locality: "",
 			thoroughfare: "Angelica Way",
-			thoroughfare_descriptor: "Way",
 			building_number: "16",
 			building_name: "",
 			sub_building_name: "",
 			dependant_thoroughfare: "",
 			organisation_name: "",
 			department_name: "",
-			UDPRN: ""
+			udprn: 8,
 		};
 		
 		expected = {
@@ -856,7 +855,7 @@ describe("Formatted Addresses", () => {
 			premise: "16"
 		};
 
-		address_test_battery(sample, expected);
+		compare(sample, expected);
 	});
 
 	it ("should return the correct address format", () => {
@@ -872,7 +871,7 @@ describe("Formatted Addresses", () => {
 			dependant_thoroughfare: "",
 			organisation_name: "O'Neills",
 			department_name: "",
-			UDPRN: ""
+			udprn: 8,
 		};
 		
 		expected = {
@@ -884,7 +883,7 @@ describe("Formatted Addresses", () => {
 			premise: "37"
 		};
 
-		address_test_battery(sample, expected);
+		compare(sample, expected);
 	});
 
 
@@ -901,7 +900,7 @@ describe("Formatted Addresses", () => {
 			dependant_thoroughfare: "",
 			organisation_name: "",
 			department_name: "",
-			UDPRN: ""
+			udprn: 8,
 		};
 		
 		expected = {
@@ -913,7 +912,7 @@ describe("Formatted Addresses", () => {
 			premise: "The Manor"
 		};
 
-		address_test_battery(sample, expected);
+		compare(sample, expected);
 	});
 
 	it ("should return the correct address format", () => {
@@ -932,7 +931,7 @@ describe("Formatted Addresses", () => {
 			premise: "PO Box 61"
 		};
 
-		address_test_battery(sample, expected);
+		compare(sample, expected);
 	});
 
 	it ("should format addresses with more than 3 lines as a comma separated line 3", () => {
@@ -950,20 +949,15 @@ describe("Formatted Addresses", () => {
 			"building_name": "Unit 60",
 			"dependant_thoroughfare": "",
 			"northings": 309710,
-			"postcode_outward": "WS14",
-			"postcode_inward": "9UY",
 			"sub_building_name": "",
 			"eastings": 413509,
 			"postcode": "WS14 9UY",
 			"udprn": 27027512,
-			"line_3": "Britannia Way",
 			"organisation_name": "Britannia Park Veterinary Centre",
 			"ward": "Boley Park",
 			"county": "Staffordshire",
-			"line_1": "Britannia Park Veterinary Centre",
 			"building_number": " ",
 			"thoroughfare": "Britannia Way",
-			"line_2": "Unit 60",
 			"latitude": 52.6849198703419
 		};
 		
@@ -976,6 +970,6 @@ describe("Formatted Addresses", () => {
 			premise: "Unit 60"
 		};
 
-		address_test_battery(sample, expected);
+		compare(sample, expected);
 	});
 });

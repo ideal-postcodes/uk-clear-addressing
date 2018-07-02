@@ -1,9 +1,13 @@
 "use strict";
 
-const { assert } = require("chai");
-const { Address } = require("../lib/index.js");
-const expectedRawAttributes = require("./data/expected_raw_attributes.json");
-const expectedJsonAttributes = require("./data/expected_json_attributes.json");
+import { assert } from "chai";
+import { Address } from "../src/index";
+import { AddressRecord, AddressJSON } from "../src/types";
+type RecordKeys = keyof AddressRecord;
+const expectedRawAttributes: RecordKeys[] = require("./data/expected_raw_attributes.json");
+
+type AddressJsonKeys = keyof AddressJSON;
+const expectedJsonAttributes: AddressJsonKeys[] = require("./data/expected_json_attributes.json");
 
 describe("Address Model", () => {
 	describe("instantiation", () => {
@@ -13,7 +17,7 @@ describe("Address Model", () => {
 			assert.equal(address.postcode_inward, "BAR");
 		});
 		it ("assigns empty string to inward/outward codes if postcode not present", () => {
-			const address = new Address({ postcode: null });
+			const address = new Address({ postcode:"" });
 			assert.equal(address.postcode_outward, "");
 			assert.equal(address.postcode_inward, "");
 		});
@@ -27,7 +31,7 @@ describe("Address Model", () => {
 			assert.isTrue(address.merge_sub_and_building);
 		});
 		it ("assigns relevant attributes", () => {
-			const data = {
+			const data: AddressRecord = {
 				postcode: "postcode",
 				udprn: 1,
 				umprn: 2,
@@ -58,10 +62,35 @@ describe("Address Model", () => {
 				country: "country",
 			};
 			const address = new Address(data);
-			Object.keys(data).forEach(attr => {
-				assert.equal(address[attr], data[attr]);
-			});
+			assert.equal(data.postcode, address.postcode);
+			assert.equal(data.post_town, address.post_town);
+			assert.equal(data.dependant_locality, address.dependant_locality);
+			assert.equal(data.double_dependant_locality, address.double_dependant_locality);
+			assert.equal(data.thoroughfare, address.thoroughfare);
+			assert.equal(data.dependant_thoroughfare, address.dependant_thoroughfare);
+			assert.equal(data.building_number, address.building_number);
+			assert.equal(data.building_name, address.building_name);
+			assert.equal(data.sub_building_name, address.sub_building_name);
+			assert.equal(data.po_box, address.po_box);
+			assert.equal(data.department_name, address.department_name);
+			assert.equal(data.organisation_name, address.organisation_name);
+			assert.equal(data.postcode_type, address.postcode_type);
+			assert.equal(data.su_organisation_indicator, address.su_organisation_indicator);
+			assert.equal(data.delivery_point_suffix, address.delivery_point_suffix);
+			assert.equal(data.county, address.county);
+			assert.equal(data.traditional_county, address.traditional_county);
+			assert.equal(data.administrative_county, address.administrative_county);
+			assert.equal(data.postal_county, address.postal_county);
+			assert.equal(data.district, address.district);
+			assert.equal(data.ward, address.ward);
+			assert.equal(data.country, address.country);
 			assert.isFalse(address.merge_sub_and_building);
+			assert.equal(data.udprn, <number>address.udprn);
+			assert.equal(data.umprn, <number>address.umprn);
+			assert.equal(data.northings, <number>address.northings);
+			assert.equal(data.eastings, <number>address.eastings);
+			assert.equal(data.longitude, <number>address.longitude);
+			assert.equal(data.latitude, <number>address.latitude);
 		});
 		it ("uppercases post town", () => {
 			const address = new Address({ post_town: "foo" });
@@ -89,7 +118,7 @@ describe("Address Model", () => {
 
 	describe("#formattedAddress", () => {
 		it ("returns and caches an address object", () => {
-			const sample = {
+			const sample: AddressRecord = {
 				postcode: "OX14 4PG",
 				post_town: "ABINGDON",
 				dependant_locality: "APPLEFORD",
@@ -100,8 +129,7 @@ describe("Address Model", () => {
 				sub_building_name: "",
 				dependant_thoroughfare: "",
 				organisation_name: "LEDA ENGINEERING LTD",
-				department_name: "",
-				UDPRN: ""
+				department_name: ""
 			};
 			const address = new Address(sample);
 			const	formattedAddress = address.formattedAddress();
@@ -110,7 +138,14 @@ describe("Address Model", () => {
 		});
 		it ("returns cached object if available", () => {
 			const address = new Address({});
-			address.cache = {};
+			address.cache = {
+				premise: "premise",
+				line_1: "line_1",
+				line_2: "line_2",
+				line_3: "line_3",
+				post_town: "post_town",
+				postcode: "postcode",
+			};
 			assert.equal(address.cache, address.formattedAddress());
 		});
 	});
