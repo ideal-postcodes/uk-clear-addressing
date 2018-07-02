@@ -10,3 +10,4 @@ tsconfig.json
 .gitignore
 mocha.opts
 coverage
+.nyc_output
