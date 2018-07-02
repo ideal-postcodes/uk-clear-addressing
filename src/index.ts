@@ -39,7 +39,7 @@ export class Address {
 	readonly longitude: number|t.EmptyString;
 	readonly latitude: number|t.EmptyString;
 
-	private cache: t.FormattedAddress|null;
+	public cache: t.FormattedAddress|null;
 
 	/**
 	 * The `Address` class is designed to wrap a Postcode Address File (PAF)
