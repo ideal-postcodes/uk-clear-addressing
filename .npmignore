@@ -9,3 +9,4 @@ tslint.json
 tsconfig.json
 .gitignore
 mocha.opts
+coverage
