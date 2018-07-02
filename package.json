@@ -1,6 +1,6 @@
 {
   "name": "uk-clear-addressing",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Converts UK address fragments into a properly formatted address recognised by Royal Mails Clear Addressing Guidelines. Maps perfectly from Royal Mails PAF database",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -25,6 +25,27 @@
     "Mail",
     "PAF"
   ],
+  "nyc": {
+    "include": [
+      "src/**/*.ts"
+    ],
+    "exclude": [
+      "dist/*"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "reporter": [
+      "text-summary",
+      "html"
+    ],
+    "sourceMap": true,
+    "instrument": true,
+    "all": true
+  },
   "author": "Ideal Postcodes",
   "license": "MIT",
   "readmeFilename": "README.md",
