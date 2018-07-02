@@ -1,14 +1,14 @@
 {
   "name": "uk-clear-addressing",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Converts UK address fragments into a properly formatted address recognised by Royal Mails Clear Addressing Guidelines. Maps perfectly from Royal Mails PAF database",
-  "main": "lib/index.js",
-  "types": "./lib/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "homepage": "https://github.com/ideal-postcodes/uk-clear-addressing",
   "scripts": {
-    "prepublish": "npm test",
-    "test": "npm run build && npm run nyc && npm run lint",
-    "nyc": "node_modules/.bin/nyc node_modules/.bin/mocha test/ -R spec",
+    "prepublish": "npm run build",
+    "test": "npm run nyc && npm run lint",
+    "nyc": "node_modules/.bin/nyc node_modules/.bin/mocha --opts mocha.opts",
     "coverage": "node_modules/.bin/nyc report --reporter=text-lcov | node_modules/.bin/coveralls || true",
     "lint": "./node_modules/.bin/tslint -c tslint.json src/**/*.ts",
     "docs": "./node_modules/.bin/typedoc --target ES5 --out docs/ --name 'UK Clear Addressing' --theme minimal src/",
@@ -25,19 +25,47 @@
     "Mail",
     "PAF"
   ],
+  "nyc": {
+    "include": [
+      "src/**/*.ts"
+    ],
+    "exclude": [
+      "dist/*"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "reporter": [
+      "text-summary",
+      "html"
+    ],
+    "sourceMap": true,
+    "instrument": true,
+    "all": true
+  },
   "author": "Ideal Postcodes",
   "license": "MIT",
   "readmeFilename": "README.md",
   "devDependencies": {
+    "@types/chai": "^4.1.4",
+    "@types/mocha": "^5.2.3",
     "chai": "~4.1.2",
     "coveralls": "~3.0.0",
     "mocha": "~5.2.0",
     "nyc": "~12.0.2",
+    "source-map-support": "^0.5.6",
+    "ts-node": "^7.0.0",
     "tslint": "~5.10.0",
     "typedoc": "~0.11.1",
     "typescript": "~2.9.1"
   },
   "engines": {
     "node": ">6.0.0"
+  },
+  "dependencies": {
+    "@cablanchard/koelle-sort": "^0.1.0"
   }
 }

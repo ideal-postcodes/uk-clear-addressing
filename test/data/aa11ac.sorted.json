@@ -1,8 +1,8 @@
 [
 {
-    "building_name": "1 Priory Court",
+    "building_name": "Priory Court",
     "sub_building_name": "",
-    "building_number": "",
+    "building_number": "1",
     "organisation_name": "",
     "department_name": "",
     "post_town": "DURSLEY",
@@ -14,9 +14,9 @@
     "dependant_thoroughfare": ""
 },
 {
-    "building_name": "2 Priory Court",
+    "building_name": "Priory Court",
     "sub_building_name": "",
-    "building_number": "",
+    "building_number": "2",
     "organisation_name": "",
     "department_name": "",
     "post_town": "DURSLEY",
@@ -28,9 +28,9 @@
     "dependant_thoroughfare": ""
 },
 {
-    "building_name": "3 Priory Court",
+    "building_name": "Priory Court",
     "sub_building_name": "",
-    "building_number": "",
+    "building_number": "3",
     "organisation_name": "",
     "department_name": "",
     "post_town": "DURSLEY",
@@ -42,9 +42,9 @@
     "dependant_thoroughfare": ""
 },
 {
-    "building_name": "4 Priory Court",
+    "building_name": "Priory Court",
     "sub_building_name": "",
-    "building_number": "",
+    "building_number": "4",
     "organisation_name": "",
     "department_name": "",
     "post_town": "DURSLEY",
@@ -56,9 +56,9 @@
     "dependant_thoroughfare": ""
 },
 {
-    "building_name": "5 Priory Court",
+    "building_name": "Priory Court",
     "sub_building_name": "",
-    "building_number": "",
+    "building_number": "5",
     "organisation_name": "",
     "department_name": "",
     "post_town": "DURSLEY",

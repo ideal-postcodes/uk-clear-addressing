@@ -913,16 +913,7 @@ img { max-width: 100%; }
 			<a href="_sort_.html#sortingelems" class="tsd-kind-icon">sorting<wbr>Elems</a>
 		</li>
 		<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
-			<a href="_sort_.html#alphanumsort" class="tsd-kind-icon">alpha<wbr>Num<wbr>Sort</a>
-		</li>
-		<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
-			<a href="_sort_.html#chunkify" class="tsd-kind-icon">chunkify</a>
-		</li>
-		<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
 			<a href="_sort_.html#extractintegerattribute" class="tsd-kind-icon">extract<wbr>Integer<wbr>Attribute</a>
-		</li>
-		<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
-			<a href="_sort_.html#isnumeric" class="tsd-kind-icon">is<wbr>Numeric</a>
 		</li>
 		<li class=" tsd-kind-function tsd-parent-kind-external-module">
 			<a href="_sort_.html#sort" class="tsd-kind-icon">sort</a>
@@ -944,10 +935,7 @@ img { max-width: 100%; }
 					<section class="tsd-index-section ">
 						<h3>Functions</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported"><a href="_sort_.html#alphanumsort" class="tsd-kind-icon">alpha<wbr>Num<wbr>Sort</a></li>
-							<li class="tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported"><a href="_sort_.html#chunkify" class="tsd-kind-icon">chunkify</a></li>
 							<li class="tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported"><a href="_sort_.html#extractintegerattribute" class="tsd-kind-icon">extract<wbr>Integer<wbr>Attribute</a></li>
-							<li class="tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported"><a href="_sort_.html#isnumeric" class="tsd-kind-icon">is<wbr>Numeric</a></li>
 							<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_sort_.html#sort" class="tsd-kind-icon">sort</a></li>
 						</ul>
 					</section>
@@ -959,77 +947,16 @@ img { max-width: 100%; }
 			<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
 				<a name="sortingelems" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagConst">Const</span> sorting<wbr>Elems</h3>
-				<div class="tsd-signature tsd-kind-icon">sorting<wbr>Elems<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">t.SortingElems</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;[&quot;building_number&quot;,&quot;building_name&quot;,&quot;sub_building_name&quot;,&quot;organisation_name&quot;,&quot;department_name&quot;,&quot;po_box&quot;,]</span></div>
+				<div class="tsd-signature tsd-kind-icon">sorting<wbr>Elems<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ReadonlyArray</span><span class="tsd-signature-symbol">&lt;</span><a href="_types_.html#sortingelems" class="tsd-signature-type">SortingElems</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;[&quot;building_number&quot;,&quot;building_name&quot;,&quot;sub_building_name&quot;,&quot;organisation_name&quot;,&quot;department_name&quot;,&quot;po_box&quot;,]</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/c3032f9/src/sort.ts#L61">sort.ts:61</a></li>
+						<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/38042d5/src/sort.ts#L6">sort.ts:6</a></li>
 					</ul>
 				</aside>
 			</section>
 		</section>
 		<section class="tsd-panel-group tsd-member-group ">
 			<h2>Functions</h2>
-			<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
-				<a name="alphanumsort" class="tsd-anchor"></a>
-				<h3><span class="tsd-flag ts-flagConst">Const</span> alpha<wbr>Num<wbr>Sort</h3>
-				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
-					<li class="tsd-signature tsd-kind-icon">alpha<wbr>Num<wbr>Sort<span class="tsd-signature-symbol">(</span>a<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, b<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
-				</ul>
-				<ul class="tsd-descriptions">
-					<li class="tsd-description">
-						<aside class="tsd-sources">
-							<ul>
-								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/c3032f9/src/sort.ts#L41">sort.ts:41</a></li>
-							</ul>
-						</aside>
-						<div class="tsd-comment tsd-typography">
-							<div class="lead">
-								<p>Sorts by number if strings numeric, otherwise performs standard string
-								comparison</p>
-							</div>
-							<p>Based on the Alphanum Algorithm by Brian Huisman (<a href="http://www.davekoelle.com/files/alphanum.js">http://www.davekoelle.com/files/alphanum.js</a>)</p>
-						</div>
-						<h4 class="tsd-parameters-title">Parameters</h4>
-						<ul class="tsd-parameters">
-							<li>
-								<h5>a: <span class="tsd-signature-type">string</span></h5>
-							</li>
-							<li>
-								<h5>b: <span class="tsd-signature-type">string</span></h5>
-							</li>
-						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
-					</li>
-				</ul>
-			</section>
-			<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
-				<a name="chunkify" class="tsd-anchor"></a>
-				<h3><span class="tsd-flag ts-flagConst">Const</span> chunkify</h3>
-				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
-					<li class="tsd-signature tsd-kind-icon">chunkify<span class="tsd-signature-symbol">(</span>t<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></li>
-				</ul>
-				<ul class="tsd-descriptions">
-					<li class="tsd-description">
-						<aside class="tsd-sources">
-							<ul>
-								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/c3032f9/src/sort.ts#L13">sort.ts:13</a></li>
-							</ul>
-						</aside>
-						<div class="tsd-comment tsd-typography">
-							<div class="lead">
-								<p>Breaks string into an array of continuous number or alphabetical strings</p>
-							</div>
-						</div>
-						<h4 class="tsd-parameters-title">Parameters</h4>
-						<ul class="tsd-parameters">
-							<li>
-								<h5>t: <span class="tsd-signature-type">string</span></h5>
-							</li>
-						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h4>
-					</li>
-				</ul>
-			</section>
 			<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
 				<a name="extractintegerattribute" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagConst">Const</span> extract<wbr>Integer<wbr>Attribute</h3>
@@ -1040,7 +967,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/c3032f9/src/sort.ts#L74">sort.ts:74</a></li>
+								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/38042d5/src/sort.ts#L19">sort.ts:19</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1059,34 +986,6 @@ img { max-width: 100%; }
 					</li>
 				</ul>
 			</section>
-			<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
-				<a name="isnumeric" class="tsd-anchor"></a>
-				<h3><span class="tsd-flag ts-flagConst">Const</span> is<wbr>Numeric</h3>
-				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
-					<li class="tsd-signature tsd-kind-icon">is<wbr>Numeric<span class="tsd-signature-symbol">(</span>i<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
-				</ul>
-				<ul class="tsd-descriptions">
-					<li class="tsd-description">
-						<aside class="tsd-sources">
-							<ul>
-								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/c3032f9/src/sort.ts#L8">sort.ts:8</a></li>
-							</ul>
-						</aside>
-						<div class="tsd-comment tsd-typography">
-							<div class="lead">
-								<p>Returns true if charCode is &#39;.&#39; or numeric</p>
-							</div>
-						</div>
-						<h4 class="tsd-parameters-title">Parameters</h4>
-						<ul class="tsd-parameters">
-							<li>
-								<h5>i: <span class="tsd-signature-type">number</span></h5>
-							</li>
-						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
-					</li>
-				</ul>
-			</section>
 			<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
 				<a name="sort" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagConst">Const</span> sort</h3>
@@ -1097,7 +996,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/c3032f9/src/sort.ts#L83">sort.ts:83</a></li>
+								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/38042d5/src/sort.ts#L28">sort.ts:28</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">

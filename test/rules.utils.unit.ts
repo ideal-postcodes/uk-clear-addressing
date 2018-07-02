@@ -1,13 +1,14 @@
 "use strict";
 
-const { assert } = require("chai");
-const {
+import { assert } from "chai";
+import { Address } from "../src/index";
+import {
 	nameException,
 	combinePremise,
 	premiseLocalities,
 	appendOrganisationInfo,
 	checkBuildingRange,
-} = require("../lib/rules.js");
+} from "../src/rules";
 
 describe("Rules", () => {
 	describe("nameException", () => {
@@ -37,26 +38,26 @@ describe("Rules", () => {
 		it ("returns a building range object if detected", () => {
 			assert.deepEqual(checkBuildingRange("foo 12-13"), {
 				range: "12-13",
-				actual_name: "foo",
+				name: "foo",
 			});
 		});
 		it ("returns null if no building range detected", () => {
-			assert.isNull(checkBuildingRange("foo"));
+			assert.isUndefined(checkBuildingRange("foo"));
 		});
 	});
 
 	describe("appendOrganisationInfo", () => {
 		it ("appends organisation name", () => {
-			const address = { organisation_name: "bar" };
+			const address = new Address({ organisation_name: "bar" });
 			const premiseElements = ["foo"];
 			appendOrganisationInfo(premiseElements, address);
 			assert.deepEqual(premiseElements, ["foo", "bar"]);
 		});
 		it ("appends department name if present", () => {
-			const address = {
+			const address = new Address({
 				organisation_name: "bar",
 				department_name: "baz",
-			};
+			});
 			const premiseElements = ["foo"];
 			appendOrganisationInfo(premiseElements, address);
 			assert.deepEqual(premiseElements, ["foo", "baz", "bar"]);
@@ -66,7 +67,7 @@ describe("Rules", () => {
 	describe("combinePremise", () => {
 		it ("combines ordered premise labels to an address object", () => {
 			const premiseElements = ["foo", "bar", "baz"];
-			const result = combinePremise(premiseElements, {}, "quux");
+			const result = combinePremise(premiseElements, new Address({}), "quux");
 			assert.deepEqual(result, {
 				line_1: "baz",
 				line_2: "bar",
@@ -76,7 +77,7 @@ describe("Rules", () => {
 		});
 		it ("returns empty string for line_1 and line_2 if not present", () => {
 			const premiseElements = ["foo"];
-			const result = combinePremise(premiseElements, {}, "quux");
+			const result = combinePremise(premiseElements, new Address({}), "quux");
 			assert.deepEqual(result, {
 				line_1: "foo",
 				line_2: "",
@@ -86,7 +87,7 @@ describe("Rules", () => {
 		});
 		it ("merges on line_3 if more than 3 premise labels provided", () => {
 			const premiseElements = ["qux", "foo", "bar", "baz"];
-			const result = combinePremise(premiseElements, {}, "quux");
+			const result = combinePremise(premiseElements, new Address({}), "quux");
 			assert.deepEqual(result, {
 				line_1: "baz",
 				line_2: "bar",
@@ -96,9 +97,9 @@ describe("Rules", () => {
 		});
 		it ("assigns precedence to organisation details", () => {
 			const premiseElements = ["foo"];
-			const result = combinePremise(premiseElements, {
+			const result = combinePremise(premiseElements, new Address({
 				organisation_name: "baz ltd"
-			}, "quux");
+			}), "quux");
 			assert.deepEqual(result, {
 				line_1: "baz ltd",
 				line_2: "foo",
@@ -107,7 +108,7 @@ describe("Rules", () => {
 			});
 		});
 		it ("handles empty label array", () => {
-			assert.deepEqual(combinePremise([], {}, ""), {
+			assert.deepEqual(combinePremise([], new Address({}), ""), {
 				line_1: "",
 				line_2: "",
 				line_3: "",
@@ -118,19 +119,19 @@ describe("Rules", () => {
 
 	describe("premiseLocalities", () => {
 		it ("returns an ordered array of premise localities", () => {
-			assert.deepEqual(premiseLocalities({
+			assert.deepEqual(premiseLocalities(new Address({
 				"double_dependant_locality": "bar",
 				"dependant_locality": "foo",
 				"dependant_thoroughfare": "quux",
 				"thoroughfare": "baz",
-			}), ["foo", "bar", "baz", "quux"]);
+			})), ["foo", "bar", "baz", "quux"]);
 		});
 		it ("excludes empty localities", () => {
-			assert.deepEqual(premiseLocalities({
+			assert.deepEqual(premiseLocalities(new Address({
 				"double_dependant_locality": "bar",
 				"dependant_locality": "",
 				"thoroughfare": " ",
-			}), ["bar"]);
+			})), ["bar"]);
 		});
 	});
 });

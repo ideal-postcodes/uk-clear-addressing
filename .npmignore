@@ -1,6 +1,12 @@
 misc
 test
 docs
+src
 .circleci
 .jshintrc
 .jshintignore
+tslint.json
+tsconfig.json
+.gitignore
+mocha.opts
+coverage

@@ -17,23 +17,23 @@ export interface FormattedAddress extends FormattedPremise {
  * File
  */
 export interface PafRecord {
-	udprn: number;
+	udprn?: number;
 	umprn?: number;
-	postcode: string;
-	building_number: string;
-	building_name: string;
-	sub_building_name: string;
-	department_name: string;
-	organisation_name: string;
-	po_box: string;
-	post_town: string;
-	dependant_locality: string;
-	double_dependant_locality: string;
-	thoroughfare: string;
-	dependant_thoroughfare: string;
-	postcode_type: string;
-	su_organisation_indicator: string;
-	delivery_point_suffix: string;
+	postcode?: string;
+	building_number?: string;
+	building_name?: string;
+	sub_building_name?: string;
+	department_name?: string;
+	organisation_name?: string;
+	po_box?: string;
+	post_town?: string;
+	dependant_locality?: string;
+	double_dependant_locality?: string;
+	thoroughfare?: string;
+	dependant_thoroughfare?: string;
+	postcode_type?: string;
+	su_organisation_indicator?: string;
+	delivery_point_suffix?: string;
 }
 
 /**
@@ -79,7 +79,7 @@ export type LocalityElements = "dependant_locality" |
  */
 export interface BuildingRangeMatch {
 	range: string;
-	actual_name: string;
+	name: string;
 }
 
 export type SortingElems = "building_number" |
