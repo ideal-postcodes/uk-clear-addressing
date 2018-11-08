@@ -80,7 +80,7 @@ addresses
 
 ## Testing
 
-Many of the regular and edge cases are documented in the test. To run the test suite:
+Many of the regular and edge cases are documented in the test suite. To run it, type:
 
 ```
 npm test
