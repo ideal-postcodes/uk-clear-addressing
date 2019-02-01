@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/ideal-postcodes/uk-clear-addressing.svg?style=svg)](https://circleci.com/gh/ideal-postcodes/uk-clear-addressing) [![Dependency Status](https://david-dm.org/cblanc/uk-clear-addressing.png)](https://david-dm.org/cblanc/uk-clear-addressing) [![Coverage Status](https://coveralls.io/repos/github/ideal-postcodes/uk-clear-addressing/badge.svg?branch=master)](https://coveralls.io/github/ideal-postcodes/uk-clear-addressing?branch=master) [![Greenkeeper badge](https://badges.greenkeeper.io/ideal-postcodes/uk-clear-addressing.svg)](https://greenkeeper.io/)
+[![CircleCI](https://circleci.com/gh/ideal-postcodes/uk-clear-addressing.svg?style=svg)](https://circleci.com/gh/ideal-postcodes/uk-clear-addressing) [![Dependency Status](https://david-dm.org/cblanc/uk-clear-addressing.png)](https://david-dm.org/cblanc/uk-clear-addressing) [![Coverage Status](https://coveralls.io/repos/github/ideal-postcodes/uk-clear-addressing/badge.svg?branch=master)](https://coveralls.io/github/ideal-postcodes/uk-clear-addressing?branch=master)
 
 # UK Clear Addressing
 
