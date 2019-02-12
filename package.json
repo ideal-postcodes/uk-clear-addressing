@@ -48,6 +48,9 @@
   },
   "author": "Ideal Postcodes",
   "license": "MIT",
+  "files": [
+    "dist"
+  ],
   "readmeFilename": "README.md",
   "devDependencies": {
     "@types/chai": "^4.1.4",
