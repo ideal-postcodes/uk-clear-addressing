@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.1.2] 2019-02-12
+
+- Add runkit example
+- Use whitelist to generate npm package
+
 ## [2.1.1] 2018-07-02
 
 - Fix: Drop nyc_output from npm package

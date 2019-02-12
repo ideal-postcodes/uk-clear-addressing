@@ -2,6 +2,8 @@
 
 # UK Clear Addressing
 
+[![Try uk-clear-addressing on RunKit](https://badge.runkitcdn.com/uk-clear-addressing.svg)](https://npm.runkit.com/uk-clear-addressing)
+
 This module converts UK address fragments into a properly formatted address recognised by Royal Mail according to its Clear Addressing Guidelines. This consists of 1-3 address lines, a post town line and a postcode line.
 
 ![Correct Addressing](https://raw.github.com/cblanc/uk-clear-addressing/master/misc/correct_address.gif)
