@@ -11,7 +11,7 @@
     "nyc": "node_modules/.bin/nyc node_modules/.bin/mocha --opts mocha.opts",
     "coverage": "node_modules/.bin/nyc report --reporter=text-lcov | node_modules/.bin/coveralls || true",
     "lint": "./node_modules/.bin/tslint -c tslint.json src/**/*.ts",
-    "docs": "./node_modules/.bin/typedoc --target ES5 --out docs/ --name 'UK Clear Addressing' --theme minimal src/",
+    "docs": "./node_modules/.bin/typedoc --mode file --excludePrivate --hideGenerator --excludeExternals --target ES5 --out docs/ --name 'UK Clear Addressing' --theme minimal src/",
     "build": "./node_modules/.bin/tsc"
   },
   "repository": {
