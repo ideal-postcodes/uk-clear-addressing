@@ -10,13 +10,17 @@ This module converts UK address fragments into a properly formatted address reco
 
 Created in conjunction with Royal Mail Postcode Address File, it maps field name for field name if you were to pull the address straight from this database. If you don't have access to PAF, it can still be used as long as you know which parameters correspond to what data you have available. Parameters listed [below](#parameters)
 
-Low level documentation for this library can be found at [https://ideal-postcodes.github.io/uk-clear-addressing/](https://ideal-postcodes.github.io/uk-clear-addressing/)
+## Links
+
+- [Project Documentation](https://ideal-postcodes.github.io/uk-clear-addressing/)
+- [More information on Postcode Address File data attributes](https://ideal-postcodes.co.uk/documentation/paf-data)
+- [PAF Programmer's Guide](https://www.poweredbypaf.com/using-our-address-data/use-the-data-yourself/)
 
 ## Getting Started
 
 ### Installation
 
-```
+```bash
 npm install uk-clear-addressing
 ```
 
@@ -84,7 +88,7 @@ addresses
 
 Many of the regular and edge cases are documented in the test. To run the test suite:
 
-```
+```bash
 npm test
 ```
 
