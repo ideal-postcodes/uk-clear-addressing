@@ -914,17 +914,17 @@ img { max-width: 100%; }
 <div class="container container-main">
 	<div class="content-wrap">
 		<div class="tsd-panel tsd-typography">
-			<p><a href="https://circleci.com/gh/ideal-postcodes/uk-clear-addressing"><img src="https://circleci.com/gh/ideal-postcodes/uk-clear-addressing.svg?style=svg" alt="CircleCI"></a> <a href="https://david-dm.org/cblanc/uk-clear-addressing"><img src="https://david-dm.org/cblanc/uk-clear-addressing.png" alt="Dependency Status"></a> <a href="https://coveralls.io/github/ideal-postcodes/uk-clear-addressing?branch=master"><img src="https://coveralls.io/repos/github/ideal-postcodes/uk-clear-addressing/badge.svg?branch=master" alt="Coverage Status"></a> <a href="https://greenkeeper.io/"><img src="https://badges.greenkeeper.io/ideal-postcodes/uk-clear-addressing.svg" alt="Greenkeeper badge"></a></p>
+			<p><a href="https://circleci.com/gh/ideal-postcodes/uk-clear-addressing"><img src="https://circleci.com/gh/ideal-postcodes/uk-clear-addressing.svg?style=svg" alt="CircleCI"></a> <a href="https://david-dm.org/cblanc/uk-clear-addressing"><img src="https://david-dm.org/cblanc/uk-clear-addressing.png" alt="Dependency Status"></a> <a href="https://coveralls.io/github/ideal-postcodes/uk-clear-addressing?branch=master"><img src="https://coveralls.io/repos/github/ideal-postcodes/uk-clear-addressing/badge.svg?branch=master" alt="Coverage Status"></a></p>
 			<h1 id="uk-clear-addressing">UK Clear Addressing</h1>
+			<p><a href="https://npm.runkit.com/uk-clear-addressing"><img src="https://badge.runkitcdn.com/uk-clear-addressing.svg" alt="Try uk-clear-addressing on RunKit"></a></p>
 			<p>This module converts UK address fragments into a properly formatted address recognised by Royal Mail according to its Clear Addressing Guidelines. This consists of 1-3 address lines, a post town line and a postcode line.</p>
 			<p><img src="https://raw.github.com/cblanc/uk-clear-addressing/master/misc/correct_address.gif" alt="Correct Addressing"></p>
 			<p>Created in conjunction with Royal Mail Postcode Address File, it maps field name for field name if you were to pull the address straight from this database. If you don&#39;t have access to PAF, it can still be used as long as you know which parameters correspond to what data you have available. Parameters listed <a href="#parameters">below</a></p>
 			<p>Low level documentation for this library can be found at <a href="https://ideal-postcodes.github.io/uk-clear-addressing/">https://ideal-postcodes.github.io/uk-clear-addressing/</a></p>
 			<h2 id="getting-started">Getting Started</h2>
 			<h3 id="installation">Installation</h3>
-			<pre><code>npm <span class="hljs-keyword">install</span> uk-<span class="hljs-keyword">clear</span>-addressing
-</code></pre><h3 id="formatting-addresses">Formatting Addresses</h3>
-			<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> { Address } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'uk-clear-addressing'</span>);
+			<pre><code>npm <span class="hljs-keyword">install</span> uk-<span class="hljs-keyword">clear</span>-addressing</code></pre><h3 id="formatting-addresses">Formatting Addresses</h3>
+			<pre><code class="language-javascript"><span class="hljs-keyword">const</span> { Address } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'uk-clear-addressing'</span>);
 
 <span class="hljs-comment">// Pass in your address fragments</span>
 
@@ -953,11 +953,10 @@ img { max-width: 100%; }
 <span class="hljs-comment">//        premise: "Flower House, 189a"</span>
 <span class="hljs-comment">//    }</span>
 <span class="hljs-comment">//</span>
-
 </code></pre>
 			<h3 id="sorting-addresses">Sorting Addresses</h3>
 			<p><code>Address.sort</code> implements a comparison function, which allows you to compare <code>Address</code> instances. This can readily be passed into <code>Array.prototype.sort</code></p>
-			<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> addresses = <span class="hljs-keyword">await</span> query(<span class="hljs-string">"SELECT * FROM postcode_address_file LIMIT 10"</span>);
+			<pre><code class="language-javascript"><span class="hljs-keyword">const</span> addresses = <span class="hljs-keyword">await</span> query(<span class="hljs-string">"SELECT * FROM postcode_address_file LIMIT 10"</span>);
 
 addresses
     .map(<span class="hljs-function"><span class="hljs-params">address</span> =&gt;</span> <span class="hljs-keyword">new</span> Address(address)) <span class="hljs-comment">// Instantiate an `Address` instances</span>
@@ -974,12 +973,10 @@ addresses
     <span class="hljs-comment">// "193a Elm Road"</span>
     <span class="hljs-comment">// "197 Elm Road"</span>
     <span class="hljs-comment">// "197a Elm Road"</span>
-    <span class="hljs-comment">// "199 Elm Road"</span>
-</code></pre>
+    <span class="hljs-comment">// "199 Elm Road"</span></code></pre>
 			<h2 id="testing">Testing</h2>
-			<p>Many of the regular and edge cases are documented in this test suite. To run this, type:</p>
-			<pre><code>npm <span class="hljs-built_in">test</span>
-</code></pre><p>If you find an edge case, please feel free to make a pull request. However be sure to include a test which documents the specific case being handled.</p>
+			<p>Many of the regular and edge cases are documented in the test. To run the test suite:</p>
+			<pre><code>npm <span class="hljs-built_in">test</span></code></pre><p>If you find an edge case, please feel free to make a pull request. However be sure to include a test which documents the specific case being handled.</p>
 			<h2 id="parameters">Parameters</h2>
 			<p>Below is a list of address fragments. For the address to be properly formatted, you need to pass in all the address fragments available to you.</p>
 			<h3 id="premises-elements">Premises Elements</h3>
