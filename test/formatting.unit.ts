@@ -8,18 +8,18 @@ const compare = (sample: AddressRecord, expected: FormattedAddress): void => {
 	const address = new Address(sample);
 	const formatted_address = address.formattedAddress();
 	assert.equal(formatted_address.line_1, expected.line_1);
-  assert.equal(formatted_address.line_2, expected.line_2);
-  assert.equal(formatted_address.line_3, expected.line_3);
-  assert.equal(formatted_address.postcode, expected.postcode);
-  assert.equal(formatted_address.post_town, expected.post_town);
-  assert.equal(formatted_address.premise, expected.premise);
+	assert.equal(formatted_address.line_2, expected.line_2);
+	assert.equal(formatted_address.line_3, expected.line_3);
+	assert.equal(formatted_address.postcode, expected.postcode);
+	assert.equal(formatted_address.post_town, expected.post_town);
+	assert.equal(formatted_address.premise, expected.premise);
 };
 
 describe("Formatted Addresses", () => {
-	let sample: AddressRecord
+	let sample: AddressRecord;
 	let expected: FormattedAddress;
 
-	it ("should cache formatted addresses", () => {
+	it("should cache formatted addresses", () => {
 		sample = {
 			postcode: "OX14 4PG",
 			post_town: "ABINGDON",
@@ -41,7 +41,7 @@ describe("Formatted Addresses", () => {
 	});
 
 	describe("Rule 1", () => {
-		it ("should return the correct address format", () => {
+		it("should return the correct address format", () => {
 			sample = {
 				postcode: "OX14 4PG",
 				post_town: "ABINGDON",
@@ -56,7 +56,7 @@ describe("Formatted Addresses", () => {
 				department_name: "",
 				udprn: 8,
 			};
-			
+
 			expected = {
 				line_1: "Leda Engineering Ltd",
 				line_2: "Appleford",
@@ -69,7 +69,7 @@ describe("Formatted Addresses", () => {
 			compare(sample, expected);
 		});
 
-		it ("should return the correct address format", () => {
+		it("should return the correct address format", () => {
 			sample = {
 				postcode: "OX14 4PG",
 				post_town: "ABINGDON",
@@ -84,7 +84,7 @@ describe("Formatted Addresses", () => {
 				department_name: "Engineering Department",
 				udprn: 8,
 			};
-			
+
 			expected = {
 				line_1: "Leda Engineering Ltd",
 				line_2: "Engineering Department",
@@ -99,7 +99,7 @@ describe("Formatted Addresses", () => {
 	});
 
 	describe("Rule 2", () => {
-		it ("should return the correct address format", () => {
+		it("should return the correct address format", () => {
 			sample = {
 				postcode: "OX14 4PG",
 				post_town: "ABINGDON",
@@ -114,7 +114,7 @@ describe("Formatted Addresses", () => {
 				department_name: "",
 				udprn: 8,
 			};
-			
+
 			expected = {
 				line_1: "1 Acacia Avenue",
 				line_2: "",
@@ -127,7 +127,7 @@ describe("Formatted Addresses", () => {
 			compare(sample, expected);
 		});
 
-		it ("should return the correct address format", () => {
+		it("should return the correct address format", () => {
 			sample = {
 				postcode: "OX14 4PG",
 				post_town: "ABINGDON",
@@ -142,7 +142,7 @@ describe("Formatted Addresses", () => {
 				department_name: "",
 				udprn: 8,
 			};
-			
+
 			expected = {
 				line_1: "1 Locality Name",
 				line_2: "",
@@ -155,7 +155,7 @@ describe("Formatted Addresses", () => {
 			compare(sample, expected);
 		});
 
-		it ("should return the correct address format", () => {
+		it("should return the correct address format", () => {
 			sample = {
 				postcode: "OX14 4PG",
 				post_town: "ABINGDON",
@@ -170,7 +170,7 @@ describe("Formatted Addresses", () => {
 				department_name: "",
 				udprn: 8,
 			};
-			
+
 			expected = {
 				line_1: "1 Dep Locality Name",
 				line_2: "Locality Name",
@@ -183,7 +183,7 @@ describe("Formatted Addresses", () => {
 			compare(sample, expected);
 		});
 
-		it ("should return the correct address format", () => {
+		it("should return the correct address format", () => {
 			sample = {
 				postcode: "OX14 4PG",
 				post_town: "ABINGDON",
@@ -198,7 +198,7 @@ describe("Formatted Addresses", () => {
 				department_name: "",
 				udprn: 8,
 			};
-			
+
 			expected = {
 				line_1: "1 Acacia Avenue",
 				line_2: "Dep Locality Name",
@@ -213,7 +213,7 @@ describe("Formatted Addresses", () => {
 	});
 
 	describe("Rule 3", () => {
-		it ("should return the correct address format", () => {
+		it("should return the correct address format", () => {
 			sample = {
 				postcode: "NR25 7HG",
 				post_town: "HOLT",
@@ -228,7 +228,7 @@ describe("Formatted Addresses", () => {
 				department_name: "",
 				udprn: 8,
 			};
-			
+
 			expected = {
 				line_1: "1a Seastone Court",
 				line_2: "Station Road",
@@ -241,7 +241,7 @@ describe("Formatted Addresses", () => {
 			compare(sample, expected);
 		});
 
-		it ("should return the correct address format", () => {
+		it("should return the correct address format", () => {
 			sample = {
 				postcode: "CV8 2UE",
 				post_town: "KENILWORTH",
@@ -256,7 +256,7 @@ describe("Formatted Addresses", () => {
 				department_name: "",
 				udprn: 8,
 			};
-			
+
 			expected = {
 				line_1: "Imperial Candles",
 				line_2: "Unit 3-4",
@@ -269,7 +269,7 @@ describe("Formatted Addresses", () => {
 			compare(sample, expected);
 		});
 
-		it ("should return the correct address format", () => {
+		it("should return the correct address format", () => {
 			sample = {
 				postcode: "RH6 0HP",
 				post_town: "HORLEY",
@@ -284,7 +284,7 @@ describe("Formatted Addresses", () => {
 				department_name: "",
 				udprn: 8,
 			};
-			
+
 			expected = {
 				line_1: "The Manor",
 				line_2: "Upper Hill",
@@ -297,7 +297,7 @@ describe("Formatted Addresses", () => {
 			compare(sample, expected);
 		});
 
-		it ("should return the correct address format", () => {
+		it("should return the correct address format", () => {
 			sample = {
 				postcode: "WS11 5SB",
 				post_town: "CANNOCK",
@@ -312,7 +312,7 @@ describe("Formatted Addresses", () => {
 				department_name: "",
 				udprn: 8,
 			};
-			
+
 			expected = {
 				line_1: "S D Alcott Florists",
 				line_2: "Flower House",
@@ -325,7 +325,7 @@ describe("Formatted Addresses", () => {
 			compare(sample, expected);
 		});
 
-		it ("should return the correct address format", () => {
+		it("should return the correct address format", () => {
 			sample = {
 				postcode: "ME16 0LP",
 				post_town: "GRAFTON",
@@ -340,7 +340,7 @@ describe("Formatted Addresses", () => {
 				department_name: "",
 				udprn: 8,
 			};
-			
+
 			expected = {
 				line_1: "James Villa Holidays",
 				line_2: "Centre 30",
@@ -355,7 +355,7 @@ describe("Formatted Addresses", () => {
 	});
 
 	describe("Rule 4", () => {
-		it ("RULE 4: should return the correct address format", () => {
+		it("RULE 4: should return the correct address format", () => {
 			sample = {
 				postcode: "BH23 6AA",
 				post_town: "CHRISTCHURCH",
@@ -370,7 +370,7 @@ describe("Formatted Addresses", () => {
 				department_name: "",
 				udprn: 8,
 			};
-			
+
 			expected = {
 				line_1: "Victoria House",
 				line_2: "15 The Street",
@@ -385,7 +385,7 @@ describe("Formatted Addresses", () => {
 	});
 
 	describe("Rule 5", () => {
-		it ("RULE 5: should return the correct address format", () => {
+		it("RULE 5: should return the correct address format", () => {
 			sample = {
 				postcode: "BS8 4AB",
 				post_town: "BRISTOL",
@@ -400,7 +400,7 @@ describe("Formatted Addresses", () => {
 				department_name: "",
 				udprn: 8,
 			};
-			
+
 			expected = {
 				line_1: "Flat 1",
 				line_2: "12 Lime Tree Avenue",
@@ -413,7 +413,7 @@ describe("Formatted Addresses", () => {
 			compare(sample, expected);
 		});
 
-		it ("RULE 5: should return the correct address format", () => {
+		it("RULE 5: should return the correct address format", () => {
 			sample = {
 				postcode: "SP5 4NA",
 				post_town: "SALISBURY",
@@ -428,7 +428,7 @@ describe("Formatted Addresses", () => {
 				department_name: "",
 				udprn: 8,
 			};
-			
+
 			expected = {
 				line_1: "12A High Street North",
 				line_2: "Coombe Bissett",
@@ -443,7 +443,7 @@ describe("Formatted Addresses", () => {
 	});
 
 	describe("Rule 6", () => {
-		it ("should return the correct address format", () => {
+		it("should return the correct address format", () => {
 			sample = {
 				postcode: "B6 5BA",
 				post_town: "BIRMINGHAM",
@@ -458,7 +458,7 @@ describe("Formatted Addresses", () => {
 				department_name: "",
 				udprn: 8,
 			};
-			
+
 			expected = {
 				line_1: "10B Barry Jackson Tower",
 				line_2: "Estone Walk",
@@ -471,7 +471,7 @@ describe("Formatted Addresses", () => {
 			compare(sample, expected);
 		});
 
-		it ("should return the correct address format", () => {
+		it("should return the correct address format", () => {
 			sample = {
 				postcode: "BS1 2AW",
 				post_town: "BRISTOL",
@@ -486,7 +486,7 @@ describe("Formatted Addresses", () => {
 				department_name: "",
 				udprn: 8,
 			};
-			
+
 			expected = {
 				line_1: "Caretakers Flat",
 				line_2: "110-114 High Street West",
@@ -499,7 +499,7 @@ describe("Formatted Addresses", () => {
 			compare(sample, expected);
 		});
 
-		it ("should return the correct address format", () => {
+		it("should return the correct address format", () => {
 			sample = {
 				postcode: "RH6 0HP",
 				post_town: "HORLEY",
@@ -514,7 +514,7 @@ describe("Formatted Addresses", () => {
 				department_name: "",
 				udprn: 8,
 			};
-			
+
 			expected = {
 				line_1: "Stables Flat",
 				line_2: "The Manor",
@@ -529,34 +529,34 @@ describe("Formatted Addresses", () => {
 	});
 
 	describe("Weird rule", () => {
-		it ("Weird Rule: should return the correct address format", () => {
+		it("Weird Rule: should return the correct address format", () => {
 			sample = {
 				postcode: "EH4 3AJ",
-			  post_town: "EDINBURGH",
-			  dependant_locality: "",
-			  double_dependant_locality: "",
-			  thoroughfare: "Belgrave Crescent",
-			  dependant_thoroughfare: "",
-			  building_number: " ",
-			  building_name: "",
-			  sub_building_name: "20gf",
-			  po_box: "",
-			  department_name: "",
-			  organisation_name: "",
-			  udprn: 8224574,
-			  postcode_type: "S",
-			  su_organisation_indicator: " ",
-			  delivery_point_suffix: "1F",
-			  county: "",
-			  country: "Scotland",
-			  district: "City of Edinburgh",
-			  ward: "Inverleith",
-			  eastings: 323988,
-			  northings: 674105,
-			  longitude: -3.21889755918115,
-			  latitude: 55.95393929845 
+				post_town: "EDINBURGH",
+				dependant_locality: "",
+				double_dependant_locality: "",
+				thoroughfare: "Belgrave Crescent",
+				dependant_thoroughfare: "",
+				building_number: " ",
+				building_name: "",
+				sub_building_name: "20gf",
+				po_box: "",
+				department_name: "",
+				organisation_name: "",
+				udprn: 8224574,
+				postcode_type: "S",
+				su_organisation_indicator: " ",
+				delivery_point_suffix: "1F",
+				county: "",
+				country: "Scotland",
+				district: "City of Edinburgh",
+				ward: "Inverleith",
+				eastings: 323988,
+				northings: 674105,
+				longitude: -3.21889755918115,
+				latitude: 55.95393929845
 			};
-			
+
 			expected = {
 				line_1: "20gf Belgrave Crescent",
 				line_2: "",
@@ -571,7 +571,7 @@ describe("Formatted Addresses", () => {
 	});
 
 	describe("Rule 7", () => {
-		it ("RULE 7: should return the correct address format", () => {
+		it("RULE 7: should return the correct address format", () => {
 			sample = {
 				postcode: "SO23 9AP",
 				post_town: "WINCHESTER",
@@ -586,7 +586,7 @@ describe("Formatted Addresses", () => {
 				department_name: "",
 				udprn: 8,
 			};
-			
+
 			expected = {
 				line_1: "2B The Tower",
 				line_2: "27 John Street",
@@ -599,7 +599,7 @@ describe("Formatted Addresses", () => {
 			compare(sample, expected);
 		});
 
-		it ("RULE 7: should return the correct address format", () => {
+		it("RULE 7: should return the correct address format", () => {
 			sample = {
 				postcode: "BP23 6AA",
 				post_town: "CORYTON",
@@ -614,7 +614,7 @@ describe("Formatted Addresses", () => {
 				department_name: "",
 				udprn: 8,
 			};
-			
+
 			expected = {
 				line_1: "Basement Flat",
 				line_2: "Victoria House",
@@ -629,7 +629,7 @@ describe("Formatted Addresses", () => {
 	});
 
 
-	it ("should return the correct address format", () => {
+	it("should return the correct address format", () => {
 		sample = {
 			postcode: "B39 0DH",
 			post_town: "BIRMINGHAM",
@@ -644,7 +644,7 @@ describe("Formatted Addresses", () => {
 			department_name: "",
 			udprn: 8,
 		};
-		
+
 		expected = {
 			line_1: "(Smith)",
 			line_2: "Rose Cottage",
@@ -658,7 +658,7 @@ describe("Formatted Addresses", () => {
 	});
 
 
-	it ("should return the correct address format", () => {
+	it("should return the correct address format", () => {
 		sample = {
 			postcode: "S64 5BB",
 			post_town: "BRADLEY HEATH",
@@ -673,7 +673,7 @@ describe("Formatted Addresses", () => {
 			department_name: "",
 			udprn: 8,
 		};
-		
+
 		expected = {
 			line_1: "(Hynes)",
 			line_2: "Crompton Road",
@@ -687,7 +687,7 @@ describe("Formatted Addresses", () => {
 	});
 
 
-	it ("should return the correct address format", () => {
+	it("should return the correct address format", () => {
 		sample = {
 			postcode: "KT6 5BT",
 			post_town: "BRADOCK",
@@ -702,7 +702,7 @@ describe("Formatted Addresses", () => {
 			department_name: "",
 			udprn: 8,
 		};
-		
+
 		expected = {
 			line_1: "16 Vixen Road",
 			line_2: "",
@@ -716,7 +716,7 @@ describe("Formatted Addresses", () => {
 	});
 
 
-	it ("should return the correct address format", () => {
+	it("should return the correct address format", () => {
 		sample = {
 			postcode: "P01 1AF",
 			post_town: "PORTSMOUTH",
@@ -731,7 +731,7 @@ describe("Formatted Addresses", () => {
 			department_name: "",
 			udprn: 8,
 		};
-		
+
 		expected = {
 			line_1: "Cath's Cakes",
 			line_2: "Victoria House",
@@ -741,11 +741,10 @@ describe("Formatted Addresses", () => {
 			premise: "Victoria House"
 		};
 
-		compare(sample, expected);	
+		compare(sample, expected);
 	});
 
-
-	it ("should return the correct address format", () => {
+	it("should return the correct address format", () => {
 		sample = {
 			postcode: "TN27 8BT",
 			post_town: "ASHFORD",
@@ -760,7 +759,7 @@ describe("Formatted Addresses", () => {
 			department_name: "",
 			udprn: 8,
 		};
-		
+
 		expected = {
 			line_1: "Flat 1, Holly House",
 			line_2: "Oak Avenue",
@@ -773,7 +772,7 @@ describe("Formatted Addresses", () => {
 	});
 
 
-	it ("should return the correct address format", () => {
+	it("should return the correct address format", () => {
 		sample = {
 			postcode: "BH23 6AA",
 			post_town: "CHRISTCHURCH",
@@ -788,7 +787,7 @@ describe("Formatted Addresses", () => {
 			department_name: "",
 			udprn: 8,
 		};
-		
+
 		expected = {
 			line_1: "Flat 20",
 			line_2: "Victoria House",
@@ -801,7 +800,7 @@ describe("Formatted Addresses", () => {
 	});
 
 
-	it ("should return the correct address format", () => {
+	it("should return the correct address format", () => {
 		sample = {
 			postcode: "BS1 2AW",
 			post_town: "BRISTOL",
@@ -816,7 +815,7 @@ describe("Formatted Addresses", () => {
 			department_name: "",
 			udprn: 8,
 		};
-		
+
 		expected = {
 			line_1: "Caretakers Flat",
 			line_2: "110-114 High Street West",
@@ -830,7 +829,7 @@ describe("Formatted Addresses", () => {
 	});
 
 
-	it ("should return the correct address format", () => {
+	it("should return the correct address format", () => {
 		sample = {
 			postcode: "NR25 7HG",
 			post_town: "EMSWORTH",
@@ -845,7 +844,7 @@ describe("Formatted Addresses", () => {
 			department_name: "",
 			udprn: 8,
 		};
-		
+
 		expected = {
 			line_1: "16 Angelica Way",
 			line_2: "",
@@ -858,7 +857,7 @@ describe("Formatted Addresses", () => {
 		compare(sample, expected);
 	});
 
-	it ("should return the correct address format", () => {
+	it("should return the correct address format", () => {
 		sample = {
 			postcode: "OX1 2AY",
 			post_town: "OXFORD",
@@ -873,7 +872,7 @@ describe("Formatted Addresses", () => {
 			department_name: "",
 			udprn: 8,
 		};
-		
+
 		expected = {
 			line_1: "O'Neills",
 			line_2: "37 George Street",
@@ -887,7 +886,7 @@ describe("Formatted Addresses", () => {
 	});
 
 
-	it ("should return the correct address format", () => {
+	it("should return the correct address format", () => {
 		sample = {
 			postcode: "RH6 0HP",
 			post_town: "HORLEY",
@@ -902,7 +901,7 @@ describe("Formatted Addresses", () => {
 			department_name: "",
 			udprn: 8,
 		};
-		
+
 		expected = {
 			line_1: "The Manor",
 			line_2: "Norwood",
@@ -915,13 +914,13 @@ describe("Formatted Addresses", () => {
 		compare(sample, expected);
 	});
 
-	it ("should return the correct address format", () => {
+	it("should return the correct address format", () => {
 		sample = {
 			postcode: "PO14 1UX",
 			post_town: "FAREHAM",
 			po_box: "61"
 		};
-		
+
 		expected = {
 			line_1: "PO Box 61",
 			line_2: "",
@@ -934,7 +933,246 @@ describe("Formatted Addresses", () => {
 		compare(sample, expected);
 	});
 
-	it ("should format addresses with more than 3 lines as a comma separated line 3", () => {
+	it("should return the correct address format", () => {
+		sample = {
+			postcode: "PO14 3XH",
+			post_town: "FAREHAM",
+			po_box: "PO Box 22"
+		};
+
+		expected = {
+			line_1: "",
+			line_2: "",
+			line_3: "",
+			post_town: "",
+			postcode: "",
+			premise: ""
+		};
+
+		compare(sample, expected);
+	});
+
+	describe("Non-Geographic Postcodes", () => {
+		it("should return the correct address format", () => {
+			sample = {
+				postcode: "SA99 1AA",
+				post_town: "SWANSEA",
+				building_name: "Driver & Vehicle Licensing Centre",
+				sub_building_name: "",
+				department_name: "Driving Licence Renewals",
+				organisation_name: "Driver & Vehicle Licensing Agency"
+			};
+
+			expected = {
+				line_1: "",
+				line_2: "",
+				line_3: "",
+				post_town: "",
+				postcode: "",
+				premise: ""
+			};
+
+			compare(sample, expected);
+		});
+
+		it("should return the correct address format", () => {
+			sample = {
+				postcode: "PO21 9AA",
+				post_town: "BOGNOR REGIS",
+				po_box: "PO Box 276"
+			};
+
+			expected = {
+				line_1: "",
+				line_2: "",
+				line_3: "",
+				post_town: "",
+				postcode: "",
+				premise: ""
+			};
+
+			compare(sample, expected);
+		});
+	});
+
+	describe("Exception Rule 1", () => {
+		it("Exception Rule 1: Should format addresses where the first and last characters of the Building Name are numeric", () => {
+			sample = {
+				building_name: "1-2",
+				thoroughfare: "Nursery Lane",
+				dependant_locality: "Penn",
+				post_town: "HIGH WYCOMBE",
+				postcode: "HP10 8LS"
+			};
+
+
+			expected = {
+				line_1: "",
+				line_2: "",
+				line_3: "",
+				post_town: "",
+				postcode: "",
+				premise: ""
+			};
+
+			compare(sample, expected);
+		});
+	});
+
+	describe("Exception Rule 2", () => {
+		it("Exception Rule 2: Should format addresses where the first and penultimate characters are numeric and the last character is alphabetic", () => {
+			sample = {
+				building_name: "12A",
+				thoroughfare: "Upperkirkgate",
+				post_town: "ABERDEEN",
+				postcode: "AB10 1BA"
+			};
+
+			expected = {
+				line_1: "",
+				line_2: "",
+				line_3: "",
+				post_town: "",
+				postcode: "",
+				premise: ""
+			};
+
+			compare(sample, expected);
+		});
+	});
+
+	describe("Exception Rule 3", () => {
+		it("Exception Rule 3: Should format addresses where the Building Name only has one character", () => {
+			sample = {
+				building_name: "K",
+				thoroughfare: "Portland Road",
+				post_town: "Dorking",
+				postcode: "RH4 1EW"
+			};
+
+			expected = {
+				line_1: "",
+				line_2: "",
+				line_3: "",
+				post_town: "",
+				postcode: "",
+				premise: ""
+			};
+
+			compare(sample, expected);
+		});
+	});
+
+	describe("Exception Rule 4", () => {
+		it("Exception Rule 4: Should format addresses where the Building Name has a numeric range or a numeric alpha suffix, and is prefixed by the following key words: Back of, Block, Blocks, Building, Maisonette, Maisonettes, Rear Of, Shop, Shops, Stall, Stalls, Suite, Suites, Unit, Units", () => {
+			sample = {
+				organisation_name: "The Tambourine Warehouse",
+				building_name: "Unit 1 - 3",
+				dependant_thoroughfare: "Industrial Estate ",
+				thoroughfare: "Tame Road",
+				post_town: "LONDON",
+				postcode: "E6 7HS"
+			};
+
+			expected = {
+				line_1: "",
+				line_2: "",
+				line_3: "",
+				post_town: "",
+				postcode: "",
+				premise: ""
+			};
+
+			compare(sample, expected);
+		});
+
+		it("Exception Rule 4: Should format addresses where the Building Name has a numeric range or a numeric alpha suffix, and is prefixed by the following key words: Back of, Block, Blocks, Building, Maisonette, Maisonettes, Rear Of, Shop, Shops, Stall, Stalls, Suite, Suites, Unit, Units", () => {
+			sample = {
+				organisation_name: "Quirky Candles Ltd",
+				building_name: "Stall 4-5",
+				thoroughfare: "Market Square",
+				post_town: "LIVERPOOL",
+				postcode: "L8 1LH"
+			};
+
+			expected = {
+				line_1: "",
+				line_2: "",
+				line_3: "",
+				post_town: "",
+				postcode: "",
+				premise: ""
+			};
+
+			compare(sample, expected);
+		});
+
+		it("Exception Rule 4: Should format addresses where the Building Name has a numeric range or a numeric alpha suffix, and is prefixed by the following key words: Back of, Block, Blocks, Building, Maisonette, Maisonettes, Rear Of, Shop, Shops, Stall, Stalls, Suite, Suites, Unit, Units", () => {
+			sample = {
+				organisation_name: "The Fudge Factory",
+				building_name: "Unit 1a",
+				thoroughfare: "Dyce Industrial Park",
+				dependant_locality: "Dyce",
+				post_town: "GLASGOW",
+				postcode: "G21 7EZ"
+			};
+
+			expected = {
+				line_1: "",
+				line_2: "",
+				line_3: "",
+				post_town: "",
+				postcode: "",
+				premise: ""
+			};
+
+			compare(sample, expected);
+		});
+
+		it("Exception Rule 4: Should format addresses where the Building Name has a numeric range or a numeric alpha suffix, and is prefixed by the following key words: Back of, Block, Blocks, Building, Maisonette, Maisonettes, Rear Of, Shop, Shops, Stall, Stalls, Suite, Suites, Unit, Units", () => {
+			sample = {
+				organisation_name: "Fiona's Flowers",
+				building_name: "Rear of 5a",
+				thoroughfare: "High Street",
+				post_town: "GATESHEAD",
+				postcode: "NE8 1BH"
+			};
+
+			expected = {
+				line_1: "",
+				line_2: "",
+				line_3: "",
+				post_town: "",
+				postcode: "",
+				premise: ""
+			};
+
+			compare(sample, expected);
+		});
+
+		it("Exception Rule 4: Should format addresses where the Building Name has a numeric range or a numeric alpha suffix, and is prefixed by the following key words: Back of, Block, Blocks, Building, Maisonette, Maisonettes, Rear Of, Shop, Shops, Stall, Stalls, Suite, Suites, Unit, Units", () => {
+			sample = {
+				organisation_name: "Platinum Finance",
+				building_name: "Suite 1-3",
+				thoroughfare: "Station Road",
+				post_town: "MUSSELBURGH",
+				postcode: "EH21 7PB"
+			};
+
+			expected = {
+				line_1: "",
+				line_2: "",
+				line_3: "",
+				post_town: "",
+				postcode: "",
+				premise: ""
+			};
+
+			compare(sample, expected);
+		});
+	});
+
+	it("should format addresses with more than 3 lines as a comma separated line 3", () => {
 		sample = {
 			"dependant_locality": "Britannia Enterprise Park",
 			"postcode_type": "S",
@@ -960,7 +1198,7 @@ describe("Formatted Addresses", () => {
 			"thoroughfare": "Britannia Way",
 			"latitude": 52.6849198703419
 		};
-		
+
 		expected = {
 			line_1: "Britannia Park Veterinary Centre",
 			line_2: "Unit 60",
