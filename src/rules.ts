@@ -12,37 +12,44 @@ const nameExceptionRegex = /^(\d|\d.*\d|\d(.*\d)?[a-z]|[a-z])$/i;
  * iii) Building Name has only one character (eg ‘A’)
  */
 export const nameException = (n: string): boolean => {
-	return n.match(nameExceptionRegex) !== null;
+  return n.match(nameExceptionRegex) !== null;
 };
 
-export const appendOrganisationInfo = (elems: t.AddressElements, address: Address): void => {
-	const { department_name, organisation_name } = address;
-	if (isEmpty(organisation_name)) return;
-	if (notEmpty(department_name)) elems.push(department_name);
-	elems.push(organisation_name);
+export const appendOrganisationInfo = (
+  elems: t.AddressElements,
+  address: Address
+): void => {
+  const { department_name, organisation_name } = address;
+  if (isEmpty(organisation_name)) return;
+  if (notEmpty(department_name)) elems.push(department_name);
+  elems.push(organisation_name);
 };
 
 /**
  * Merges premise elements ordered by precedence into a formatted address
  * object
  */
-export const combinePremise = (elems: t.AddressElements, address: Address, premise: string): t.FormattedPremise => {
-	const premiseElements = elems.slice();
-	appendOrganisationInfo(premiseElements, address);
-	const [line_1, line_2, ...line_3] = premiseElements.reverse();
-	return {
-		premise: premise,
-		line_1: line_1 || "",
-		line_2: line_2 || "",
-		line_3: line_3.join(", "),
-	};
+export const combinePremise = (
+  elems: t.AddressElements,
+  address: Address,
+  premise: string
+): t.FormattedPremise => {
+  const premiseElements = elems.slice();
+  appendOrganisationInfo(premiseElements, address);
+  const [line_1, line_2, ...line_3] = premiseElements.reverse();
+  return {
+    premise: premise,
+    line_1: line_1 || "",
+    line_2: line_2 || "",
+    line_3: line_3.join(", "),
+  };
 };
 
 const localityElements: t.LocalityElements[] = [
-	"dependant_locality",
-	"double_dependant_locality",
-	"thoroughfare",
-	"dependant_thoroughfare",
+  "dependant_locality",
+  "double_dependant_locality",
+  "thoroughfare",
+  "dependant_thoroughfare",
 ];
 
 /**
@@ -50,9 +57,7 @@ const localityElements: t.LocalityElements[] = [
  * `localityElements`
  */
 export const premiseLocalities = (address: Address): t.AddressElements => {
-	return localityElements
-		.map(elem => address[elem])
-		.filter(notEmpty);
+  return localityElements.map(elem => address[elem]).filter(notEmpty);
 };
 
 // Organisation Name
@@ -62,17 +67,17 @@ export const premiseLocalities = (address: Address): t.AddressElements => {
  * No premise elements detected (typically organisation name)
  */
 export const rule1: t.AddressFormatter = address => {
-	return combinePremise(premiseLocalities(address), address, "");
+  return combinePremise(premiseLocalities(address), address, "");
 };
 
 /**
  * Rule 2 - Building number only
  */
 export const rule2: t.AddressFormatter = address => {
-	const { building_number } = address;
-	const result = premiseLocalities(address);
-	prependLocality(result, building_number);
-	return combinePremise(result, address, building_number);
+  const { building_number } = address;
+  const result = premiseLocalities(address);
+  prependLocality(result, building_number);
+  return combinePremise(result, address, building_number);
 };
 
 const BUILDING_RANGE_REGEX = /^(\d.*\D.*\d|\d(.*\d)?[a-z]|[a-z])$/i;
@@ -80,15 +85,17 @@ const BUILDING_RANGE_REGEX = /^(\d.*\D.*\d|\d(.*\d)?[a-z]|[a-z])$/i;
 /**
  * Detects whether a building name contains a range
  */
-export const checkBuildingRange = (building_name: string): t.BuildingRangeMatch|void => {
-	const tokens = building_name.split(" ");
-	const range = tokens.pop() || "";
-	if (range.match(BUILDING_RANGE_REGEX)) {
-		return {
-			range,
-			name: tokens.join(" ")
-		};
-	}
+export const checkBuildingRange = (
+  building_name: string
+): t.BuildingRangeMatch | void => {
+  const tokens = building_name.split(" ");
+  const range = tokens.pop() || "";
+  if (range.match(BUILDING_RANGE_REGEX)) {
+    return {
+      range,
+      name: tokens.join(" "),
+    };
+  }
 };
 
 const SUB_RANGE_REGEX = /^unit\s/i;
@@ -113,28 +120,30 @@ const SUB_RANGE_REGEX = /^unit\s/i;
  * Thoroughfare line, or the first Locality line if there is no Thoroughfare.
  */
 export const rule3: t.AddressFormatter = address => {
-	const { building_name } = address;
-	let premise;
-	const result = premiseLocalities(address);
-	if (nameException(building_name)) {
-		premise = building_name.toLowerCase();
-		prependLocality(result, premise);
-	} else {
-		const sub_range_match = checkBuildingRange(building_name);
-		if (sub_range_match && !building_name.match(SUB_RANGE_REGEX)) { // Check if name contains number range
-			premise = `${sub_range_match.name}, ${sub_range_match.range.toLowerCase()}`;
-			prependLocality(result, sub_range_match.range.toLowerCase());
-			result.push(sub_range_match.name);
-		} else {
-			premise = building_name;
-			result.push(premise);
-		}
-	}
-	return combinePremise(result, address, premise);
+  const { building_name } = address;
+  let premise;
+  const result = premiseLocalities(address);
+  if (nameException(building_name)) {
+    premise = building_name.toLowerCase();
+    prependLocality(result, premise);
+  } else {
+    const sub_range_match = checkBuildingRange(building_name);
+    if (sub_range_match && !building_name.match(SUB_RANGE_REGEX)) {
+      // Check if name contains number range
+      premise = `${
+        sub_range_match.name
+      }, ${sub_range_match.range.toLowerCase()}`;
+      prependLocality(result, sub_range_match.range.toLowerCase());
+      result.push(sub_range_match.name);
+    } else {
+      premise = building_name;
+      result.push(premise);
+    }
+  }
+  return combinePremise(result, address, premise);
 };
 
 // Building Name and Building Number
-
 
 /**
  * Rule 4 - Building Name and Number
@@ -146,12 +155,12 @@ export const rule3: t.AddressFormatter = address => {
  * the first Locality line.
  */
 export const rule4: t.AddressFormatter = address => {
-	const { building_name, building_number } = address;
-	const result = premiseLocalities(address);
-	const premise = `${building_name}, ${building_number}`;
-	prependLocality(result, building_number);
-	result.push(building_name);
-	return combinePremise(result, address, premise);
+  const { building_name, building_number } = address;
+  const result = premiseLocalities(address);
+  const premise = `${building_name}, ${building_number}`;
+  prependLocality(result, building_number);
+  result.push(building_name);
+  return combinePremise(result, address, premise);
 };
 
 const STARTS_CHAR_REGEX = /^[a-z]$/i;
@@ -165,18 +174,18 @@ const STARTS_CHAR_REGEX = /^[a-z]$/i;
  * the Building Number should appear at the beginning of the first Locality line.
  */
 export const rule5: t.AddressFormatter = address => {
-	const { building_number, sub_building_name } = address;
-	let premise;
-	const result = premiseLocalities(address);
-	if (sub_building_name.match(STARTS_CHAR_REGEX)) {
-		premise = building_number + sub_building_name;
-		prependLocality(result, premise);
-	} else {
-		premise = `${sub_building_name}, ${building_number}`;
-		prependLocality(result, building_number);
-		result.push(sub_building_name);
-	}
-	return combinePremise(result, address, premise);
+  const { building_number, sub_building_name } = address;
+  let premise;
+  const result = premiseLocalities(address);
+  if (sub_building_name.match(STARTS_CHAR_REGEX)) {
+    premise = building_number + sub_building_name;
+    prependLocality(result, premise);
+  } else {
+    premise = `${sub_building_name}, ${building_number}`;
+    prependLocality(result, building_number);
+    result.push(sub_building_name);
+  }
+  return combinePremise(result, address, premise);
 };
 
 /**
@@ -195,25 +204,25 @@ export const rule5: t.AddressFormatter = address => {
  * Building Name should appear on a line preceding the Thoroughfare and Locality information.
  */
 export const rule6: t.AddressFormatter = address => {
-	const { sub_building_name, building_name } = address;
-	let premise;
-	const result = premiseLocalities(address);
-	if (nameException(sub_building_name)) {
-		premise = `${sub_building_name} ${building_name}`;
-		result.push(premise);
-	} else if (nameException(building_name)) {
-		premise = `${sub_building_name}, ${building_name}`;
-		prependLocality(result, building_name);
-		result.push(sub_building_name);
-	} else if (address.merge_sub_and_building) {
-		premise = `${sub_building_name}, ${building_name}`;
-		result.push(premise);
-	} else {
-		premise = `${sub_building_name}, ${building_name}`;
-		result.push(building_name);
-		result.push(sub_building_name);
-	}
-	return combinePremise(result, address, premise);
+  const { sub_building_name, building_name } = address;
+  let premise;
+  const result = premiseLocalities(address);
+  if (nameException(sub_building_name)) {
+    premise = `${sub_building_name} ${building_name}`;
+    result.push(premise);
+  } else if (nameException(building_name)) {
+    premise = `${sub_building_name}, ${building_name}`;
+    prependLocality(result, building_name);
+    result.push(sub_building_name);
+  } else if (address.merge_sub_and_building) {
+    premise = `${sub_building_name}, ${building_name}`;
+    result.push(premise);
+  } else {
+    premise = `${sub_building_name}, ${building_name}`;
+    result.push(building_name);
+    result.push(sub_building_name);
+  }
+  return combinePremise(result, address, premise);
 };
 
 /**
@@ -223,25 +232,25 @@ export const rule6: t.AddressFormatter = address => {
  * line as and before the Building Name.
  */
 export const rule7: t.AddressFormatter = address => {
-	const { building_name, building_number, sub_building_name } = address;
-	let result = premiseLocalities(address);
-	let premise;
-	prependLocality(result, building_number);
-	if (nameException(sub_building_name)) {
-		premise = `${sub_building_name} ${building_name}, ${building_number}`;
-		result.push(`${sub_building_name} ${building_name}`);
-	} else if (address.merge_sub_and_building) {
-		// Should not be possible to hit this code path if address object has
-		// been parsed correctly
-		result = premiseLocalities(address);
-		premise = `${sub_building_name}, ${building_name}`;
-		result.push(premise);
-	} else {
-		premise = `${sub_building_name}, ${building_name}, ${building_number}`;
-		result.push(building_name);
-		result.push(sub_building_name);
-	}
-	return combinePremise(result, address, premise);
+  const { building_name, building_number, sub_building_name } = address;
+  let result = premiseLocalities(address);
+  let premise;
+  prependLocality(result, building_number);
+  if (nameException(sub_building_name)) {
+    premise = `${sub_building_name} ${building_name}, ${building_number}`;
+    result.push(`${sub_building_name} ${building_name}`);
+  } else if (address.merge_sub_and_building) {
+    // Should not be possible to hit this code path if address object has
+    // been parsed correctly
+    result = premiseLocalities(address);
+    premise = `${sub_building_name}, ${building_name}`;
+    result.push(premise);
+  } else {
+    premise = `${sub_building_name}, ${building_name}, ${building_number}`;
+    result.push(building_name);
+    result.push(sub_building_name);
+  }
+  return combinePremise(result, address, premise);
 };
 
 /**
@@ -251,36 +260,37 @@ export const rule7: t.AddressFormatter = address => {
  * in the wild only have a sub building name
  */
 export const undocumentedRule: t.AddressFormatter = address => {
-	const { sub_building_name } = address;
-	const premise = sub_building_name;
-	const result = premiseLocalities(address);
-	prependLocality(result, sub_building_name);
-	return combinePremise(result, address, premise);
+  const { sub_building_name } = address;
+  const premise = sub_building_name;
+  const result = premiseLocalities(address);
+  prependLocality(result, sub_building_name);
+  return combinePremise(result, address, premise);
 };
 
 /**
  * PO Box Rule
  */
 export const po_box: t.AddressFormatter = address => {
-	const result = premiseLocalities(address);
-	const premise = `PO Box ${address.po_box}`;
-	result.push(premise);
-	return combinePremise(result, address, premise);
+  const result = premiseLocalities(address);
+  const premise = `PO Box ${address.po_box}`;
+  result.push(premise);
+  return combinePremise(result, address, premise);
 };
 
 export const formatter: t.AddressFormatter = address => {
-	if (notEmpty(address.po_box)) return po_box(address);
+  if (notEmpty(address.po_box)) return po_box(address);
 
-	const no = notEmpty(address.building_number); 		// Has building number
-	const name = notEmpty(address.building_name); 		// Has building name
-	const sub = notEmpty(address.sub_building_name); 	// Has sub building name
+  const no = notEmpty(address.building_number); // Has building number
+  const name = notEmpty(address.building_name); // Has building name
+  const sub = notEmpty(address.sub_building_name); // Has sub building name
 
-	if (sub === true  && name === true  && no === true ) return rule7(address);
-	if (sub === true  && name === true  && no === false) return rule6(address);
-	if (sub === true  && name === false && no === true ) return rule5(address);
-	if (sub === true  && name === false && no === false) return undocumentedRule(address);
-	if (sub === false && name === true  && no === true ) return rule4(address);
-	if (sub === false && name === true  && no === false) return rule3(address);
-	if (sub === false && name === false && no === true ) return rule2(address);
-	return rule1(address); // No premise elements available
+  if (sub === true && name === true && no === true) return rule7(address);
+  if (sub === true && name === true && no === false) return rule6(address);
+  if (sub === true && name === false && no === true) return rule5(address);
+  if (sub === true && name === false && no === false)
+    return undocumentedRule(address);
+  if (sub === false && name === true && no === true) return rule4(address);
+  if (sub === false && name === true && no === false) return rule3(address);
+  if (sub === false && name === false && no === true) return rule2(address);
+  return rule1(address); // No premise elements available
 };
