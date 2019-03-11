@@ -68,6 +68,8 @@
   "runkitExampleFilename": "example.js",
   "readmeFilename": "README.md",
   "devDependencies": {
+    "@cablanchard/tsconfig": "0.0.1",
+    "@cablanchard/tslint": "0.0.1",
     "@types/chai": "~4.1.4",
     "@types/mocha": "~5.2.3",
     "chai": "~4.2.0",
