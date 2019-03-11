@@ -2,6 +2,8 @@
 
 ## [2.2.0] 2019-03-11
 
+- Formatting Changes as per Programmers Guide Edition 7, Version 6:
+  - Where a building name exception exists in rule 3, these names are no longer lower cased as documented in Table 27a. They now adhere to the (conflicting) example defined in Table 22
 - Standardise project with prettier and @cablanchard/tslint
 - Use stardardised compile options from @cablanchard/tsconfig
 
