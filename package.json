@@ -51,18 +51,22 @@
   "files": [
     "dist"
   ],
+  "prettier": {
+    "trailingComma": "es5"
+  },
   "runkitExampleFilename": "example.js",
   "readmeFilename": "README.md",
   "devDependencies": {
-    "@types/chai": "^4.1.4",
-    "@types/mocha": "^5.2.3",
+    "@types/chai": "~4.1.4",
+    "@types/mocha": "~5.2.3",
     "chai": "~4.2.0",
     "coveralls": "~3.0.0",
     "mocha": "~6.0.2",
     "nyc": "~13.3.0",
-    "source-map-support": "^0.5.6",
-    "ts-node": "^8.0.2",
     "tslint": "~5.14.0",
+    "prettier": "~1.16.4",
+    "source-map-support": "~0.5.6",
+    "ts-node": "~8.0.2",
     "typedoc": "~0.14.0",
     "typescript": "~3.3.1"
   },
@@ -70,6 +74,6 @@
     "node": ">6.0.0"
   },
   "dependencies": {
-    "@cablanchard/koelle-sort": "^0.1.0"
+    "@cablanchard/koelle-sort": "~0.1.0"
   }
 }
