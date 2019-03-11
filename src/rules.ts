@@ -15,6 +15,17 @@ export const nameException = (n: string): boolean => {
   return n.match(nameExceptionRegex) !== null;
 };
 
+const singleCharacterRegex = /^[A-Z]$/i;
+
+/**
+ * Returns true if string matches rule (iii) of exception rule (above)
+ *
+ * @param {string} c
+ * @returns {boolean}
+ */
+export const isSingleCharacter = (c: string): boolean =>
+  c.match(singleCharacterRegex) !== null;
+
 export const appendOrganisationInfo = (
   elems: t.AddressElements,
   address: Address
