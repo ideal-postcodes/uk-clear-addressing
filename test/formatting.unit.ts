@@ -941,12 +941,12 @@ describe("Formatted Addresses", () => {
 		};
 
 		expected = {
-			line_1: "",
+			line_1: "PO Box 22",
 			line_2: "",
 			line_3: "",
-			post_town: "",
-			postcode: "",
-			premise: ""
+			post_town: "FAREHAM",
+			postcode: "PO14 3XH",
+			premise: "PO Box 22"
 		};
 
 		compare(sample, expected);
@@ -964,12 +964,12 @@ describe("Formatted Addresses", () => {
 			};
 
 			expected = {
-				line_1: "",
-				line_2: "",
-				line_3: "",
-				post_town: "",
-				postcode: "",
-				premise: ""
+				line_1: "Driver & Vehicle Licensing Agency",
+				line_2: "Driving Licence Renewals",
+				line_3: "Driver & Vehicle Licensing Centre",
+				post_town: "SWANSEA",
+				postcode: "SA99 1AA",
+				premise: "Driver & Vehicle Licensing Centre"
 			};
 
 			compare(sample, expected);
@@ -983,12 +983,12 @@ describe("Formatted Addresses", () => {
 			};
 
 			expected = {
-				line_1: "",
+				line_1: "PO Box 276",
 				line_2: "",
 				line_3: "",
-				post_town: "",
-				postcode: "",
-				premise: ""
+				post_town: "BOGNOR REGIS",
+				postcode: "PO21 9AA",
+				premise: "PO Box 276"
 			};
 
 			compare(sample, expected);
@@ -1007,12 +1007,12 @@ describe("Formatted Addresses", () => {
 
 
 			expected = {
-				line_1: "",
-				line_2: "",
+				line_1: "1-2 Nursery Lane",
+				line_2: "Penn",
 				line_3: "",
-				post_town: "",
-				postcode: "",
-				premise: ""
+				post_town: "HIGH WYCOMBE",
+				postcode: "HP10 8LS",
+				premise: "1-2"
 			};
 
 			compare(sample, expected);
@@ -1029,12 +1029,12 @@ describe("Formatted Addresses", () => {
 			};
 
 			expected = {
-				line_1: "",
+				line_1: "12A Upperkirkgate",
 				line_2: "",
 				line_3: "",
-				post_town: "",
-				postcode: "",
-				premise: ""
+				post_town: "ABERDEEN",
+				postcode: "AB10 1BA",
+				premise: "12A"
 			};
 
 			compare(sample, expected);
@@ -1046,17 +1046,17 @@ describe("Formatted Addresses", () => {
 			sample = {
 				building_name: "K",
 				thoroughfare: "Portland Road",
-				post_town: "Dorking",
+				post_town: "DORKING",
 				postcode: "RH4 1EW"
 			};
 
 			expected = {
-				line_1: "",
+				line_1: "K, Portland Road",
 				line_2: "",
 				line_3: "",
-				post_town: "",
-				postcode: "",
-				premise: ""
+				post_town: "DORKING",
+				postcode: "RH4 1EW",
+				premise: "K"
 			};
 
 			compare(sample, expected);
@@ -1067,7 +1067,7 @@ describe("Formatted Addresses", () => {
 		it("Exception Rule 4: Should format addresses where the Building Name has a numeric range or a numeric alpha suffix, and is prefixed by the following key words: Back of, Block, Blocks, Building, Maisonette, Maisonettes, Rear Of, Shop, Shops, Stall, Stalls, Suite, Suites, Unit, Units", () => {
 			sample = {
 				organisation_name: "The Tambourine Warehouse",
-				building_name: "Unit 1 - 3",
+				building_name: "Unit 1-3",
 				dependant_thoroughfare: "Industrial Estate ",
 				thoroughfare: "Tame Road",
 				post_town: "LONDON",
@@ -1075,12 +1075,13 @@ describe("Formatted Addresses", () => {
 			};
 
 			expected = {
-				line_1: "",
-				line_2: "",
-				line_3: "",
-				post_town: "",
-				postcode: "",
-				premise: ""
+				line_1: "The Tambourine Warehouse",
+				line_2: "Unit 1-3",
+				line_3: `Industrial Estate
+								Tame Road`,
+				post_town: "LONDON",
+				postcode: "E6 7HS",
+				premise: "Unit 1-3"
 			};
 
 			compare(sample, expected);
@@ -1096,12 +1097,12 @@ describe("Formatted Addresses", () => {
 			};
 
 			expected = {
-				line_1: "",
-				line_2: "",
-				line_3: "",
-				post_town: "",
-				postcode: "",
-				premise: ""
+				line_1: "Quirky Candles Ltd",
+				line_2: "Stall 4-5",
+				line_3: "Market Square",
+				post_town: "LIVERPOOL",
+				postcode: "L8 1LH",
+				premise: "Stall 4-5"
 			};
 
 			compare(sample, expected);
@@ -1118,12 +1119,13 @@ describe("Formatted Addresses", () => {
 			};
 
 			expected = {
-				line_1: "",
-				line_2: "",
-				line_3: "",
-				post_town: "",
-				postcode: "",
-				premise: ""
+				line_1: "The Fudge Factory",
+				line_2: "Unit 1a",
+				line_3: `Dyce Industrial Park
+								Dyce`,
+				post_town: "GLASGOW",
+				postcode: "G21 7EZ",
+				premise: "Unit 1a"
 			};
 
 			compare(sample, expected);
@@ -1139,12 +1141,12 @@ describe("Formatted Addresses", () => {
 			};
 
 			expected = {
-				line_1: "",
-				line_2: "",
-				line_3: "",
-				post_town: "",
-				postcode: "",
-				premise: ""
+				line_1: "Fiona's Flowers",
+				line_2: "Rear of 5a",
+				line_3: "High Street",
+				post_town: "GATESHEAD",
+				postcode: "NE8 1BH",
+				premise: "Rear of 5a"
 			};
 
 			compare(sample, expected);
@@ -1160,12 +1162,12 @@ describe("Formatted Addresses", () => {
 			};
 
 			expected = {
-				line_1: "",
-				line_2: "",
-				line_3: "",
-				post_town: "",
-				postcode: "",
-				premise: ""
+				line_1: "Platinum Finance",
+				line_2: "Suite 1-3",
+				line_3: "Station Road",
+				post_town: "MUSSELBURGH",
+				postcode: "EH21 7PB",
+				premise: "Suite 1-3"
 			};
 
 			compare(sample, expected);
