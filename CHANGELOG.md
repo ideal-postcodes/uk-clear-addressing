@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.2.0] 2019-03-11
+
+- Standardise project with prettier and @cablanchard/tslint
+- Use stardardised compile options from @cablanchard/tsconfig
+
 ## [2.1.2] 2019-02-12
 
 - Add runkit example
