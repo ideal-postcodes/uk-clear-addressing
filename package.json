@@ -60,7 +60,8 @@
   "author": "Ideal Postcodes",
   "license": "MIT",
   "files": [
-    "dist"
+    "dist",
+    "example.js"
   ],
   "prettier": {
     "trailingComma": "es5"
