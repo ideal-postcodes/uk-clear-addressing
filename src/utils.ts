@@ -63,7 +63,7 @@ export const prependLocality = (
 //   "Units",
 // ];
 
-const unitPrefixRegex = /^(back\sof|block|blocks|building|maisonette|maisonettes|rear\sof|shop|shops|stall|stalls|suite|suites|unit|units)/gi;
+const unitPrefixRegex = /^(back\sof|blocks?|building|maisonettes?|rear\sof|shops?|stalls?|suites?|units?)/i;
 
 /**
  * Test for whether a string begins with a unit prefix
