@@ -4,10 +4,12 @@ import { assert } from "chai";
 import { Address } from "../src/index";
 import { AddressRecord, AddressJSON } from "../src/types";
 type RecordKeys = keyof AddressRecord;
-const expectedRawAttributes: RecordKeys[] = require("./data/expected_raw_attributes.json");
+import attrData from "./data/expected_raw_attributes.json";
+const expectedRawAttributes = attrData as RecordKeys[];
 
 type AddressJsonKeys = keyof AddressJSON;
-const expectedJsonAttributes: AddressJsonKeys[] = require("./data/expected_json_attributes.json");
+import jsonData from "./data/expected_json_attributes.json";
+const expectedJsonAttributes = jsonData as AddressJsonKeys[];
 
 describe("Address Model", () => {
   describe("instantiation", () => {
@@ -16,20 +18,24 @@ describe("Address Model", () => {
       assert.equal(address.postcode_outward, "FOO");
       assert.equal(address.postcode_inward, "BAR");
     });
+
     it("assigns empty string to inward/outward codes if postcode not present", () => {
       const address = new Address({ postcode: "" });
       assert.equal(address.postcode_outward, "");
       assert.equal(address.postcode_inward, "");
     });
+
     it("assigns cache", () => {
       const address = new Address({});
       assert.isNull(address.cache);
     });
+
     it("detects empty building number", () => {
       const address = new Address({ building_number: "0" });
       assert.equal(address.building_number, "");
       assert.isTrue(address.merge_sub_and_building);
     });
+
     it("assigns relevant attributes", () => {
       const data: AddressRecord = {
         postcode: "postcode",
