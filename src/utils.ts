@@ -158,3 +158,13 @@ const localityElements: t.LocalityElements[] = [
 export const premiseLocalities = (address: Address): t.AddressElements => {
   return localityElements.map(elem => address[elem]).filter(notEmpty);
 };
+
+/**
+ * Formats an address element
+ * - If a single letter element, suffix a comma
+ * - Otherwise return address element
+ */
+export const formatElem = (e: string): string => {
+  if (isSingleCharacter(e)) return `${e},`;
+  return e;
+};

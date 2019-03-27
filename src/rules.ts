@@ -1,10 +1,10 @@
 import * as t from "./types";
 import {
+  formatElem,
   notEmpty,
   combinePremise,
   nameException,
   checkBuildingRange,
-  isSingleCharacter,
   prependLocality,
   premiseLocalities,
   hasUnitPrefix,
@@ -53,10 +53,7 @@ export const rule3: t.AddressFormatter = address => {
   const result = premiseLocalities(address);
   if (nameException(building_name)) {
     premise = building_name;
-    prependLocality(
-      result,
-      isSingleCharacter(premise) ? `${premise},` : premise
-    );
+    prependLocality(result, formatElem(premise));
   } else {
     const sub_range_match = checkBuildingRange(building_name);
     if (sub_range_match && !hasUnitPrefix(building_name)) {
@@ -137,11 +134,7 @@ export const rule6: t.AddressFormatter = address => {
   let premise;
   const result = premiseLocalities(address);
   if (nameException(sub_building_name)) {
-    if (isSingleCharacter(sub_building_name)) {
-      premise = `${sub_building_name}, ${building_name}`;
-    } else {
-      premise = `${sub_building_name} ${building_name}`;
-    }
+    premise = `${formatElem(sub_building_name)} ${building_name}`;
     result.push(premise);
   } else if (nameException(building_name)) {
     premise = `${sub_building_name}, ${building_name}`;
@@ -170,13 +163,10 @@ export const rule7: t.AddressFormatter = address => {
   let premise;
   prependLocality(result, building_number);
   if (nameException(sub_building_name)) {
-    if (isSingleCharacter(sub_building_name)) {
-      premise = `${sub_building_name}, ${building_name}, ${building_number}`;
-      result.push(`${sub_building_name}, ${building_name}`);
-    } else {
-      premise = `${sub_building_name} ${building_name}, ${building_number}`;
-      result.push(`${sub_building_name} ${building_name}`);
-    }
+    premise = `${formatElem(
+      sub_building_name
+    )} ${building_name}, ${building_number}`;
+    result.push(`${formatElem(sub_building_name)} ${building_name}`);
   } else if (address.merge_sub_and_building) {
     // Should not be possible to hit this code path if address object has
     // been parsed correctly
