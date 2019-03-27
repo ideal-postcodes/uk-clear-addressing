@@ -1,4 +1,4 @@
-import { isEmpty, prependLocality } from "./utils";
+import { isEmpty, prependLocality, hasUnitPrefix } from "./utils";
 import { Address } from "./index";
 import * as t from "./types";
 
@@ -106,8 +106,6 @@ export const checkBuildingRange = (
   }
 };
 
-const SUB_RANGE_REGEX = /^unit\s/i;
-
 /**
  * Rule 3 - Building name only
  *
@@ -139,7 +137,7 @@ export const rule3: t.AddressFormatter = address => {
     );
   } else {
     const sub_range_match = checkBuildingRange(building_name);
-    if (sub_range_match && !building_name.match(SUB_RANGE_REGEX)) {
+    if (sub_range_match && !hasUnitPrefix(building_name)) {
       // Check if name contains number range
       premise = `${sub_range_match.name}, ${sub_range_match.range}`;
       prependLocality(result, sub_range_match.range);
