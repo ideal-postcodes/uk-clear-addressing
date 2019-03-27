@@ -1,9 +1,42 @@
-"use strict";
+/* tslint:disable:no-magic-numbers */
 
 import { assert } from "chai";
-import { extract, isEmpty, extractInteger, extractFloat } from "../src/utils";
+import {
+  extract,
+  isEmpty,
+  extractInteger,
+  extractFloat,
+  hasUnitPrefix,
+} from "../src/utils";
+import {
+  unitPrefixes,
+  generateBuildingNumber,
+} from "./data/unit_prefix_fixtures";
 
 describe("Utils", () => {
+  describe("hasUnitPrefix", () => {
+    describe("when string has unit prefix", () => {
+      unitPrefixes
+        .map(prefix => `${prefix} ${generateBuildingNumber()}`)
+        .forEach(testCase => {
+          it(`returns true for ${testCase}`, () => {
+            assert.isTrue(hasUnitPrefix(testCase));
+          });
+        });
+    });
+
+    describe("when string has unit prefix", () => {
+      new Array(10)
+        .fill(null)
+        .map(() => generateBuildingNumber())
+        .forEach(testCase => {
+          it(`returns false for ${testCase}`, () => {
+            assert.isFalse(hasUnitPrefix(testCase));
+          });
+        });
+    });
+  });
+
   describe("extract", () => {
     it("returns empty string if elem is undefined", () => {
       const address = { thoroughfare: undefined };
