@@ -11,6 +11,7 @@
     "nyc": "node_modules/.bin/nyc node_modules/.bin/mocha",
     "coverage": "node_modules/.bin/nyc report --reporter=text-lcov | node_modules/.bin/coveralls || true",
     "lint": "./node_modules/.bin/tslint --project tsconfig.json -c tslint.json",
+    "benchmark": "./node_modules/.bin/ts-node benchmark.ts",
     "docs": "./node_modules/.bin/typedoc --mode file --excludePrivate --hideGenerator --excludeExternals --target ES5 --out docs/ --name 'UK Clear Addressing' --theme minimal src/",
     "build": "./node_modules/.bin/tsc"
   },
@@ -71,6 +72,7 @@
   "devDependencies": {
     "@cablanchard/tsconfig": "0.0.1",
     "@cablanchard/tslint": "0.0.1",
+    "@types/benchmark": "~1.0.31",
     "@types/chai": "~4.1.4",
     "@types/mocha": "~5.2.3",
     "benchmark": "~2.1.4",
