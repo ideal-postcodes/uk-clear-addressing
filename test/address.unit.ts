@@ -122,6 +122,35 @@ describe("Address Model", () => {
     });
   });
 
+  describe("accessors", () => {
+    const address = new Address({
+      building_name: "Priory Court",
+      sub_building_name: "Flat 2",
+      building_number: "1",
+      organisation_name: "",
+      department_name: "",
+      post_town: "DURSLEY",
+      postcode: "AA1 1AC",
+      dependant_locality: "",
+      double_dependant_locality: "",
+      po_box: "",
+      thoroughfare: "Kingshill Road",
+      dependant_thoroughfare: "",
+    });
+    it("provides a line_1 accessor", () => {
+      assert.equal(address.line_1, "Flat 2");
+    });
+    it("provides a line_2 accessor", () => {
+      assert.equal(address.line_2, "Priory Court");
+    });
+    it("provides a line_3 accessor", () => {
+      assert.equal(address.line_3, "1 Kingshill Road");
+    });
+    it("provides a premise accessor", () => {
+      assert.equal(address.premise, "Flat 2, Priory Court, 1");
+    });
+  });
+
   describe("#raw", () => {
     it("returns a new object representing raw address details", () => {
       const address = new Address({});
