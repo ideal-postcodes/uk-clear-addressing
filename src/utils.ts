@@ -1,9 +1,16 @@
-import * as t from "./types";
+import {
+  AddressRecord,
+  FormattedPremise,
+  LocalityElements,
+  NumericExtractor,
+  AddressElements,
+  BuildingRangeMatch,
+} from "./types";
 import { Address } from "./index";
 
 export const extract = (
-  address: t.AddressRecord,
-  elem: keyof t.AddressRecord
+  address: AddressRecord,
+  elem: keyof AddressRecord
 ): string => {
   const result = address[elem];
   if (result === undefined) return "";
@@ -13,7 +20,7 @@ export const extract = (
   return result;
 };
 
-export const extractInteger: t.NumericExtractor = (address, elem) => {
+export const extractInteger: NumericExtractor = (address, elem) => {
   const result = address[elem];
   if (result === undefined) return "";
   if (result === null) return "";
@@ -25,7 +32,7 @@ export const isEmpty = (s: string): boolean => {
   return !s || s.trim() === "";
 };
 
-export const extractFloat: t.NumericExtractor = (address, elem) => {
+export const extractFloat: NumericExtractor = (address, elem) => {
   const result = address[elem];
   if (result === undefined) return "";
   if (result === null) return "";
@@ -36,10 +43,10 @@ export const extractFloat: t.NumericExtractor = (address, elem) => {
 /**
  * Non-desctructively return last elem
  */
-export const lastElem = (a: t.AddressElements): string => a[a.length - 1];
+export const lastElem = (a: AddressElements): string => a[a.length - 1];
 
 export const prependLocality = (
-  localities: t.AddressElements,
+  localities: AddressElements,
   premise: string
 ): void => {
   localities[localities.length - 1] = `${premise} ${lastElem(localities)}`;
@@ -100,7 +107,7 @@ export const isSingleCharacter = (c: string): boolean =>
 const BUILDING_RANGE_REGEX = /^(\d.*\D.*\d|\d(.*\d)?[a-z]|[a-z])$/i;
 
 export const appendOrganisationInfo = (
-  elems: t.AddressElements,
+  elems: AddressElements,
   address: Address
 ): void => {
   const { department_name, organisation_name } = address;
@@ -113,10 +120,10 @@ export const appendOrganisationInfo = (
  * Merges premise elements ordered by precedence into a formatted address
  */
 export const combinePremise = (
-  elems: t.AddressElements,
+  elems: AddressElements,
   address: Address,
   premise: string
-): t.FormattedPremise => {
+): FormattedPremise => {
   const premiseElements = elems.slice();
   appendOrganisationInfo(premiseElements, address);
   const [line_1, line_2, ...line_3] = premiseElements.reverse();
@@ -133,7 +140,7 @@ export const combinePremise = (
  */
 export const checkBuildingRange = (
   building_name: string
-): t.BuildingRangeMatch | void => {
+): BuildingRangeMatch | void => {
   const tokens = building_name.split(" ");
   const range = tokens.pop() || "";
   if (range.match(BUILDING_RANGE_REGEX)) {
@@ -144,7 +151,7 @@ export const checkBuildingRange = (
   }
 };
 
-const localityElements: t.LocalityElements[] = [
+const localityElements: LocalityElements[] = [
   "dependant_locality",
   "double_dependant_locality",
   "thoroughfare",
@@ -155,7 +162,7 @@ const localityElements: t.LocalityElements[] = [
  * Returns an array of localities according to precedent recorded in
  * `localityElements`
  */
-export const premiseLocalities = (address: Address): t.AddressElements => {
+export const premiseLocalities = (address: Address): AddressElements => {
   return localityElements.map(elem => address[elem]).filter(notEmpty);
 };
 

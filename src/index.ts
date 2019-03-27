@@ -1,4 +1,10 @@
-import * as t from "./types";
+import {
+  EmptyString,
+  AddressRecord,
+  RawAddress,
+  AddressJSON,
+  FormattedAddress,
+} from "./types";
 import { sort } from "./sort";
 import { formatter } from "./rules";
 import { extract, extractFloat, extractInteger } from "./utils";
@@ -31,15 +37,15 @@ export class Address {
   readonly ward: string;
   readonly country: string;
 
-  readonly northings: number | t.EmptyString;
-  readonly eastings: number | t.EmptyString;
-  readonly udprn: number | t.EmptyString;
-  readonly umprn: number | t.EmptyString;
+  readonly northings: number | EmptyString;
+  readonly eastings: number | EmptyString;
+  readonly udprn: number | EmptyString;
+  readonly umprn: number | EmptyString;
 
-  readonly longitude: number | t.EmptyString;
-  readonly latitude: number | t.EmptyString;
+  readonly longitude: number | EmptyString;
+  readonly latitude: number | EmptyString;
 
-  public cache: t.FormattedAddress | null;
+  public cache: FormattedAddress | null;
 
   /**
    * The `Address` class is designed to wrap a Postcode Address File (PAF)
@@ -182,7 +188,7 @@ export class Address {
    * Returns object containing raw address attributes
    * @hidden
    */
-  raw(): t.RawAddress {
+  raw(): RawAddress {
     return {
       postcode: this.postcode,
       post_town: this.post_town,
@@ -220,7 +226,7 @@ export class Address {
   /**
    * Returns a complete JSON representation of the `Address` instance
    */
-  toJSON(): t.AddressJSON {
+  toJSON(): AddressJSON {
     return Object.assign(this.raw(), this.formattedAddress());
   }
 
@@ -228,7 +234,7 @@ export class Address {
    * Returns an object representing an address with sensibly computed address
    * line labels according to Royal Mail's formatting rules
    */
-  formattedAddress(): t.FormattedAddress {
+  formattedAddress(): FormattedAddress {
     if (this.cache) return this.cache;
     this.cache = Object.assign(
       {
@@ -263,4 +269,4 @@ export class Address {
   }
 }
 
-export type AddressRecord = t.AddressRecord;
+export { AddressRecord };
