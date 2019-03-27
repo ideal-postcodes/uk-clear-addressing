@@ -1,22 +1,8 @@
 /* tslint:disable:no-magic-numbers */
 
-export const unitPrefixes = [
-  "Back of",
-  "Block",
-  "Blocks",
-  "Building",
-  "Maisonette",
-  "Maisonettes",
-  "Rear of",
-  "Shop",
-  "Shops",
-  "Stall",
-  "Stalls",
-  "Suite",
-  "Suites",
-  "Unit",
-  "Units",
-];
+import unitPrefixes from "./unit_prefixes.json";
+
+export { unitPrefixes };
 
 const random = (max: number): number => Math.floor(Math.random() * max);
 

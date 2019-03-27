@@ -2,7 +2,8 @@
   "extends": "@cablanchard/tsconfig",
   "compilerOptions": {
     "outDir": "dist",
-    "target": "ES2016"
+    "target": "ES2016",
+    "resolveJsonModule": true
   },
   "include": ["src/**/*"]
 }
