@@ -9,7 +9,7 @@ import {
   premiseLocalities,
   appendOrganisationInfo,
   checkBuildingRange,
-} from "../src/rules";
+} from "../src/utils";
 
 describe("Rules", () => {
   describe("nameException", () => {
