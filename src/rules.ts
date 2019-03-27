@@ -295,6 +295,7 @@ export const po_box: t.AddressFormatter = address => {
   return combinePremise(result, address, premise);
 };
 
+/* tslint:disable:no-boolean-literal-compare */
 export const formatter: t.AddressFormatter = address => {
   if (notEmpty(address.po_box)) return po_box(address);
 
@@ -312,3 +313,4 @@ export const formatter: t.AddressFormatter = address => {
   if (sub === false && name === false && no === true) return rule2(address);
   return rule1(address); // No premise elements available
 };
+/* tslint:enable:no-boolean-literal-compare */
