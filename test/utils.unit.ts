@@ -7,6 +7,7 @@ import {
   extractInteger,
   extractFloat,
   hasUnitPrefix,
+  formatElem,
 } from "../src/utils";
 import {
   unitPrefixes,
@@ -14,6 +15,16 @@ import {
 } from "./data/unit_prefix_fixtures";
 
 describe("Utils", () => {
+  describe("formatElem", () => {
+    it("returns elem if not a single character", () => {
+      assert.equal(formatElem("1A"), "1A");
+    });
+
+    it("suffixes elem if single character", () => {
+      assert.equal(formatElem("A"), "A,");
+    });
+  });
+
   describe("hasUnitPrefix", () => {
     describe("when string has unit prefix", () => {
       unitPrefixes
