@@ -1,20 +1,33 @@
-[![CircleCI](https://circleci.com/gh/ideal-postcodes/uk-clear-addressing.svg?style=svg)](https://circleci.com/gh/ideal-postcodes/uk-clear-addressing) [![Dependency Status](https://david-dm.org/cblanc/uk-clear-addressing.png)](https://david-dm.org/cblanc/uk-clear-addressing) [![Coverage Status](https://coveralls.io/repos/github/ideal-postcodes/uk-clear-addressing/badge.svg?branch=master)](https://coveralls.io/github/ideal-postcodes/uk-clear-addressing?branch=master)
+<h1 align="center">
+  <img src="https://img.ideal-postcodes.co.uk/UK%20Clear%20Addressing%20Logo@3x.png" alt="UK Clear Addressing">
+</h1>
 
-# UK Clear Addressing
+> Correctly parse and format UK Addresses in Royal Mail's Postcode Address File
 
+[![CircleCI](https://circleci.com/gh/ideal-postcodes/uk-clear-addressing.svg?style=svg)](https://circleci.com/gh/ideal-postcodes/uk-clear-addressing)
+[![Dependency Status](https://david-dm.org/ideal-postcodes/uk-clear-addressing.png)](https://david-dm.org/ideal-postcodes/uk-clear-addressing)
+[![Coverage Status](https://coveralls.io/repos/github/ideal-postcodes/uk-clear-addressing/badge.svg?branch=master)](https://coveralls.io/github/ideal-postcodes/uk-clear-addressing?branch=master)
 [![Try uk-clear-addressing on RunKit](https://badge.runkitcdn.com/uk-clear-addressing.svg)](https://npm.runkit.com/uk-clear-addressing)
 
-This module converts UK address fragments into a properly formatted address recognised by Royal Mail according to its Clear Addressing Guidelines. This consists of 1-3 address lines, a post town line and a postcode line.
+Parses Postcode Address File records into correctly formatted address recognised by Royal Mail according to its Clear Addressing Guidelines.
+
+Produces consistent address lines, a post town line and a postcode line.
+
+## Features
 
 ![Correct Addressing](https://img.ideal-postcodes.co.uk/correct_address.gif)
 
-Created in conjunction with Royal Mail Postcode Address File, it maps field name for field name if you were to pull the address straight from this database. If you don't have access to PAF, it can still be used as long as you know which parameters correspond to what data you have available. Parameters listed [below](#parameters)
+- Correctly format UK addresses using Royal Mail's Postcode Address File
+- Produces 3 address lines and premise attributes based on `building_name`, `sub_building_name` and `building_number`
+- Address sorting function
+- Extensive test suite
 
 ## Links
 
-- [Project Documentation](https://ideal-postcodes.github.io/uk-clear-addressing/)
+- [API Documentation](https://ideal-postcodes.github.io/uk-clear-addressing/)
 - [More information on Postcode Address File data attributes](https://ideal-postcodes.co.uk/documentation/paf-data)
-- [PAF Programmer's Guide](https://www.poweredbypaf.com/using-our-address-data/use-the-data-yourself/)
+- [PAF Programmer's Guide](https://js.ideal-postcodes.co.uk/guide.pdf)
+- [Try uk-clear-addressing on RunKit](https://npm.runkit.com/uk-clear-addressing)
 
 ## Getting Started
 
@@ -85,8 +98,7 @@ const addresses = await query("SELECT * FROM postcode_address_file LIMIT 10");
 
 addresses
 	.map(address => new Address(address)) // Instantiate an `Address` instances
-	.sort(Address.sort)  								  // Now sort
-
+	.sort(Address.sort)                   // Now sort
 	// Print an example to console
 	.forEach(address => console.log(address.line_1));
 	// "190 Elm Road"
@@ -125,17 +137,18 @@ Below is a list of address fragments. For the address to be properly formatted, 
 
 ### Thoroughfare elements
 
-- Dependent Thoroughfare Name (e.g. ‘Cheshunt’)
-- Dependent Thoroughfare Descriptor (e.g. ‘Mews’ or ‘Court’)
+- Dependant Thoroughfare Name (e.g. ‘Cheshunt’)
+- Dependant Thoroughfare Descriptor (e.g. ‘Mews’ or ‘Court’)
 - Thoroughfare Name (e.g. ‘Cypress’)
 - Thoroughfare Descriptor (e.g. ‘Road’ or ‘Street’)
 
 ### Locality elements
 
-- Double Dependent Locality (e.g. ‘Tyre Industrial Estate’)
-- Dependent Locality (e.g. ‘Blantyre’)
+- Double Dependant Locality (e.g. ‘Tyre Industrial Estate’)
+- Dependant Locality (e.g. ‘Blantyre’)
 - Post Town (e.g. ‘GLASGOW’)
 
 ## Licence
 
 MIT
+
