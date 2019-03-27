@@ -42,9 +42,34 @@ export const prependLocality = (
   premise: string
 ): void => {
   localities[localities.length - 1] = `${premise} ${lastElem(localities)}`;
-  /**
-   *
-   *
-   * @returns {undefined}
-   */
+};
+
+// Valid unit prefixes
+// [
+//   "Back of",
+//   "Block",
+//   "Blocks",
+//   "Building",
+//   "Maisonette",
+//   "Maisonettes",
+//   "Rear of",
+//   "Shop",
+//   "Shops",
+//   "Stall",
+//   "Stalls",
+//   "Suite",
+//   "Suites",
+//   "Unit",
+//   "Units",
+// ];
+
+const unitPrefixRegex = /^(back\sof|block|blocks|building|maisonette|maisonettes|rear\sof|shop|shops|stall|stalls|suite|suites|unit|units)/gi;
+
+/**
+ * Test for whether a string begins with a unit prefix
+ *
+ * E.g. `Back of 10A` => true
+ */
+export const hasUnitPrefix = (e: string): boolean => {
+  return e.match(unitPrefixRegex) !== null;
 };
