@@ -1,0 +1,847 @@
+{
+  "fixtures": [
+    {
+      "expected": {
+        "line_1": "(Smith)",
+        "line_2": "Rose Cottage",
+        "line_3": "Packhouse Lane",
+        "post_town": "BIRMINGHAM",
+        "postcode": "B39 0DH",
+        "premise": "(Smith), Rose Cottage"
+      },
+      "fixture": {
+        "post_town": "BIRMINGHAM",
+        "building_name": "Rose Cottage",
+        "thoroughfare": "Packhouse Lane",
+        "sub_building_name": "(Smith)",
+        "postcode": "B39 0DH"
+      },
+      "description": "Rule 7"
+    },
+    {
+      "expected": {
+        "line_1": "(Hynes)",
+        "line_2": "Crompton Road",
+        "line_3": "",
+        "post_town": "BRADLEY HEATH",
+        "postcode": "S64 5BB",
+        "premise": "(Hynes)"
+      },
+      "fixture": {
+        "post_town": "BRADLEY HEATH",
+        "building_name": "(Hynes)",
+        "thoroughfare": "Crompton Road",
+        "postcode": "S64 5BB"
+      },
+      "description": "Rule 1"
+    },
+    {
+      "expected": {
+        "line_1": "16 Vixen Road",
+        "line_2": "",
+        "line_3": "",
+        "post_town": "BRADOCK",
+        "postcode": "KT6 5BT",
+        "premise": "16"
+      },
+      "fixture": {
+        "post_town": "BRADOCK",
+        "thoroughfare": "Vixen Road",
+        "postcode": "KT6 5BT",
+        "building_number": "16"
+      },
+      "description": "Rule 2"
+    },
+    {
+      "expected": {
+        "line_1": "Cath's Cakes",
+        "line_2": "Victoria House",
+        "line_3": "High Street",
+        "post_town": "PORTSMOUTH",
+        "postcode": "P01 1AF",
+        "premise": "Victoria House"
+      },
+      "fixture": {
+        "post_town": "PORTSMOUTH",
+        "building_name": "Victoria House",
+        "thoroughfare": "High Street",
+        "postcode": "P01 1AF",
+        "organisation_name": "Cath's Cakes"
+      },
+      "description": "Rule 2"
+    },
+    {
+      "expected": {
+        "line_1": "Flat 1, Holly House",
+        "line_2": "Oak Avenue",
+        "line_3": "Biddenden",
+        "post_town": "ASHFORD",
+        "postcode": "TN27 8BT",
+        "premise": "Flat 1, Holly House"
+      },
+      "fixture": {
+        "post_town": "ASHFORD",
+        "dependant_locality": "Biddenden",
+        "building_name": "Holly House",
+        "thoroughfare": "Oak Avenue",
+        "sub_building_name": "Flat 1",
+        "postcode": "TN27 8BT",
+        "building_number": "0"
+      },
+      "description": "Rule 6: Merge sub and building"
+    },
+    {
+      "expected": {
+        "line_1": "Flat 20",
+        "line_2": "Victoria House",
+        "line_3": "15 The Street",
+        "post_town": "CHRISTCHURCH",
+        "postcode": "BH23 6AA",
+        "premise": "Flat 20, Victoria House, 15"
+      },
+      "fixture": {
+        "post_town": "CHRISTCHURCH",
+        "building_name": "Victoria House",
+        "thoroughfare": "The Street",
+        "sub_building_name": "Flat 20",
+        "postcode": "BH23 6AA",
+        "building_number": "15"
+      },
+      "description": "Rule 7"
+    },
+    {
+      "expected": {
+        "line_1": "Caretakers Flat",
+        "line_2": "110-114 High Street West",
+        "line_3": "",
+        "post_town": "BRISTOL",
+        "postcode": "BS1 2AW",
+        "premise": "Caretakers Flat, 110-114"
+      },
+      "fixture": {
+        "post_town": "BRISTOL",
+        "building_name": "110-114",
+        "thoroughfare": "High Street West",
+        "sub_building_name": "Caretakers Flat",
+        "postcode": "BS1 2AW"
+      },
+      "description": "Rule 6"
+    },
+    {
+      "expected": {
+        "line_1": "16 Angelica Way",
+        "line_2": "",
+        "line_3": "",
+        "post_town": "EMSWORTH",
+        "postcode": "NR25 7HG",
+        "premise": "16"
+      },
+      "fixture": {
+        "post_town": "EMSWORTH",
+        "thoroughfare": "Angelica Way",
+        "postcode": "NR25 7HG",
+        "building_number": "16"
+      },
+      "description": "Rule 2"
+    },
+    {
+      "expected": {
+        "line_1": "O'Neills",
+        "line_2": "37 George Street",
+        "line_3": "",
+        "post_town": "OXFORD",
+        "postcode": "OX1 2AY",
+        "premise": "37"
+      },
+      "fixture": {
+        "post_town": "OXFORD",
+        "thoroughfare": "George Street",
+        "postcode": "OX1 2AY",
+        "organisation_name": "O'Neills",
+        "building_number": "37"
+      },
+      "description": "Rule 2"
+    },
+    {
+      "expected": {
+        "line_1": "The Manor",
+        "line_2": "Norwood",
+        "line_3": "",
+        "post_town": "HORLEY",
+        "postcode": "RH6 0HP",
+        "premise": "The Manor"
+      },
+      "fixture": {
+        "post_town": "HORLEY",
+        "dependant_locality": "Norwood",
+        "building_name": "The Manor",
+        "postcode": "RH6 0HP"
+      },
+      "description": "Rule 3"
+    },
+    {
+      "expected": {
+        "line_1": "PO Box 61",
+        "line_2": "",
+        "line_3": "",
+        "post_town": "FAREHAM",
+        "postcode": "PO14 1UX",
+        "premise": "PO Box 61"
+      },
+      "fixture": {
+        "po_box": "61",
+        "post_town": "FAREHAM",
+        "postcode": "PO14 1UX"
+      },
+      "description": "PO Box"
+    },
+    {
+      "expected": {
+        "line_1": "PO Box 22",
+        "line_2": "",
+        "line_3": "",
+        "post_town": "FAREHAM",
+        "postcode": "PO14 3XH",
+        "premise": "PO Box 22"
+      },
+      "fixture": {
+        "po_box": "22",
+        "post_town": "FAREHAM",
+        "postcode": "PO14 3XH"
+      },
+      "description": "PO Box"
+    },
+    {
+      "expected": {
+        "line_1": "Britannia Park Veterinary Centre",
+        "line_2": "Unit 60",
+        "line_3": "Britannia Way, Britannia Enterprise Park",
+        "post_town": "LICHFIELD",
+        "postcode": "WS14 9UY",
+        "premise": "Unit 60"
+      },
+      "fixture": {
+        "post_town": "LICHFIELD",
+        "dependant_locality": "Britannia Enterprise Park",
+        "building_name": "Unit 60",
+        "thoroughfare": "Britannia Way",
+        "postcode": "WS14 9UY",
+        "organisation_name": "Britannia Park Veterinary Centre",
+        "building_number": " "
+      },
+      "description": "Rule 3"
+    },
+    {
+      "expected": {
+        "line_1": "Leda Engineering Ltd",
+        "line_2": "Appleford",
+        "line_3": "",
+        "post_town": "ABINGDON",
+        "postcode": "OX14 4PG",
+        "premise": ""
+      },
+      "fixture": {
+        "post_town": "ABINGDON",
+        "dependant_locality": "Appleford",
+        "postcode": "OX14 4PG",
+        "organisation_name": "Leda Engineering Ltd"
+      },
+      "description": "Rule 1"
+    },
+    {
+      "expected": {
+        "line_1": "Leda Engineering Ltd",
+        "line_2": "Engineering Department",
+        "line_3": "Appleford",
+        "post_town": "ABINGDON",
+        "postcode": "OX14 4PG",
+        "premise": ""
+      },
+      "fixture": {
+        "post_town": "ABINGDON",
+        "dependant_locality": "Appleford",
+        "department_name": "Engineering Department",
+        "postcode": "OX14 4PG",
+        "organisation_name": "Leda Engineering Ltd"
+      },
+      "description": "Rule 1"
+    },
+    {
+      "expected": {
+        "line_1": "1 Acacia Avenue",
+        "line_2": "",
+        "line_3": "",
+        "post_town": "ABINGDON",
+        "postcode": "OX14 4PG",
+        "premise": "1"
+      },
+      "fixture": {
+        "post_town": "ABINGDON",
+        "thoroughfare": "Acacia Avenue",
+        "postcode": "OX14 4PG",
+        "building_number": "1"
+      },
+      "description": "Rule 2"
+    },
+    {
+      "expected": {
+        "line_1": "1 Locality Name",
+        "line_2": "",
+        "line_3": "",
+        "post_town": "ABINGDON",
+        "postcode": "OX14 4PG",
+        "premise": "1"
+      },
+      "fixture": {
+        "post_town": "ABINGDON",
+        "dependant_locality": "Locality Name",
+        "postcode": "OX14 4PG",
+        "building_number": "1"
+      },
+      "description": "Rule 2"
+    },
+    {
+      "expected": {
+        "line_1": "1 Dep Locality Name",
+        "line_2": "Locality Name",
+        "line_3": "",
+        "post_town": "ABINGDON",
+        "postcode": "OX14 4PG",
+        "premise": "1"
+      },
+      "fixture": {
+        "post_town": "ABINGDON",
+        "dependant_locality": "Locality Name",
+        "double_dependant_locality": "Dep Locality Name",
+        "postcode": "OX14 4PG",
+        "building_number": "1"
+      },
+      "description": "Rule 2"
+    },
+    {
+      "expected": {
+        "line_1": "1 Acacia Avenue",
+        "line_2": "Dep Locality Name",
+        "line_3": "Locality Name",
+        "post_town": "ABINGDON",
+        "postcode": "OX14 4PG",
+        "premise": "1"
+      },
+      "fixture": {
+        "post_town": "ABINGDON",
+        "dependant_locality": "Locality Name",
+        "double_dependant_locality": "Dep Locality Name",
+        "thoroughfare": "Acacia Avenue",
+        "postcode": "OX14 4PG",
+        "building_number": "1"
+      },
+      "description": "Rule 2"
+    },
+    {
+      "expected": {
+        "line_1": "1A Seastone Court",
+        "line_2": "Station Road",
+        "line_3": "",
+        "post_town": "HOLT",
+        "postcode": "NR25 7HG",
+        "premise": "1A"
+      },
+      "fixture": {
+        "post_town": "HOLT",
+        "building_name": "1A",
+        "thoroughfare": "Station Road",
+        "dependant_thoroughfare": "Seastone Court",
+        "postcode": "NR25 7HG"
+      },
+      "description": "Rule 3"
+    },
+    {
+      "expected": {
+        "line_1": "1a Seastone Court",
+        "line_2": "Station Road",
+        "line_3": "",
+        "post_town": "HOLT",
+        "postcode": "NR25 7HG",
+        "premise": "1a"
+      },
+      "fixture": {
+        "post_town": "HOLT",
+        "building_name": "1a",
+        "thoroughfare": "Station Road",
+        "dependant_thoroughfare": "Seastone Court",
+        "postcode": "NR25 7HG"
+      },
+      "description": "Rule 3"
+    },
+    {
+      "expected": {
+        "line_1": "Imperial Candles",
+        "line_2": "Unit 3-4",
+        "line_3": "Dalehouse Lane Industrial Estate, Cotton Drive",
+        "post_town": "KENILWORTH",
+        "postcode": "CV8 2UE",
+        "premise": "Unit 3-4"
+      },
+      "fixture": {
+        "post_town": "KENILWORTH",
+        "building_name": "Unit 3-4",
+        "thoroughfare": "Cotton Drive",
+        "dependant_thoroughfare": "Dalehouse Lane Industrial Estate",
+        "postcode": "CV8 2UE",
+        "organisation_name": "Imperial Candles"
+      },
+      "description": "Rule 3"
+    },
+    {
+      "expected": {
+        "line_1": "The Manor",
+        "line_2": "Upper Hill",
+        "line_3": "",
+        "post_town": "HORLEY",
+        "postcode": "RH6 0HP",
+        "premise": "The Manor"
+      },
+      "fixture": {
+        "post_town": "HORLEY",
+        "building_name": "The Manor",
+        "thoroughfare": "Upper Hill",
+        "postcode": "RH6 0HP"
+      },
+      "description": "Rule 3"
+    },
+    {
+      "expected": {
+        "line_1": "S D Alcott Florists",
+        "line_2": "Flower House",
+        "line_3": "189a Pye Green Road",
+        "post_town": "CANNOCK",
+        "postcode": "WS11 5SB",
+        "premise": "Flower House, 189a"
+      },
+      "fixture": {
+        "post_town": "CANNOCK",
+        "building_name": "Flower House 189a",
+        "thoroughfare": "Pye Green Road",
+        "postcode": "WS11 5SB",
+        "organisation_name": "S D Alcott Florists"
+      },
+      "description": "Rule 3"
+    },
+    {
+      "expected": {
+        "line_1": "S D Alcott Florists",
+        "line_2": "Flower House",
+        "line_3": "189A Pye Green Road",
+        "post_town": "CANNOCK",
+        "postcode": "WS11 5SB",
+        "premise": "Flower House, 189A"
+      },
+      "fixture": {
+        "post_town": "CANNOCK",
+        "building_name": "Flower House 189A",
+        "thoroughfare": "Pye Green Road",
+        "postcode": "WS11 5SB",
+        "organisation_name": "S D Alcott Florists"
+      },
+      "description": "Rule 3"
+    },
+    {
+      "expected": {
+        "line_1": "James Villa Holidays",
+        "line_2": "Centre 30",
+        "line_3": "St. Laurence Avenue",
+        "post_town": "GRAFTON",
+        "postcode": "ME16 0LP",
+        "premise": "Centre 30"
+      },
+      "fixture": {
+        "post_town": "GRAFTON",
+        "building_name": "Centre 30",
+        "thoroughfare": "St. Laurence Avenue",
+        "postcode": "ME16 0LP",
+        "organisation_name": "James Villa Holidays"
+      },
+      "description": "Rule 3"
+    },
+    {
+      "expected": {
+        "line_1": "Victoria House",
+        "line_2": "15 The Street",
+        "line_3": "",
+        "post_town": "CHRISTCHURCH",
+        "postcode": "BH23 6AA",
+        "premise": "Victoria House, 15"
+      },
+      "fixture": {
+        "post_town": "CHRISTCHURCH",
+        "building_name": "Victoria House",
+        "thoroughfare": "The Street",
+        "postcode": "BH23 6AA",
+        "building_number": "15"
+      },
+      "description": "Rule 4"
+    },
+    {
+      "expected": {
+        "line_1": "Flat 1",
+        "line_2": "12 Lime Tree Avenue",
+        "line_3": "",
+        "post_town": "BRISTOL",
+        "postcode": "BS8 4AB",
+        "premise": "Flat 1, 12"
+      },
+      "fixture": {
+        "post_town": "BRISTOL",
+        "thoroughfare": "Lime Tree Avenue",
+        "sub_building_name": "Flat 1",
+        "postcode": "BS8 4AB",
+        "building_number": "12"
+      },
+      "description": "Rule 5"
+    },
+    {
+      "expected": {
+        "line_1": "12A High Street North",
+        "line_2": "Coombe Bissett",
+        "line_3": "",
+        "post_town": "SALISBURY",
+        "postcode": "SP5 4NA",
+        "premise": "12A"
+      },
+      "fixture": {
+        "post_town": "SALISBURY",
+        "dependant_locality": "Coombe Bissett",
+        "thoroughfare": "High Street North",
+        "sub_building_name": "A",
+        "postcode": "SP5 4NA",
+        "building_number": "12"
+      },
+      "description": "Rule 5"
+    },
+    {
+      "expected": {
+        "line_1": "10B Barry Jackson Tower",
+        "line_2": "Estone Walk",
+        "line_3": "",
+        "post_town": "BIRMINGHAM",
+        "postcode": "B6 5BA",
+        "premise": "10B Barry Jackson Tower"
+      },
+      "fixture": {
+        "post_town": "BIRMINGHAM",
+        "building_name": "Barry Jackson Tower",
+        "thoroughfare": "Estone Walk",
+        "sub_building_name": "10B",
+        "postcode": "B6 5BA"
+      },
+      "description": "Rule 6"
+    },
+    {
+      "expected": {
+        "line_1": "Caretakers Flat",
+        "line_2": "110-114 High Street West",
+        "line_3": "",
+        "post_town": "BRISTOL",
+        "postcode": "BS1 2AW",
+        "premise": "Caretakers Flat, 110-114"
+      },
+      "fixture": {
+        "post_town": "BRISTOL",
+        "building_name": "110-114",
+        "thoroughfare": "High Street West",
+        "sub_building_name": "Caretakers Flat",
+        "postcode": "BS1 2AW"
+      },
+      "description": "Rule 6"
+    },
+    {
+      "expected": {
+        "line_1": "Stables Flat",
+        "line_2": "The Manor",
+        "line_3": "Upper Hill",
+        "post_town": "HORLEY",
+        "postcode": "RH6 0HP",
+        "premise": "Stables Flat, The Manor"
+      },
+      "fixture": {
+        "post_town": "HORLEY",
+        "building_name": "The Manor",
+        "thoroughfare": "Upper Hill",
+        "sub_building_name": "Stables Flat",
+        "postcode": "RH6 0HP"
+      },
+      "description": "Rule 6"
+    },
+    {
+      "expected": {
+        "line_1": "20gf Belgrave Crescent",
+        "line_2": "",
+        "line_3": "",
+        "post_town": "EDINBURGH",
+        "postcode": "EH4 3AJ",
+        "premise": "20gf"
+      },
+      "fixture": {
+        "post_town": "EDINBURGH",
+        "thoroughfare": "Belgrave Crescent",
+        "sub_building_name": "20gf",
+        "postcode": "EH4 3AJ",
+        "building_number": " "
+      },
+      "description": "Undocumented Rule"
+    },
+    {
+      "expected": {
+        "line_1": "2B The Tower",
+        "line_2": "27 John Street",
+        "line_3": "",
+        "post_town": "WINCHESTER",
+        "postcode": "SO23 9AP",
+        "premise": "2B The Tower, 27"
+      },
+      "fixture": {
+        "post_town": "WINCHESTER",
+        "building_name": "The Tower",
+        "thoroughfare": "John Street",
+        "sub_building_name": "2B",
+        "postcode": "SO23 9AP",
+        "building_number": "27"
+      },
+      "description": "Rule 7"
+    },
+    {
+      "expected": {
+        "line_1": "Basement Flat",
+        "line_2": "Victoria House",
+        "line_3": "15 The Street",
+        "post_town": "CORYTON",
+        "postcode": "BP23 6AA",
+        "premise": "Basement Flat, Victoria House, 15"
+      },
+      "fixture": {
+        "post_town": "CORYTON",
+        "building_name": "Victoria House",
+        "thoroughfare": "The Street",
+        "sub_building_name": "Basement Flat",
+        "postcode": "BP23 6AA",
+        "building_number": "15"
+      },
+      "description": "Rule 7"
+    },
+    {
+      "expected": {
+        "line_1": "Driver & Vehicle Licensing Agency",
+        "line_2": "Driving Licence Renewals",
+        "line_3": "Driver & Vehicle Licensing Centre",
+        "post_town": "SWANSEA",
+        "postcode": "SA99 1AA",
+        "premise": "Driver & Vehicle Licensing Centre"
+      },
+      "fixture": {
+        "post_town": "SWANSEA",
+        "department_name": "Driving Licence Renewals",
+        "building_name": "Driver & Vehicle Licensing Centre",
+        "postcode": "SA99 1AA",
+        "organisation_name": "Driver & Vehicle Licensing Agency"
+      },
+      "description": "Rule 1"
+    },
+    {
+      "expected": {
+        "line_1": "PO Box 276",
+        "line_2": "",
+        "line_3": "",
+        "post_town": "BOGNOR REGIS",
+        "postcode": "PO21 9AA",
+        "premise": "PO Box 276"
+      },
+      "fixture": {
+        "po_box": "276",
+        "post_town": "BOGNOR REGIS",
+        "postcode": "PO21 9AA"
+      },
+      "description": "PO Box"
+    },
+    {
+      "expected": {
+        "line_1": "1-2 Nursery Lane",
+        "line_2": "Penn",
+        "line_3": "",
+        "post_town": "HIGH WYCOMBE",
+        "postcode": "HP10 8LS",
+        "premise": "1-2"
+      },
+      "fixture": {
+        "post_town": "HIGH WYCOMBE",
+        "dependant_locality": "Penn",
+        "building_name": "1-2",
+        "thoroughfare": "Nursery Lane",
+        "postcode": "HP10 8LS"
+      },
+      "description": "Rule 3: Exception"
+    },
+    {
+      "expected": {
+        "line_1": "12A Upperkirkgate",
+        "line_2": "",
+        "line_3": "",
+        "post_town": "ABERDEEN",
+        "postcode": "AB10 1BA",
+        "premise": "12A"
+      },
+      "fixture": {
+        "post_town": "ABERDEEN",
+        "building_name": "12A",
+        "thoroughfare": "Upperkirkgate",
+        "postcode": "AB10 1BA"
+      },
+      "description": "Rule 3: Exception"
+    },
+    {
+      "expected": {
+        "line_1": "K, Portland Road",
+        "line_2": "",
+        "line_3": "",
+        "post_town": "DORKING",
+        "postcode": "RH4 1EW",
+        "premise": "K"
+      },
+      "fixture": {
+        "post_town": "DORKING",
+        "building_name": "K",
+        "thoroughfare": "Portland Road",
+        "postcode": "RH4 1EW"
+      },
+      "description": "Rule 3"
+    },
+    {
+      "expected": {
+        "line_1": "A, Priory Court",
+        "line_2": "Kingshill Road",
+        "line_3": "",
+        "post_town": "DURSLEY",
+        "postcode": "GL11 4DH",
+        "premise": "A, Priory Court"
+      },
+      "fixture": {
+        "post_town": "DURSLEY",
+        "building_name": "Priory Court",
+        "thoroughfare": "Kingshill Road",
+        "sub_building_name": "A",
+        "postcode": "GL11 4DH"
+      },
+      "description": "Rule 4"
+    },
+    {
+      "expected": {
+        "line_1": "A, Sharon Mansions",
+        "line_2": "34 Lilley Road",
+        "line_3": "",
+        "post_town": "LIVERPOOL",
+        "postcode": "L7 0LR",
+        "premise": "A, Sharon Mansions, 34"
+      },
+      "fixture": {
+        "post_town": "LIVERPOOL",
+        "building_name": "Sharon Mansions",
+        "thoroughfare": "Lilley Road",
+        "sub_building_name": "A",
+        "postcode": "L7 0LR",
+        "building_number": "34"
+      },
+      "description": "Rule 7"
+    },
+    {
+      "expected": {
+        "line_1": "The Tambourine Warehouse",
+        "line_2": "Unit 1-3",
+        "line_3": "Industrial Estate, Tame Road",
+        "post_town": "LONDON",
+        "postcode": "E6 7HS",
+        "premise": "Unit 1-3"
+      },
+      "fixture": {
+        "post_town": "LONDON",
+        "building_name": "Unit 1-3",
+        "thoroughfare": "Tame Road",
+        "dependant_thoroughfare": "Industrial Estate",
+        "postcode": "E6 7HS",
+        "organisation_name": "The Tambourine Warehouse"
+      },
+      "description": "Rule 2: Exception"
+    },
+    {
+      "expected": {
+        "line_1": "Quirky Candles Ltd",
+        "line_2": "Stall 4-5",
+        "line_3": "Market Square",
+        "post_town": "LIVERPOOL",
+        "postcode": "L8 1LH",
+        "premise": "Stall 4-5"
+      },
+      "fixture": {
+        "post_town": "LIVERPOOL",
+        "building_name": "Stall 4-5",
+        "thoroughfare": "Market Square",
+        "postcode": "L8 1LH",
+        "organisation_name": "Quirky Candles Ltd"
+      },
+      "description": "Rule 2: Exception"
+    },
+    {
+      "expected": {
+        "line_1": "The Fudge Factory",
+        "line_2": "Unit 1a",
+        "line_3": "Dyce Industrial Park, Dyce",
+        "post_town": "GLASGOW",
+        "postcode": "G21 7EZ",
+        "premise": "Unit 1a"
+      },
+      "fixture": {
+        "post_town": "GLASGOW",
+        "dependant_locality": "Dyce",
+        "building_name": "Unit 1a",
+        "thoroughfare": "Dyce Industrial Park",
+        "postcode": "G21 7EZ",
+        "organisation_name": "The Fudge Factory"
+      },
+      "description": "Rule 2: Exception"
+    },
+    {
+      "expected": {
+        "line_1": "Fiona's Flowers",
+        "line_2": "Rear of 5a",
+        "line_3": "High Street",
+        "post_town": "GATESHEAD",
+        "postcode": "NE8 1BH",
+        "premise": "Rear of 5a"
+      },
+      "fixture": {
+        "post_town": "GATESHEAD",
+        "building_name": "Rear of 5a",
+        "thoroughfare": "High Street",
+        "postcode": "NE8 1BH",
+        "organisation_name": "Fiona's Flowers"
+      },
+      "description": "Rule 2: Exception"
+    },
+    {
+      "expected": {
+        "line_1": "Platinum Finance",
+        "line_2": "Suite 1-3",
+        "line_3": "Station Road",
+        "post_town": "MUSSELBURGH",
+        "postcode": "EH21 7PB",
+        "premise": "Suite 1-3"
+      },
+      "fixture": {
+        "post_town": "MUSSELBURGH",
+        "building_name": "Suite 1-3",
+        "thoroughfare": "Station Road",
+        "postcode": "EH21 7PB",
+        "organisation_name": "Platinum Finance"
+      },
+      "description": "Rule 2: Exception"
+    }
+  ]
+}

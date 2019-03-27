@@ -30,6 +30,18 @@ describe("Address Model", () => {
       assert.isNull(address.cache);
     });
 
+    it("assigns cache when address is formatted", () => {
+      const address = new Address({
+        postcode: "OX14 4PG",
+        post_town: "ABINGDON",
+        dependant_locality: "Appleford",
+        double_dependant_locality: "",
+        organisation_name: "Leda Engineering Ltd",
+      });
+      const formattedAddress = address.formattedAddress();
+      assert.equal(address.cache, formattedAddress);
+    });
+
     it("detects empty building number", () => {
       const address = new Address({ building_number: "0" });
       assert.equal(address.building_number, "");
