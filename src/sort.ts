@@ -1,5 +1,5 @@
 import { Address } from "./index";
-import { nameException } from "./rules";
+import { nameException } from "./utils";
 import { SortingElems } from "./types";
 import { alphanum } from "@cablanchard/koelle-sort";
 
