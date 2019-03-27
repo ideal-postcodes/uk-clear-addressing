@@ -26,21 +26,39 @@ npm install uk-clear-addressing
 
 ### Formatting Addresses
 
+#### Extract formatted address lines
+
 ```javascript
 const { Address } = require('uk-clear-addressing');
 
-// Pass in your address fragments
+const pafRecord = {
+  postcode: "WS11 5SB",
+  post_town: "CANNOCK",
+  thoroughfare: "Pye Green Road",
+  building_name: "Flower House 189A",
+  organisation_name: 'S D Alcott Florists',
+};
+
+const {
+  line_1,
+  line_2,
+  line_3,
+  premise,
+  post_town,
+  postcode
+} = new Address(pafRecord);
+```
+
+#### Extract a formatted address object
+
+```javascript
+const { Address } = require('uk-clear-addressing');
 
 const address = new Address({
 	postcode: "WS11 5SB",
 	post_town: "CANNOCK",
-	dependant_locality: "",
-	double_dependant_locality: "",
 	thoroughfare: "Pye Green Road",
-	building_number: "",
 	building_name: "Flower House 189A",
-	sub_building_name: "",
-	dependant_thoroughfare: "",
 	organisation_name: 'S D Alcott Florists',
 });
 
@@ -56,7 +74,6 @@ console.log(address.formattedAddress());
 //		premise: "Flower House, 189a"
 //	}
 //
-
 ```
 
 ### Sorting Addresses
