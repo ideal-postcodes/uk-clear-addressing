@@ -162,6 +162,22 @@ export class Address {
     }
   }
 
+  get line_1(): string {
+    return this.formattedAddress().line_1;
+  }
+
+  get line_2(): string {
+    return this.formattedAddress().line_2;
+  }
+
+  get line_3(): string {
+    return this.formattedAddress().line_3;
+  }
+
+  get premise(): string {
+    return this.formattedAddress().premise;
+  }
+
   /**
    * Returns object containing raw address attributes
    * @hidden
