@@ -772,6 +772,272 @@
     },
     {
       "expected": {
+        "line_1": "The Tambourine Warehouse",
+        "line_2": "Units 1-3",
+        "line_3": "Industrial Estate, Tame Road",
+        "post_town": "LONDON",
+        "postcode": "E6 7HS",
+        "premise": "Units 1-3"
+      },
+      "fixture": {
+        "post_town": "LONDON",
+        "building_name": "Units 1-3",
+        "thoroughfare": "Tame Road",
+        "dependant_thoroughfare": "Industrial Estate",
+        "postcode": "E6 7HS",
+        "organisation_name": "The Tambourine Warehouse"
+      },
+      "description": "Rule 2: Exception"
+    },
+    {
+      "expected": {
+        "line_1": "The Tambourine Warehouse",
+        "line_2": "Suite 1-3",
+        "line_3": "Industrial Estate, Tame Road",
+        "post_town": "LONDON",
+        "postcode": "E6 7HS",
+        "premise": "Suite 1-3"
+      },
+      "fixture": {
+        "post_town": "LONDON",
+        "building_name": "Suite 1-3",
+        "thoroughfare": "Tame Road",
+        "dependant_thoroughfare": "Industrial Estate",
+        "postcode": "E6 7HS",
+        "organisation_name": "The Tambourine Warehouse"
+      },
+      "description": "Rule 2: Exception"
+    },
+    {
+      "expected": {
+        "line_1": "The Tambourine Warehouse",
+        "line_2": "Suites 1-3",
+        "line_3": "Industrial Estate, Tame Road",
+        "post_town": "LONDON",
+        "postcode": "E6 7HS",
+        "premise": "Suites 1-3"
+      },
+      "fixture": {
+        "post_town": "LONDON",
+        "building_name": "Suites 1-3",
+        "thoroughfare": "Tame Road",
+        "dependant_thoroughfare": "Industrial Estate",
+        "postcode": "E6 7HS",
+        "organisation_name": "The Tambourine Warehouse"
+      },
+      "description": "Rule 2: Exception"
+    },
+    {
+      "expected": {
+        "line_1": "The Tambourine Warehouse",
+        "line_2": "Stall 1-3",
+        "line_3": "Industrial Estate, Tame Road",
+        "post_town": "LONDON",
+        "postcode": "E6 7HS",
+        "premise": "Stall 1-3"
+      },
+      "fixture": {
+        "post_town": "LONDON",
+        "building_name": "Stall 1-3",
+        "thoroughfare": "Tame Road",
+        "dependant_thoroughfare": "Industrial Estate",
+        "postcode": "E6 7HS",
+        "organisation_name": "The Tambourine Warehouse"
+      },
+      "description": "Rule 2: Exception"
+    },
+    {
+      "expected": {
+        "line_1": "The Tambourine Warehouse",
+        "line_2": "Stalls 1-3",
+        "line_3": "Industrial Estate, Tame Road",
+        "post_town": "LONDON",
+        "postcode": "E6 7HS",
+        "premise": "Stalls 1-3"
+      },
+      "fixture": {
+        "post_town": "LONDON",
+        "building_name": "Stalls 1-3",
+        "thoroughfare": "Tame Road",
+        "dependant_thoroughfare": "Industrial Estate",
+        "postcode": "E6 7HS",
+        "organisation_name": "The Tambourine Warehouse"
+      },
+      "description": "Rule 2: Exception"
+    },
+    {
+      "expected": {
+        "line_1": "The Tambourine Warehouse",
+        "line_2": "Shops 1-3",
+        "line_3": "Industrial Estate, Tame Road",
+        "post_town": "LONDON",
+        "postcode": "E6 7HS",
+        "premise": "Shops 1-3"
+      },
+      "fixture": {
+        "post_town": "LONDON",
+        "building_name": "Shops 1-3",
+        "thoroughfare": "Tame Road",
+        "dependant_thoroughfare": "Industrial Estate",
+        "postcode": "E6 7HS",
+        "organisation_name": "The Tambourine Warehouse"
+      },
+      "description": "Rule 2: Exception"
+    },
+    {
+      "expected": {
+        "line_1": "The Tambourine Warehouse",
+        "line_2": "Shop 1-3",
+        "line_3": "Industrial Estate, Tame Road",
+        "post_town": "LONDON",
+        "postcode": "E6 7HS",
+        "premise": "Shop 1-3"
+      },
+      "fixture": {
+        "post_town": "LONDON",
+        "building_name": "Shop 1-3",
+        "thoroughfare": "Tame Road",
+        "dependant_thoroughfare": "Industrial Estate",
+        "postcode": "E6 7HS",
+        "organisation_name": "The Tambourine Warehouse"
+      },
+      "description": "Rule 2: Exception"
+    },
+    {
+      "expected": {
+        "line_1": "The Tambourine Warehouse",
+        "line_2": "Rear of 1-3",
+        "line_3": "Industrial Estate, Tame Road",
+        "post_town": "LONDON",
+        "postcode": "E6 7HS",
+        "premise": "Rear of 1-3"
+      },
+      "fixture": {
+        "post_town": "LONDON",
+        "building_name": "Rear of 1-3",
+        "thoroughfare": "Tame Road",
+        "dependant_thoroughfare": "Industrial Estate",
+        "postcode": "E6 7HS",
+        "organisation_name": "The Tambourine Warehouse"
+      },
+      "description": "Rule 2: Exception"
+    },
+    {
+      "expected": {
+        "line_1": "The Tambourine Warehouse",
+        "line_2": "Maisonettes 1-3",
+        "line_3": "Industrial Estate, Tame Road",
+        "post_town": "LONDON",
+        "postcode": "E6 7HS",
+        "premise": "Maisonettes 1-3"
+      },
+      "fixture": {
+        "post_town": "LONDON",
+        "building_name": "Maisonettes 1-3",
+        "thoroughfare": "Tame Road",
+        "dependant_thoroughfare": "Industrial Estate",
+        "postcode": "E6 7HS",
+        "organisation_name": "The Tambourine Warehouse"
+      },
+      "description": "Rule 2: Exception"
+    },
+    {
+      "expected": {
+        "line_1": "The Tambourine Warehouse",
+        "line_2": "Maisonette 1-3",
+        "line_3": "Industrial Estate, Tame Road",
+        "post_town": "LONDON",
+        "postcode": "E6 7HS",
+        "premise": "Maisonette 1-3"
+      },
+      "fixture": {
+        "post_town": "LONDON",
+        "building_name": "Maisonette 1-3",
+        "thoroughfare": "Tame Road",
+        "dependant_thoroughfare": "Industrial Estate",
+        "postcode": "E6 7HS",
+        "organisation_name": "The Tambourine Warehouse"
+      },
+      "description": "Rule 2: Exception"
+    },
+    {
+      "expected": {
+        "line_1": "The Tambourine Warehouse",
+        "line_2": "Building 1-3",
+        "line_3": "Industrial Estate, Tame Road",
+        "post_town": "LONDON",
+        "postcode": "E6 7HS",
+        "premise": "Building 1-3"
+      },
+      "fixture": {
+        "post_town": "LONDON",
+        "building_name": "Building 1-3",
+        "thoroughfare": "Tame Road",
+        "dependant_thoroughfare": "Industrial Estate",
+        "postcode": "E6 7HS",
+        "organisation_name": "The Tambourine Warehouse"
+      },
+      "description": "Rule 2: Exception"
+    },
+    {
+      "expected": {
+        "line_1": "The Tambourine Warehouse",
+        "line_2": "Blocks 1-3",
+        "line_3": "Industrial Estate, Tame Road",
+        "post_town": "LONDON",
+        "postcode": "E6 7HS",
+        "premise": "Blocks 1-3"
+      },
+      "fixture": {
+        "post_town": "LONDON",
+        "building_name": "Blocks 1-3",
+        "thoroughfare": "Tame Road",
+        "dependant_thoroughfare": "Industrial Estate",
+        "postcode": "E6 7HS",
+        "organisation_name": "The Tambourine Warehouse"
+      },
+      "description": "Rule 2: Exception"
+    },
+    {
+      "expected": {
+        "line_1": "The Tambourine Warehouse",
+        "line_2": "Block 1-3",
+        "line_3": "Industrial Estate, Tame Road",
+        "post_town": "LONDON",
+        "postcode": "E6 7HS",
+        "premise": "Block 1-3"
+      },
+      "fixture": {
+        "post_town": "LONDON",
+        "building_name": "Block 1-3",
+        "thoroughfare": "Tame Road",
+        "dependant_thoroughfare": "Industrial Estate",
+        "postcode": "E6 7HS",
+        "organisation_name": "The Tambourine Warehouse"
+      },
+      "description": "Rule 2: Exception"
+    },
+    {
+      "expected": {
+        "line_1": "The Tambourine Warehouse",
+        "line_2": "Back of 1-3",
+        "line_3": "Industrial Estate, Tame Road",
+        "post_town": "LONDON",
+        "postcode": "E6 7HS",
+        "premise": "Back of 1-3"
+      },
+      "fixture": {
+        "post_town": "LONDON",
+        "building_name": "Back of 1-3",
+        "thoroughfare": "Tame Road",
+        "dependant_thoroughfare": "Industrial Estate",
+        "postcode": "E6 7HS",
+        "organisation_name": "The Tambourine Warehouse"
+      },
+      "description": "Rule 2: Exception"
+    },
+    {
+      "expected": {
         "line_1": "Quirky Candles Ltd",
         "line_2": "Stall 4-5",
         "line_3": "Market Square",
