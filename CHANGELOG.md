@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.2.0] 2019-03-11
+
+- Formatting updates with guidance and examples outlined in the latest PAF Programmers Guide (Edition 7, Version 6):
+  - Where a building name exception exists in rule 3, these names are no longer lower cased as documented in Table 27a. They now adhere to the (conflicting) example defined in Table 22
+  - Building ranges which contain specific prefixes (e.g. Back of, Stalls, Maisonette) are no longer broken up across lines
+- Added `line_1`, `line_2`, `line_3` and `premise` accessor methods on `Address` instances
+- Standardise project with prettier and @cablanchard/tslint
+- Use stardardised compile options from @cablanchard/tsconfig
+- Added benchmark suite
+
 ## [2.1.2] 2019-02-12
 
 - Add runkit example

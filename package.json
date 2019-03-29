@@ -1,6 +1,6 @@
 {
   "name": "uk-clear-addressing",
-  "version": "2.1.2",
+  "version": "2.2.0",
   "description": "Converts UK address fragments into a properly formatted address recognised by Royal Mails Clear Addressing Guidelines. Maps perfectly from Royal Mails PAF database",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -8,9 +8,10 @@
   "scripts": {
     "prepublish": "npm run build",
     "test": "npm run nyc && npm run lint",
-    "nyc": "node_modules/.bin/nyc node_modules/.bin/mocha --opts mocha.opts",
+    "nyc": "node_modules/.bin/nyc node_modules/.bin/mocha",
     "coverage": "node_modules/.bin/nyc report --reporter=text-lcov | node_modules/.bin/coveralls || true",
-    "lint": "./node_modules/.bin/tslint -c tslint.json src/**/*.ts",
+    "lint": "./node_modules/.bin/tslint --project tsconfig.json -c tslint.json",
+    "benchmark": "./node_modules/.bin/ts-node benchmark.ts",
     "docs": "./node_modules/.bin/typedoc --mode file --excludePrivate --hideGenerator --excludeExternals --target ES5 --out docs/ --name 'UK Clear Addressing' --theme minimal src/",
     "build": "./node_modules/.bin/tsc"
   },
@@ -25,6 +26,17 @@
     "Mail",
     "PAF"
   ],
+  "mocha": {
+    "extension": [
+      "ts"
+    ],
+    "exit": true,
+    "fullTrace": true,
+    "require": [
+      "ts-node/register",
+      "source-map-support/register"
+    ]
+  },
   "nyc": {
     "include": [
       "src/**/*.ts"
@@ -49,20 +61,29 @@
   "author": "Ideal Postcodes",
   "license": "MIT",
   "files": [
-    "dist"
+    "dist",
+    "example.js"
   ],
+  "prettier": {
+    "trailingComma": "es5"
+  },
   "runkitExampleFilename": "example.js",
   "readmeFilename": "README.md",
   "devDependencies": {
-    "@types/chai": "^4.1.4",
-    "@types/mocha": "^5.2.3",
+    "@cablanchard/tsconfig": "0.0.1",
+    "@cablanchard/tslint": "0.0.1",
+    "@types/benchmark": "~1.0.31",
+    "@types/chai": "~4.1.4",
+    "@types/mocha": "~5.2.3",
+    "benchmark": "~2.1.4",
     "chai": "~4.2.0",
     "coveralls": "~3.0.0",
     "mocha": "~6.0.2",
     "nyc": "~13.3.0",
-    "source-map-support": "^0.5.6",
-    "ts-node": "^8.0.2",
-    "tslint": "~5.13.1",
+    "tslint": "~5.14.0",
+    "prettier": "~1.16.4",
+    "source-map-support": "~0.5.6",
+    "ts-node": "~8.0.2",
     "typedoc": "~0.14.0",
     "typescript": "~3.3.1"
   },
@@ -70,6 +91,6 @@
     "node": ">6.0.0"
   },
   "dependencies": {
-    "@cablanchard/koelle-sort": "^0.1.0"
+    "@cablanchard/koelle-sort": "~0.1.0"
   }
 }
