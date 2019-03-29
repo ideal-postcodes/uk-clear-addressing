@@ -46,7 +46,7 @@ const address = new Address({
 
 console.log(address.formattedAddress());
 
-//	
+//
 //	{
 //		postcode: 'WS11 5SB',
 //		post_town: 'CANNOCK',
@@ -67,7 +67,7 @@ console.log(address.formattedAddress());
 const addresses = await query("SELECT * FROM postcode_address_file LIMIT 10");
 
 addresses
-	.map(address => new Address(address)) // Instantiate an `Address` instances
+	.map(address => new Address(address)) // Instantiate an `Address` instance
 	.sort(Address.sort)  								  // Now sort
 
 	// Print an example to console
@@ -100,20 +100,20 @@ Below is a list of address fragments. For the address to be properly formatted, 
 
 ### Premises Elements
 
-- Sub Building Name (e.g. ‘Flat 1’) 
+- Sub Building Name (e.g. ‘Flat 1’)
 - Building Name (e.g. ‘Rose Cottage’)
 - Building Number (e.g. ‘22’)
 - Organisation Name (e.g. ‘Cath’s Cakes’)
 - PO Box number
 
-### Thoroughfare elements
+### Thoroughfare Elements
 
 - Dependent Thoroughfare Name (e.g. ‘Cheshunt’)
 - Dependent Thoroughfare Descriptor (e.g. ‘Mews’ or ‘Court’)
 - Thoroughfare Name (e.g. ‘Cypress’)
 - Thoroughfare Descriptor (e.g. ‘Road’ or ‘Street’)
 
-### Locality elements
+### Locality Elements
 
 - Double Dependent Locality (e.g. ‘Tyre Industrial Estate’)
 - Dependent Locality (e.g. ‘Blantyre’)
