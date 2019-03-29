@@ -77,7 +77,6 @@ const address = new Address({
 
 console.log(address.formattedAddress());
 
-//	
 //	{
 //		postcode: 'WS11 5SB',
 //		post_town: 'CANNOCK',
@@ -135,14 +134,14 @@ Below is a list of address fragments. For the address to be properly formatted, 
 - Organisation Name (e.g. ‘Cath’s Cakes’)
 - PO Box number
 
-### Thoroughfare elements
+### Thoroughfare Elements
 
 - Dependant Thoroughfare Name (e.g. ‘Cheshunt’)
 - Dependant Thoroughfare Descriptor (e.g. ‘Mews’ or ‘Court’)
 - Thoroughfare Name (e.g. ‘Cypress’)
 - Thoroughfare Descriptor (e.g. ‘Road’ or ‘Street’)
 
-### Locality elements
+### Locality Elements
 
 - Double Dependant Locality (e.g. ‘Tyre Industrial Estate’)
 - Dependant Locality (e.g. ‘Blantyre’)
