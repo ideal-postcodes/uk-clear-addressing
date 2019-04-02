@@ -68,24 +68,22 @@ const {
 const { Address } = require('uk-clear-addressing');
 
 const address = new Address({
-	postcode: "WS11 5SB",
-	post_town: "CANNOCK",
-	thoroughfare: "Pye Green Road",
-	building_name: "Flower House 189A",
-	organisation_name: 'S D Alcott Florists',
+  postcode: "WS11 5SB",
+  post_town: "CANNOCK",
+  thoroughfare: "Pye Green Road",
+  building_name: "Flower House 189A",
+  organisation_name: 'S D Alcott Florists',
 });
 
 console.log(address.formattedAddress());
-
-//	{
-//		postcode: 'WS11 5SB',
-//		post_town: 'CANNOCK',
-//		line_1: 'S D Alcott Florists',
-//		line_2: 'Flower House',
-//		line_3: '189a Pye Green Road',
-//		premise: "Flower House, 189a"
-//	}
-//
+//  {
+//    postcode: 'WS11 5SB',
+//    post_town: 'CANNOCK',
+//    line_1: 'S D Alcott Florists',
+//    line_2: 'Flower House',
+//    line_3: '189a Pye Green Road',
+//    premise: "Flower House, 189a"
+//  }
 ```
 
 ### Sorting Addresses
@@ -96,20 +94,20 @@ console.log(address.formattedAddress());
 const addresses = await query("SELECT * FROM postcode_address_file LIMIT 10");
 
 addresses
-	.map(address => new Address(address)) // Instantiate an `Address` instances
-	.sort(Address.sort)                   // Now sort
-	// Print an example to console
-	.forEach(address => console.log(address.line_1));
-	// "190 Elm Road"
-	// "190a Elm Road"
-	// "191 Elm Road"
-	// "191a Elm Road"
-	// "192 Elm Road"
-	// "193 Elm Road"
-	// "193a Elm Road"
-	// "197 Elm Road"
-	// "197a Elm Road"
-	// "199 Elm Road"
+  .map(address => new Address(address)) // Instantiate an `Address` instances
+  .sort(Address.sort)                   // Now sort
+  // Print an example to console
+  .forEach(address => console.log(address.line_1));
+  // "190 Elm Road"
+  // "190a Elm Road"
+  // "191 Elm Road"
+  // "191a Elm Road"
+  // "192 Elm Road"
+  // "193 Elm Road"
+  // "193a Elm Road"
+  // "197 Elm Road"
+  // "197a Elm Road"
+  // "199 Elm Road"
 ```
 
 ## Testing
