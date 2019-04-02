@@ -1104,44 +1104,41 @@ img { max-width: 100%; }
 			<pre><code class="language-javascript"><span class="hljs-keyword">const</span> { Address } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'uk-clear-addressing'</span>);
 
 <span class="hljs-keyword">const</span> address = <span class="hljs-keyword">new</span> Address({
-    <span class="hljs-attr">postcode</span>: <span class="hljs-string">"WS11 5SB"</span>,
-    <span class="hljs-attr">post_town</span>: <span class="hljs-string">"CANNOCK"</span>,
-    <span class="hljs-attr">thoroughfare</span>: <span class="hljs-string">"Pye Green Road"</span>,
-    <span class="hljs-attr">building_name</span>: <span class="hljs-string">"Flower House 189A"</span>,
-    <span class="hljs-attr">organisation_name</span>: <span class="hljs-string">'S D Alcott Florists'</span>,
+  <span class="hljs-attr">postcode</span>: <span class="hljs-string">"WS11 5SB"</span>,
+  <span class="hljs-attr">post_town</span>: <span class="hljs-string">"CANNOCK"</span>,
+  <span class="hljs-attr">thoroughfare</span>: <span class="hljs-string">"Pye Green Road"</span>,
+  <span class="hljs-attr">building_name</span>: <span class="hljs-string">"Flower House 189A"</span>,
+  <span class="hljs-attr">organisation_name</span>: <span class="hljs-string">'S D Alcott Florists'</span>,
 });
 
 <span class="hljs-built_in">console</span>.log(address.formattedAddress());
-
-<span class="hljs-comment">//    </span>
-<span class="hljs-comment">//    {</span>
-<span class="hljs-comment">//        postcode: 'WS11 5SB',</span>
-<span class="hljs-comment">//        post_town: 'CANNOCK',</span>
-<span class="hljs-comment">//        line_1: 'S D Alcott Florists',</span>
-<span class="hljs-comment">//        line_2: 'Flower House',</span>
-<span class="hljs-comment">//        line_3: '189a Pye Green Road',</span>
-<span class="hljs-comment">//        premise: "Flower House, 189a"</span>
-<span class="hljs-comment">//    }</span>
-<span class="hljs-comment">//</span></code></pre>
+<span class="hljs-comment">//  {</span>
+<span class="hljs-comment">//    postcode: 'WS11 5SB',</span>
+<span class="hljs-comment">//    post_town: 'CANNOCK',</span>
+<span class="hljs-comment">//    line_1: 'S D Alcott Florists',</span>
+<span class="hljs-comment">//    line_2: 'Flower House',</span>
+<span class="hljs-comment">//    line_3: '189a Pye Green Road',</span>
+<span class="hljs-comment">//    premise: "Flower House, 189a"</span>
+<span class="hljs-comment">//  }</span></code></pre>
 			<h3 id="sorting-addresses">Sorting Addresses</h3>
 			<p><code>Address.sort</code> implements a comparison function, which allows you to compare <code>Address</code> instances. This can readily be passed into <code>Array.prototype.sort</code></p>
 			<pre><code class="language-javascript"><span class="hljs-keyword">const</span> addresses = <span class="hljs-keyword">await</span> query(<span class="hljs-string">"SELECT * FROM postcode_address_file LIMIT 10"</span>);
 
 addresses
-    .map(<span class="hljs-function"><span class="hljs-params">address</span> =&gt;</span> <span class="hljs-keyword">new</span> Address(address)) <span class="hljs-comment">// Instantiate an `Address` instances</span>
-    .sort(Address.sort)                   <span class="hljs-comment">// Now sort</span>
-    <span class="hljs-comment">// Print an example to console</span>
-    .forEach(<span class="hljs-function"><span class="hljs-params">address</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(address.line_1));
-    <span class="hljs-comment">// "190 Elm Road"</span>
-    <span class="hljs-comment">// "190a Elm Road"</span>
-    <span class="hljs-comment">// "191 Elm Road"</span>
-    <span class="hljs-comment">// "191a Elm Road"</span>
-    <span class="hljs-comment">// "192 Elm Road"</span>
-    <span class="hljs-comment">// "193 Elm Road"</span>
-    <span class="hljs-comment">// "193a Elm Road"</span>
-    <span class="hljs-comment">// "197 Elm Road"</span>
-    <span class="hljs-comment">// "197a Elm Road"</span>
-    <span class="hljs-comment">// "199 Elm Road"</span></code></pre>
+  .map(<span class="hljs-function"><span class="hljs-params">address</span> =&gt;</span> <span class="hljs-keyword">new</span> Address(address)) <span class="hljs-comment">// Instantiate an `Address` instances</span>
+  .sort(Address.sort)                   <span class="hljs-comment">// Now sort</span>
+  <span class="hljs-comment">// Print an example to console</span>
+  .forEach(<span class="hljs-function"><span class="hljs-params">address</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(address.line_1));
+  <span class="hljs-comment">// "190 Elm Road"</span>
+  <span class="hljs-comment">// "190a Elm Road"</span>
+  <span class="hljs-comment">// "191 Elm Road"</span>
+  <span class="hljs-comment">// "191a Elm Road"</span>
+  <span class="hljs-comment">// "192 Elm Road"</span>
+  <span class="hljs-comment">// "193 Elm Road"</span>
+  <span class="hljs-comment">// "193a Elm Road"</span>
+  <span class="hljs-comment">// "197 Elm Road"</span>
+  <span class="hljs-comment">// "197a Elm Road"</span>
+  <span class="hljs-comment">// "199 Elm Road"</span></code></pre>
 			<h2 id="testing">Testing</h2>
 			<p>Many of the regular and edge cases are documented in the test. To run the test suite:</p>
 			<pre><code class="language-bash">npm <span class="hljs-built_in">test</span></code></pre>
@@ -1156,14 +1153,14 @@ addresses
 				<li>Organisation Name (e.g. ‘Cath’s Cakes’)</li>
 				<li>PO Box number</li>
 			</ul>
-			<h3 id="thoroughfare-elements">Thoroughfare elements</h3>
+			<h3 id="thoroughfare-elements">Thoroughfare Elements</h3>
 			<ul>
 				<li>Dependant Thoroughfare Name (e.g. ‘Cheshunt’)</li>
 				<li>Dependant Thoroughfare Descriptor (e.g. ‘Mews’ or ‘Court’)</li>
 				<li>Thoroughfare Name (e.g. ‘Cypress’)</li>
 				<li>Thoroughfare Descriptor (e.g. ‘Road’ or ‘Street’)</li>
 			</ul>
-			<h3 id="locality-elements">Locality elements</h3>
+			<h3 id="locality-elements">Locality Elements</h3>
 			<ul>
 				<li>Double Dependant Locality (e.g. ‘Tyre Industrial Estate’)</li>
 				<li>Dependant Locality (e.g. ‘Blantyre’)</li>
@@ -1258,7 +1255,7 @@ addresses
 				<div class="tsd-signature tsd-kind-icon">Empty<wbr>String<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">&quot;&quot;</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/2e84c99/src/types.ts#L94">types.ts:94</a></li>
+						<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/3ac2b62/src/types.ts#L94">types.ts:94</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1268,7 +1265,7 @@ addresses
 				<div class="tsd-signature tsd-kind-icon">Locality<wbr>Elements<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"dependant_locality"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"double_dependant_locality"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"thoroughfare"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"dependant_thoroughfare"</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/2e84c99/src/types.ts#L71">types.ts:71</a></li>
+						<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/3ac2b62/src/types.ts#L71">types.ts:71</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1278,7 +1275,7 @@ addresses
 				<div class="tsd-signature tsd-kind-icon">Sorting<wbr>Elems<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"building_number"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"building_name"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"sub_building_name"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"organisation_name"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"department_name"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"po_box"</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/2e84c99/src/types.ts#L86">types.ts:86</a></li>
+						<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/3ac2b62/src/types.ts#L86">types.ts:86</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1291,7 +1288,7 @@ addresses
 				<div class="tsd-signature tsd-kind-icon">BUILDING_<wbr>RANGE_<wbr>REGEX<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> =&nbsp;/^(\d.*\D.*\d|\d(.*\d)?[a-z]|[a-z])$/i</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/2e84c99/src/utils.ts#L107">utils.ts:107</a></li>
+						<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/3ac2b62/src/utils.ts#L107">utils.ts:107</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1301,7 +1298,7 @@ addresses
 				<div class="tsd-signature tsd-kind-icon">STARTS_<wbr>CHAR_<wbr>REGEX<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> =&nbsp;/^[a-z]$/i</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/2e84c99/src/rules.ts#L92">rules.ts:92</a></li>
+						<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/3ac2b62/src/rules.ts#L92">rules.ts:92</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1311,7 +1308,7 @@ addresses
 				<div class="tsd-signature tsd-kind-icon">locality<wbr>Elements<span class="tsd-signature-symbol">:</span> <a href="globals.html#localityelements" class="tsd-signature-type">LocalityElements</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;[&quot;dependant_locality&quot;,&quot;double_dependant_locality&quot;,&quot;thoroughfare&quot;,&quot;dependant_thoroughfare&quot;,]</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/2e84c99/src/utils.ts#L154">utils.ts:154</a></li>
+						<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/3ac2b62/src/utils.ts#L154">utils.ts:154</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1321,7 +1318,7 @@ addresses
 				<div class="tsd-signature tsd-kind-icon">name<wbr>Exception<wbr>Regex<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> =&nbsp;/^(\d|\d.*\d|\d(.*\d)?[a-z]|[a-z])$/i</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/2e84c99/src/utils.ts#L87">utils.ts:87</a></li>
+						<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/3ac2b62/src/utils.ts#L87">utils.ts:87</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1331,7 +1328,7 @@ addresses
 				<div class="tsd-signature tsd-kind-icon">single<wbr>Character<wbr>Regex<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> =&nbsp;/^[A-Z]$/i</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/2e84c99/src/utils.ts#L99">utils.ts:99</a></li>
+						<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/3ac2b62/src/utils.ts#L99">utils.ts:99</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1341,7 +1338,7 @@ addresses
 				<div class="tsd-signature tsd-kind-icon">sorting<wbr>Elems<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ReadonlyArray</span><span class="tsd-signature-symbol">&lt;</span><a href="globals.html#sortingelems" class="tsd-signature-type">SortingElems</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;[&quot;building_number&quot;,&quot;building_name&quot;,&quot;sub_building_name&quot;,&quot;organisation_name&quot;,&quot;department_name&quot;,&quot;po_box&quot;,]</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/2e84c99/src/sort.ts#L6">sort.ts:6</a></li>
+						<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/3ac2b62/src/sort.ts#L6">sort.ts:6</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1351,7 +1348,7 @@ addresses
 				<div class="tsd-signature tsd-kind-icon">unit<wbr>Prefix<wbr>Regex<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> =&nbsp;/^(back\sof|blocks?|building|maisonettes?|rear\sof|shops?|stalls?|suites?|units?)/i</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/2e84c99/src/utils.ts#L74">utils.ts:74</a></li>
+						<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/3ac2b62/src/utils.ts#L74">utils.ts:74</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1368,7 +1365,7 @@ addresses
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/2e84c99/src/utils.ts#L109">utils.ts:109</a></li>
+								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/3ac2b62/src/utils.ts#L109">utils.ts:109</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1394,7 +1391,7 @@ addresses
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/2e84c99/src/utils.ts#L141">utils.ts:141</a></li>
+								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/3ac2b62/src/utils.ts#L141">utils.ts:141</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1425,7 +1422,7 @@ addresses
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/2e84c99/src/utils.ts#L122">utils.ts:122</a></li>
+								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/3ac2b62/src/utils.ts#L122">utils.ts:122</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1459,7 +1456,7 @@ addresses
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/2e84c99/src/utils.ts#L11">utils.ts:11</a></li>
+								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/3ac2b62/src/utils.ts#L11">utils.ts:11</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1485,7 +1482,7 @@ addresses
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/2e84c99/src/utils.ts#L35">utils.ts:35</a></li>
+								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/3ac2b62/src/utils.ts#L35">utils.ts:35</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1514,7 +1511,7 @@ addresses
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/2e84c99/src/utils.ts#L23">utils.ts:23</a></li>
+								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/3ac2b62/src/utils.ts#L23">utils.ts:23</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1543,7 +1540,7 @@ addresses
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/2e84c99/src/sort.ts#L19">sort.ts:19</a></li>
+								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/3ac2b62/src/sort.ts#L19">sort.ts:19</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1572,7 +1569,7 @@ addresses
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/2e84c99/src/utils.ts#L174">utils.ts:174</a></li>
+								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/3ac2b62/src/utils.ts#L174">utils.ts:174</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1604,7 +1601,7 @@ addresses
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/2e84c99/src/rules.ts#L209">rules.ts:209</a></li>
+								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/3ac2b62/src/rules.ts#L220">rules.ts:220</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1627,7 +1624,7 @@ addresses
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/2e84c99/src/utils.ts#L81">utils.ts:81</a></li>
+								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/3ac2b62/src/utils.ts#L81">utils.ts:81</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1656,7 +1653,7 @@ addresses
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/2e84c99/src/utils.ts#L31">utils.ts:31</a></li>
+								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/3ac2b62/src/utils.ts#L31">utils.ts:31</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1679,7 +1676,7 @@ addresses
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/2e84c99/src/utils.ts#L104">utils.ts:104</a></li>
+								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/3ac2b62/src/utils.ts#L104">utils.ts:104</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1707,7 +1704,7 @@ addresses
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/2e84c99/src/utils.ts#L46">utils.ts:46</a></li>
+								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/3ac2b62/src/utils.ts#L46">utils.ts:46</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1735,7 +1732,7 @@ addresses
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/2e84c99/src/utils.ts#L95">utils.ts:95</a></li>
+								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/3ac2b62/src/utils.ts#L95">utils.ts:95</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1766,7 +1763,7 @@ addresses
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/2e84c99/src/utils.ts#L85">utils.ts:85</a></li>
+								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/3ac2b62/src/utils.ts#L85">utils.ts:85</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1789,7 +1786,7 @@ addresses
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/2e84c99/src/rules.ts#L201">rules.ts:201</a></li>
+								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/3ac2b62/src/rules.ts#L212">rules.ts:212</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1817,7 +1814,7 @@ addresses
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/2e84c99/src/utils.ts#L165">utils.ts:165</a></li>
+								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/3ac2b62/src/utils.ts#L165">utils.ts:165</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1846,7 +1843,7 @@ addresses
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/2e84c99/src/utils.ts#L48">utils.ts:48</a></li>
+								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/3ac2b62/src/utils.ts#L48">utils.ts:48</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1872,7 +1869,7 @@ addresses
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/2e84c99/src/rules.ts#L17">rules.ts:17</a></li>
+								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/3ac2b62/src/rules.ts#L17">rules.ts:17</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1901,7 +1898,7 @@ addresses
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/2e84c99/src/rules.ts#L24">rules.ts:24</a></li>
+								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/3ac2b62/src/rules.ts#L24">rules.ts:24</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1929,7 +1926,7 @@ addresses
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/2e84c99/src/rules.ts#L50">rules.ts:50</a></li>
+								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/3ac2b62/src/rules.ts#L50">rules.ts:50</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1970,7 +1967,7 @@ addresses
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/2e84c99/src/rules.ts#L83">rules.ts:83</a></li>
+								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/3ac2b62/src/rules.ts#L83">rules.ts:83</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2003,7 +2000,7 @@ addresses
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/2e84c99/src/rules.ts#L102">rules.ts:102</a></li>
+								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/3ac2b62/src/rules.ts#L102">rules.ts:102</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2035,7 +2032,7 @@ addresses
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/2e84c99/src/rules.ts#L132">rules.ts:132</a></li>
+								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/3ac2b62/src/rules.ts#L132">rules.ts:132</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2072,7 +2069,7 @@ addresses
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/2e84c99/src/rules.ts#L160">rules.ts:160</a></li>
+								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/3ac2b62/src/rules.ts#L171">rules.ts:171</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2102,7 +2099,7 @@ addresses
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/2e84c99/src/sort.ts#L28">sort.ts:28</a></li>
+								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/3ac2b62/src/sort.ts#L28">sort.ts:28</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2133,7 +2130,7 @@ addresses
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/2e84c99/src/rules.ts#L190">rules.ts:190</a></li>
+								<li>Defined in <a href="https://github.com/ideal-postcodes/uk-clear-addressing/blob/3ac2b62/src/rules.ts#L201">rules.ts:201</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
