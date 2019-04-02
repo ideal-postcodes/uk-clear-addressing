@@ -1,5 +1,9 @@
 # Changelog
 
+## [2.2.1] 2019-04-02
+
+- Fix: Handle building names that contain range on rule 6
+
 ## [2.2.0] 2019-03-11
 
 - Formatting updates with guidance and examples outlined in the latest PAF Programmers Guide (Edition 7, Version 6):
