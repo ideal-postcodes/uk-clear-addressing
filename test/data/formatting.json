@@ -520,6 +520,24 @@
     },
     {
       "expected": {
+        "line_1": "Flat 8",
+        "line_2": "Oxford House",
+        "line_3": "110-114 High Street",
+        "post_town": "BRISTOL",
+        "postcode": "BS1 2AW",
+        "premise": "Flat 8, Oxford House, 110-114"
+      },
+      "fixture": {
+        "post_town": "BRISTOL",
+        "building_name": "Oxford House 110-114",
+        "sub_building_name": "Flat 8",
+        "thoroughfare": "High Street",
+        "postcode": "BS1 2AW"
+      },
+      "description": "Rule 6 - Building name sub range match"
+    },
+    {
+      "expected": {
         "line_1": "10B Barry Jackson Tower",
         "line_2": "Estone Walk",
         "line_3": "",

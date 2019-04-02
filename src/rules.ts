@@ -144,9 +144,20 @@ export const rule6: AddressFormatter = address => {
     premise = `${sub_building_name}, ${building_name}`;
     result.push(premise);
   } else {
-    premise = `${sub_building_name}, ${building_name}`;
-    result.push(building_name);
-    result.push(sub_building_name);
+    const sub_range_match = checkBuildingRange(building_name);
+    if (sub_range_match && !hasUnitPrefix(building_name)) {
+      // Check if name contains number range
+      premise = `${sub_building_name}, ${sub_range_match.name}, ${
+        sub_range_match.range
+      }`;
+      prependLocality(result, sub_range_match.range);
+      result.push(sub_range_match.name);
+      result.push(address.sub_building_name);
+    } else {
+      premise = `${sub_building_name}, ${building_name}`;
+      result.push(building_name);
+      result.push(sub_building_name);
+    }
   }
   return combinePremise(result, address, premise);
 };
