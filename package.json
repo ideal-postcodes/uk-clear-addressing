@@ -4,7 +4,20 @@
   "description": "Converts UK address fragments into a properly formatted address recognised by Royal Mails Clear Addressing Guidelines. Maps perfectly from Royal Mails PAF database",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "author": {
+    "name": "Ideal Postcodes",
+    "email": "support@ideal-postcodes.co.uk",
+    "url": "https://ideal-postcodes.co.uk"
+  },
+  "bugs": {
+    "url": "https://github.com/ideal-postcodes/uk-clear-addressing/issues",
+    "email": "support@ideal-postcodes.co.uk"
+  },
   "homepage": "https://github.com/ideal-postcodes/uk-clear-addressing",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ideal-postcodes/uk-clear-addressing.git"
+  },
   "scripts": {
     "prepublish": "npm run build",
     "test": "npm run nyc && npm run lint",
@@ -14,10 +27,6 @@
     "benchmark": "./node_modules/.bin/ts-node benchmark.ts",
     "docs": "./node_modules/.bin/typedoc --mode file --excludePrivate --hideGenerator --excludeExternals --target ES5 --out docs/ --name 'UK Clear Addressing' --theme minimal src/",
     "build": "./node_modules/.bin/tsc"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ideal-postcodes/uk-clear-addressing.git"
   },
   "keywords": [
     "UK",
@@ -58,7 +67,6 @@
     "instrument": true,
     "all": true
   },
-  "author": "Ideal Postcodes",
   "license": "MIT",
   "files": [
     "dist",
