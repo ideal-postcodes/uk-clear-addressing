@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.2] 2019-04-24
+
+- Update dependencies
+- Update documentation
+  - Reference PAF API
+  - Reference typedocs
+
 ## [2.2.1] 2019-04-02
 
 - Fix: Handle building names that contain range on rule 6
