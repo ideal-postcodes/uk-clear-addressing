@@ -28,6 +28,7 @@ Produces consistent address lines, a post town line and a postcode line.
 - [More information on Postcode Address File data attributes](https://ideal-postcodes.co.uk/documentation/paf-data)
 - [PAF Programmer's Guide](https://js.ideal-postcodes.co.uk/guide.pdf)
 - [Try uk-clear-addressing on RunKit](https://npm.runkit.com/uk-clear-addressing)
+- [Consume this library as a HTTP Service with PAF API](https://github.com/ideal-postcodes/paf-api)
 
 ## Getting Started
 
