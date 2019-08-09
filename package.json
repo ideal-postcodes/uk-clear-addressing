@@ -81,7 +81,7 @@
     "@cablanchard/tsconfig": "1.0.0",
     "@cablanchard/tslint": "0.0.1",
     "@types/benchmark": "~1.0.31",
-    "@types/chai": "~4.1.4",
+    "@types/chai": "~4.2.0",
     "@types/mocha": "~5.2.3",
     "@types/node": "~12.7.0",
     "benchmark": "~2.1.4",
