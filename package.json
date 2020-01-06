@@ -87,7 +87,7 @@
     "benchmark": "~2.1.4",
     "chai": "~4.2.0",
     "coveralls": "~3.0.0",
-    "mocha": "~6.2.0",
+    "mocha": "~7.0.0",
     "nyc": "~14.1.0",
     "prettier": "~1.19.1",
     "source-map-support": "~0.5.6",
