@@ -2,6 +2,7 @@ import { Address } from "./index";
 
 export interface FormattedPremise {
   premise: string;
+  number: string;
   line_1: string;
   line_2: string;
   line_3: string;

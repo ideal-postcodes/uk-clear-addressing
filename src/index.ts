@@ -184,6 +184,10 @@ export class Address {
     return this.formattedAddress().premise;
   }
 
+  get number(): string {
+    return this.formattedAddress().number;
+  }
+
   /**
    * Returns object containing raw address attributes
    * @hidden
