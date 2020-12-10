@@ -22,15 +22,14 @@ const compare = (sample: AddressRecord, expected: FormattedAddress): void => {
   assert.equal(formatted_address.postcode, expected.postcode);
   assert.equal(formatted_address.post_town, expected.post_town);
   assert.equal(formatted_address.premise, expected.premise);
+  assert.equal(formatted_address.number, expected.number);
 };
 
 describe("Address formatting", () => {
   fixtures
     .sort((a, b) => a.description.localeCompare(b.description))
     .forEach(({ description, fixture, expected }) => {
-      const testName = `${description} - returns the correct format for ${
-        expected.line_1
-      }`;
+      const testName = `${description} - returns the correct format for ${expected.line_1}`;
       it(testName, () => compare(fixture, expected));
     });
 });
