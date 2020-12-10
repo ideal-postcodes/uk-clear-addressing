@@ -149,13 +149,16 @@ describe("Address Model", () => {
     it("provides a premise accessor", () => {
       assert.equal(address.premise, "Flat 2, Priory Court, 1");
     });
+    it("provides a number accessor", () => {
+      assert.equal(address.number, "1");
+    });
   });
 
   describe("#raw", () => {
     it("returns a new object representing raw address details", () => {
       const address = new Address({});
       const result = address.raw();
-      expectedRawAttributes.forEach(attr => assert.isDefined(result[attr]));
+      expectedRawAttributes.forEach((attr) => assert.isDefined(result[attr]));
       assert.equal(expectedRawAttributes.length, Object.keys(result).length);
     });
   });
@@ -164,7 +167,7 @@ describe("Address Model", () => {
     it("returns a publicly consumable JSON representation of address", () => {
       const address = new Address({});
       const result = address.toJSON();
-      expectedJsonAttributes.forEach(attr => assert.isDefined(result[attr]));
+      expectedJsonAttributes.forEach((attr) => assert.isDefined(result[attr]));
       assert.equal(expectedJsonAttributes.length, Object.keys(result).length);
     });
   });
@@ -192,6 +195,7 @@ describe("Address Model", () => {
     it("returns cached object if available", () => {
       const address = new Address({});
       address.cache = {
+        number: "number",
         premise: "premise",
         line_1: "line_1",
         line_2: "line_2",

@@ -122,13 +122,15 @@ export const appendOrganisationInfo = (
 export const combinePremise = (
   elems: AddressElements,
   address: Address,
-  premise: string
+  premise: string,
+  number: string
 ): FormattedPremise => {
   const premiseElements = elems.slice();
   appendOrganisationInfo(premiseElements, address);
   const [line_1, line_2, ...line_3] = premiseElements.reverse();
   return {
     premise,
+    number,
     line_1: line_1 || "",
     line_2: line_2 || "",
     line_3: line_3.join(", "),
@@ -163,7 +165,7 @@ const localityElements: LocalityElements[] = [
  * `localityElements`
  */
 export const premiseLocalities = (address: Address): AddressElements => {
-  return localityElements.map(elem => address[elem]).filter(notEmpty);
+  return localityElements.map((elem) => address[elem]).filter(notEmpty);
 };
 
 /**
