@@ -3,6 +3,7 @@
   "version": "2.2.2",
   "description": "Converts UK address fragments into a properly formatted address recognised by Royal Mails Clear Addressing Guidelines. Maps perfectly from Royal Mails PAF database",
   "main": "dist/index.js",
+  "module": "esm/index.js",
   "types": "dist/index.d.ts",
   "author": {
     "name": "Ideal Postcodes",
@@ -22,12 +23,12 @@
     "prepublish": "npm run build",
     "semantic-release": "semantic-release --no-ci",
     "test": "npm run nyc && npm run lint",
-    "nyc": "node_modules/.bin/nyc node_modules/.bin/mocha",
+    "nyc": "nyc mocha",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
-    "lint": "./node_modules/.bin/tslint --project tsconfig.json -c tslint.json",
-    "benchmark": "./node_modules/.bin/ts-node benchmark.ts",
-    "docs": "./node_modules/.bin/typedoc --mode file --excludePrivate --hideGenerator --excludeExternals --target ES5 --out docs/ --name 'UK Clear Addressing' --theme minimal src/",
-    "build": "./node_modules/.bin/tsc"
+    "lint": "tslint --project tsconfig.json -c tslint.json",
+    "benchmark": "ts-node benchmark.ts",
+    "docs": "typedoc --mode file --excludePrivate --hideGenerator --excludeExternals --out docs/ --name 'UK Clear Addressing' --theme minimal src/",
+    "build": "tsc && tsc -p tsconfig.esm.json"
   },
   "keywords": [
     "UK",
@@ -52,7 +53,8 @@
       "src/**/*.ts"
     ],
     "exclude": [
-      "dist/*"
+      "dist/*",
+      "esm/*"
     ],
     "extension": [
       ".ts"
@@ -71,6 +73,7 @@
   "license": "MIT",
   "files": [
     "dist",
+    "esm",
     "example.js"
   ],
   "prettier": {
