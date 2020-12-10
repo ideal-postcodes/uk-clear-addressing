@@ -1,3 +1,22 @@
+# [3.0.0](https://github.com/ideal-postcodes/uk-clear-addressing/compare/2.2.2...3.0.0) (2020-12-10)
+
+
+### Bug Fixes
+
+* **Semantic Release:** Automate npm release ([06ff64f](https://github.com/ideal-postcodes/uk-clear-addressing/commit/06ff64f958166adbe2fb43c2a94c44c04204f301))
+
+
+### chore
+
+* **Node:** Drop explicit support for Node 8 ([195cc59](https://github.com/ideal-postcodes/uk-clear-addressing/commit/195cc59203c4001ac4b44d0e2232c80b9a7b9077))
+* **Node:** Drop support for node 8, add 14 ([e69e64d](https://github.com/ideal-postcodes/uk-clear-addressing/commit/e69e64d130225c654ef0fcd5e4c47f219935db96))
+
+
+### BREAKING CHANGES
+
+* **Node:** Node 8 no longer supported
+* **Node:** Node 8 no longer forms part of CI testing
+
 # Changelog
 
 ## [2.2.2] 2019-04-24
