@@ -184,6 +184,10 @@ export class Address {
     return this.formattedAddress().premise;
   }
 
+  get unit(): string {
+    return this.formattedAddress().unit;
+  }
+
   get number(): string {
     return this.formattedAddress().number;
   }

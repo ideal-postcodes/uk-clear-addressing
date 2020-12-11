@@ -196,6 +196,7 @@ describe("Address Model", () => {
       const address = new Address({});
       address.cache = {
         number: "number",
+        unit: "unit",
         premise: "premise",
         line_1: "line_1",
         line_2: "line_2",

@@ -123,7 +123,8 @@ export const combinePremise = (
   elems: AddressElements,
   address: Address,
   premise: string,
-  number: string
+  number: string,
+  unit: string
 ): FormattedPremise => {
   const premiseElements = elems.slice();
   appendOrganisationInfo(premiseElements, address);
@@ -131,6 +132,7 @@ export const combinePremise = (
   return {
     premise,
     number,
+    unit,
     line_1: line_1 || "",
     line_2: line_2 || "",
     line_3: line_3.join(", "),

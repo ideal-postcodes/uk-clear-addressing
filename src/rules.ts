@@ -15,7 +15,7 @@ import {
  * No premise elements detected (typically organisation name)
  */
 export const rule1: AddressFormatter = (address) => {
-  return combinePremise(premiseLocalities(address), address, "", "");
+  return combinePremise(premiseLocalities(address), address, "", "", "");
 };
 
 /**
@@ -25,7 +25,7 @@ export const rule2: AddressFormatter = (address) => {
   const { building_number } = address;
   const result = premiseLocalities(address);
   prependLocality(result, building_number);
-  return combinePremise(result, address, building_number, building_number);
+  return combinePremise(result, address, building_number, building_number, "");
 };
 
 /**
@@ -69,7 +69,7 @@ export const rule3: AddressFormatter = (address) => {
       result.push(premise);
     }
   }
-  return combinePremise(result, address, premise, number);
+  return combinePremise(result, address, premise, number, "");
 };
 
 // Building Name and Building Number
@@ -92,7 +92,8 @@ export const rule4: AddressFormatter = (address) => {
     result,
     address,
     `${building_name}, ${building_number}`,
-    building_number
+    building_number,
+    ""
   );
 };
 
@@ -108,19 +109,23 @@ const STARTS_CHAR_REGEX = /^[a-z]$/i;
  */
 export const rule5: AddressFormatter = (address) => {
   const { building_number, sub_building_name } = address;
-  let premise, number;
+  let premise;
   const result = premiseLocalities(address);
   if (sub_building_name.match(STARTS_CHAR_REGEX)) {
     premise = building_number + sub_building_name;
-    number = premise;
     prependLocality(result, premise);
   } else {
     premise = `${sub_building_name}, ${building_number}`;
     prependLocality(result, building_number);
-    number = building_number;
     result.push(sub_building_name);
   }
-  return combinePremise(result, address, premise, number);
+  return combinePremise(
+    result,
+    address,
+    premise,
+    building_number,
+    sub_building_name
+  );
 };
 
 /**
@@ -169,7 +174,7 @@ export const rule6: AddressFormatter = (address) => {
       result.push(sub_building_name);
     }
   }
-  return combinePremise(result, address, premise, number);
+  return combinePremise(result, address, premise, number, sub_building_name);
 };
 
 /**
@@ -199,7 +204,13 @@ export const rule7: AddressFormatter = (address) => {
     result.push(building_name);
     result.push(sub_building_name);
   }
-  return combinePremise(result, address, premise, building_number);
+  return combinePremise(
+    result,
+    address,
+    premise,
+    building_number,
+    sub_building_name
+  );
 };
 
 /**
@@ -213,7 +224,7 @@ export const undocumentedRule: AddressFormatter = (address) => {
   const premise = sub_building_name;
   const result = premiseLocalities(address);
   prependLocality(result, sub_building_name);
-  return combinePremise(result, address, premise, "");
+  return combinePremise(result, address, premise, "", sub_building_name);
 };
 
 /**
@@ -223,7 +234,7 @@ export const po_box: AddressFormatter = (address) => {
   const result = premiseLocalities(address);
   const premise = `PO Box ${address.po_box}`;
   result.push(premise);
-  return combinePremise(result, address, premise, "");
+  return combinePremise(result, address, premise, "", "");
 };
 
 /* tslint:disable:no-boolean-literal-compare */
