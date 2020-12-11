@@ -152,6 +152,9 @@ describe("Address Model", () => {
     it("provides a number accessor", () => {
       assert.equal(address.number, "1");
     });
+    it("provides a unit accessor", () => {
+      assert.equal(address.unit, "Flat 2");
+    });
   });
 
   describe("#raw", () => {
