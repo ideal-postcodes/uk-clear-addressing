@@ -82,6 +82,7 @@ describe("Rules", () => {
         premiseElements,
         new Address({}),
         "quux",
+        "quux",
         "quux"
       );
       assert.deepEqual(result, {
@@ -89,6 +90,7 @@ describe("Rules", () => {
         line_2: "bar",
         line_3: "foo",
         premise: "quux",
+        unit: "quux",
         number: "quux",
       });
     });
@@ -98,6 +100,7 @@ describe("Rules", () => {
         premiseElements,
         new Address({}),
         "quux",
+        "quux",
         "quux"
       );
       assert.deepEqual(result, {
@@ -105,6 +108,7 @@ describe("Rules", () => {
         line_2: "",
         line_3: "",
         premise: "quux",
+        unit: "quux",
         number: "quux",
       });
     });
@@ -114,6 +118,7 @@ describe("Rules", () => {
         premiseElements,
         new Address({}),
         "quux",
+        "quux",
         "quux"
       );
       assert.deepEqual(result, {
@@ -121,6 +126,7 @@ describe("Rules", () => {
         line_2: "bar",
         line_3: "foo, qux",
         premise: "quux",
+        unit: "quux",
         number: "quux",
       });
     });
@@ -132,6 +138,7 @@ describe("Rules", () => {
           organisation_name: "baz ltd",
         }),
         "quux",
+        "quux",
         "quux"
       );
       assert.deepEqual(result, {
@@ -139,14 +146,16 @@ describe("Rules", () => {
         line_2: "foo",
         line_3: "",
         premise: "quux",
+        unit: "quux",
         number: "quux",
       });
     });
     it("handles empty label array", () => {
-      assert.deepEqual(combinePremise([], new Address({}), "", ""), {
+      assert.deepEqual(combinePremise([], new Address({}), "", "", ""), {
         line_1: "",
         line_2: "",
         line_3: "",
+        unit: "",
         premise: "",
         number: "",
       });

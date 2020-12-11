@@ -24,6 +24,7 @@ describe("Rules", () => {
 
       assert.deepEqual(rule1(base), {
         premise: "",
+        unit: "",
         number: "",
         line_1: "Foo Ltd",
         line_2: "High Street",
@@ -41,6 +42,7 @@ describe("Rules", () => {
 
       assert.deepEqual(rule2(base), {
         premise: "8",
+        unit: "",
         number: "8",
         line_1: "8 High Street",
         line_2: "",
@@ -58,6 +60,7 @@ describe("Rules", () => {
 
       assert.deepEqual(rule3(base), {
         premise: "8a",
+        unit: "",
         number: "8a",
         line_1: "8a High Street",
         line_2: "",
@@ -72,6 +75,7 @@ describe("Rules", () => {
 
       assert.deepEqual(rule3(base), {
         premise: "Foo, 8-9",
+        unit: "",
         number: "8-9",
         line_1: "Foo",
         line_2: "8-9 High Street",
@@ -86,6 +90,7 @@ describe("Rules", () => {
 
       assert.deepEqual(rule3(base), {
         premise: "Foo",
+        unit: "",
         number: "",
         line_1: "Foo",
         line_2: "High Street",
@@ -104,6 +109,7 @@ describe("Rules", () => {
 
       assert.deepEqual(rule4(base), {
         premise: "Foo, 8",
+        unit: "",
         number: "8",
         line_1: "Foo",
         line_2: "8 High Street",
@@ -122,7 +128,8 @@ describe("Rules", () => {
 
       assert.deepEqual(rule5(base), {
         premise: "8a",
-        number: "8a",
+        unit: "a",
+        number: "8",
         line_1: "8a High Street",
         line_2: "",
         line_3: "",
@@ -137,6 +144,7 @@ describe("Rules", () => {
 
       assert.deepEqual(rule5(base), {
         premise: "Foo, 8",
+        unit: "Foo",
         number: "8",
         line_1: "Foo",
         line_2: "8 High Street",
@@ -155,6 +163,7 @@ describe("Rules", () => {
 
       assert.deepEqual(rule6(base), {
         premise: "Bar, Foo",
+        unit: "Bar",
         number: "",
         line_1: "Bar",
         line_2: "Foo",
@@ -170,6 +179,7 @@ describe("Rules", () => {
 
       assert.deepEqual(rule6(base), {
         premise: "8a Foo",
+        unit: "8a",
         number: "",
         line_1: "8a Foo",
         line_2: "High Street",
@@ -185,6 +195,7 @@ describe("Rules", () => {
 
       assert.deepEqual(rule6(base), {
         premise: "Bar, 9a",
+        unit: "Bar",
         number: "9a",
         line_1: "Bar",
         line_2: "9a High Street",
@@ -201,6 +212,7 @@ describe("Rules", () => {
 
       assert.deepEqual(rule6(base), {
         premise: "Bar, Foo",
+        unit: "Bar",
         number: "",
         line_1: "Bar, Foo",
         line_2: "High Street",
@@ -220,6 +232,7 @@ describe("Rules", () => {
 
       assert.deepEqual(rule7(base), {
         premise: "Bar, Foo, 8",
+        unit: "Bar",
         number: "8",
         line_1: "Bar",
         line_2: "Foo",
@@ -236,6 +249,7 @@ describe("Rules", () => {
 
       assert.deepEqual(rule7(base), {
         premise: "9a Foo, 8",
+        unit: "9a",
         number: "8",
         line_1: "9a Foo",
         line_2: "8 High Street",
@@ -252,6 +266,7 @@ describe("Rules", () => {
 
       assert.deepEqual(rule7(base), {
         premise: "Bar, Foo",
+        unit: "Bar",
         number: "",
         line_1: "Bar, Foo",
         line_2: "High Street",
@@ -269,6 +284,7 @@ describe("Rules", () => {
 
       assert.deepEqual(po_box(base), {
         premise: "PO Box 8",
+        unit: "",
         number: "",
         line_1: "PO Box 8",
         line_2: "High Street",
@@ -286,6 +302,7 @@ describe("Rules", () => {
 
       assert.deepEqual(undocumentedRule(base), {
         premise: "Foo",
+        unit: "Foo",
         number: "",
         line_1: "Foo High Street",
         line_2: "",
