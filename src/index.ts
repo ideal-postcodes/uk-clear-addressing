@@ -58,6 +58,7 @@ export class Address {
    * `Address` can be used to
    * - Compute address lines based on premise and locality information
    * - Sensibly compute a `premise` label based on (sub) building name and number
+   * - Sensibly compute `number` and `unit` labels based on (sub) building name and number
    * - Sensibly sort an array of addresses
    *
    * @example
@@ -86,6 +87,8 @@ export class Address {
    * //		line_1: 'S D Alcott Florists',
    * //		line_2: 'Flower House',
    * //		line_3: '189a Pye Green Road',
+   * //		unit: ""
+   * //		number: "189a"
    * //		premise: "Flower House, 189a"
    * //	}
    * //
@@ -114,7 +117,6 @@ export class Address {
    * 	// "197a Elm Road"
    * 	// "199 Elm Road"
    * ```
-   * @param {AddressRecord} data
    */
   constructor(data: AddressRecord) {
     this.postcode = extract(data, "postcode");

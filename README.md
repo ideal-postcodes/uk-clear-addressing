@@ -19,9 +19,10 @@ Produces consistent address lines, a post town line and a postcode line.
 ![Correct Addressing](https://img.ideal-postcodes.co.uk/correct_address.gif)
 
 - Correctly format UK addresses using Royal Mail's Postcode Address File
-- Produces 3 address lines and premise attributes based on `building_name`, `sub_building_name` and `building_number`
+- Produces 3 address lines suitable for general use (i.e. mailing)
+- Produces a `premise`, `number` and `unit` attribute, which is a sensible almagamation of `building_name`, `sub_building_name` and `building_number`
 - Address sorting function
-- Extensive test suite
+- Extensive test suite, including documented and newly discovered corner cases
 
 ## Links
 
@@ -45,17 +46,17 @@ npm install uk-clear-addressing
 
 Use the [Address](https://uk-clear-addressing.ideal-postcodes.dev/classes/address.html) class to parse a [PAF Record](https://uk-clear-addressing.ideal-postcodes.dev/interfaces/pafrecord.html)
 
-[Formatted address lines](https://uk-clear-addressing.ideal-postcodes.dev/interfaces/formattedaddress.html) can be extracted using instance accessors like `line_1`, `line_2`, `line_3` and `premise`.
+[Formatted address lines](https://uk-clear-addressing.ideal-postcodes.dev/interfaces/formattedaddress.html) can be extracted using instance accessors like `line_1`, `line_2`, `line_3`, `premise`, `number` and `unit`
 
 ```javascript
-const { Address } = require('uk-clear-addressing');
+const { Address } = require("uk-clear-addressing");
 
 const pafRecord = {
   postcode: "WS11 5SB",
   post_town: "CANNOCK",
   thoroughfare: "Pye Green Road",
   building_name: "Flower House 189A",
-  organisation_name: 'S D Alcott Florists',
+  organisation_name: "S D Alcott Florists",
 };
 
 const {
@@ -63,6 +64,8 @@ const {
   line_2,
   line_3,
   premise,
+  number,
+  unit,
   post_town,
   postcode
 } = new Address(pafRecord);
@@ -85,14 +88,76 @@ const address = new Address({
 
 console.log(address.formattedAddress());
 //  {
-//    postcode: 'WS11 5SB',
-//    post_town: 'CANNOCK',
-//    line_1: 'S D Alcott Florists',
-//    line_2: 'Flower House',
-//    line_3: '189a Pye Green Road',
+//    postcode: "WS11 5SB",
+//    post_town: "CANNOCK",
+//    line_1: "S D Alcott Florists",
+//    line_2: "Flower House",
+//    line_3: "189a Pye Green Road",
+//    number: "189a",
+//    unit: "",
 //    premise: "Flower House, 189a"
 //  }
 ```
+
+### Non-PAF Computed Attributes
+
+`building_number`, `building_name` and `sub_building_name` represent raw data from Royal Mail's PAF and can be difficult to parse if you are unaware of how the PAF premise fields work together. For this reason, `uk-clear-addressing` also provides computed attributes, which attempt to reasonable capture common premise concepts like building number and unit.
+
+Due to years of accumulated complexity, few assumptions should be made of ways UK addresses can be described in terms of number, name and unit. It's recommeded to simply consume the address lines (`line_1`, `line_2`, `line_3`) outlined in [Royal Mail's Programmers Guide](https://js.ideal-postcodes.co.uk/guide.pdf). Building number, unit and PAF premise attributes should be stored as useful extras.
+
+Some examples of this complexity include:
+
+- Alphanumeric identifiers like `10A` are not necessarily the building number. In some instances they represent a premise with building number `10` and sub building idenitifer `A`
+- The `building_number` of an address may be split across `building_name`, `building_number` and `sub_building_name`
+- Some addresses may be identified as a unit `sub_building_name` but no building number or name
+- Some apparent building numbers cannot be separated from the building name. For instance, `1 Ashgate Rise, Raw Gap, HG50HZ`, `1 Ashgate Rise` appears in `building_name`. The numeric element should not be separated into `number` because the property is numbered into the building and not the thoroughfare
+
+Further keep in mind that UK addresses are manually added and updated by thousands of postal workers, thousands of times a day across this UK. Although Royal Mail strives to keep address formatting in accordance with its internal guidance, it is possible for building numbers and units may be incorrectly designated for a time.
+
+#### `premise` attribute
+
+The `premise` attribute is designed to capture *only* the premise specific elements of an address (i.e. no thoroughfare, localities, etc). It attempts to sensibly combine `building_number`, `building_name` and `sub_building_name`.
+
+`premise` omits organisation, department and PO boxes.
+
+Examples include:
+
+```
+10B Barry Tower, 13
+Flat 1-3, 10
+Flat 3, Nelson House, 2
+Mansion House
+Suite 1-3
+```
+
+#### `number` attribute
+
+The `number` attribute attempts to capture the building number element of an address, in other words how a premise is numbered into a thoroughfare. For simple use cases, this attribte may be prefered over Royal Mail's `building_number` attribute.
+
+Royal Mail's `building_number` field is not suited to this task as the upstream data schema only allows this to be integers. Therefore, mixed numbers (like e.g. `1A` and `1-3`) and ordinal building identifiers (like `A`,`B`,`C`, etc) are not captured in `building_number`.
+
+Examples include:
+
+```
+10
+A
+1-3
+10A
+```
+
+#### `unit` attribute
+
+The `unit` attribute attempts to capture the "sub building" element of a building with its own number, name or both. For simple use cases, this attribute may be preferred to Royal Mail's `sub_building_name` field.
+
+Examples include:
+
+```
+A
+Flat 1
+Basement Flat
+Caretakers Flat
+```
+
 
 ### Sorting Addresses
 
@@ -134,7 +199,7 @@ Below is a list of address fragments. For the address to be properly formatted, 
 
 ### Premises Elements
 
-- Sub Building Name (e.g. ‘Flat 1’) 
+- Sub Building Name (e.g. ‘Flat 1’)
 - Building Name (e.g. ‘Rose Cottage’)
 - Building Number (e.g. ‘22’)
 - Organisation Name (e.g. ‘Cath’s Cakes’)
@@ -156,4 +221,3 @@ Below is a list of address fragments. For the address to be properly formatted, 
 ## Licence
 
 MIT
-
