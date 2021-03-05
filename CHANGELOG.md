@@ -1,3 +1,28 @@
+# [4.0.0](https://github.com/ideal-postcodes/uk-clear-addressing/compare/3.0.0...4.0.0) (2021-03-05)
+
+
+### Bug Fixes
+
+* **Release:** Trigger release ([764d1e4](https://github.com/ideal-postcodes/uk-clear-addressing/commit/764d1e4c33c505ac2445e89ba8ba78939cdc72b1))
+
+
+### Documentation
+
+* **Premise Attributes:** Document number and unit ([a363dc9](https://github.com/ideal-postcodes/uk-clear-addressing/commit/a363dc9f062849b254536066917f568f3b1f39d5))
+
+
+### Features
+
+* **Building Numbers:** Experimental attempt at returning actual ([0f653e9](https://github.com/ideal-postcodes/uk-clear-addressing/commit/0f653e99af741109b7915bb30071293e3252f411))
+* **Building Units:** Experimental attempt at returning a building unit ([e72d7c4](https://github.com/ideal-postcodes/uk-clear-addressing/commit/e72d7c4945abc85006708686dd724355061beb10))
+* **ES Module:** Add ESM build ([e6b5632](https://github.com/ideal-postcodes/uk-clear-addressing/commit/e6b5632f11163bec68943fbe6f1beced2fdd6a07))
+
+
+### BREAKING CHANGES
+
+* **Premise Attributes:** - formattedADdress now returns `unit` and `number`
+- FormattedPremise interface includes `unit` and `number`
+
 # [3.0.0](https://github.com/ideal-postcodes/uk-clear-addressing/compare/2.2.2...3.0.0) (2020-12-10)
 
 
