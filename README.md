@@ -73,7 +73,7 @@ const {
 
 #### Extract a formatted address object
 
-Alternatively extract a [formatted address object](https://uk-clear-addressing.ideal-postcodes.dev/interfaces/formattedaddress.html) using [`.formattedAddress`](https://uk-clear-addressing.ideal-postcodes.dev/classes/address.html#formattedaddress).
+Alternatively, extract a [formatted address object](https://uk-clear-addressing.ideal-postcodes.dev/interfaces/formattedaddress.html) using the [`formattedAddress`](https://uk-clear-addressing.ideal-postcodes.dev/classes/address.html#formattedaddress) method.
 
 ```javascript
 const { Address } = require('uk-clear-addressing');
@@ -122,7 +122,7 @@ The `premise` attribute is designed to capture *only* the premise specific eleme
 
 Examples include:
 
-```
+```text
 10B Barry Tower, 13
 Flat 1-3, 10
 Flat 3, Nelson House, 2
@@ -138,7 +138,7 @@ Royal Mail's `building_number` field is not suited to this task as the upstream 
 
 Examples include:
 
-```
+```text
 10
 A
 1-3
@@ -151,13 +151,12 @@ The `unit` attribute attempts to capture the "sub building" element of a buildin
 
 Examples include:
 
-```
+```text
 A
 Flat 1
 Basement Flat
 Caretakers Flat
 ```
-
 
 ### Sorting Addresses
 
