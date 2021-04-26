@@ -92,7 +92,7 @@
     "@types/benchmark": "~2.1.0",
     "@types/chai": "~4.2.0",
     "@types/mocha": "~8.2.0",
-    "@types/node": "~14.14.0",
+    "@types/node": "~14.14.41",
     "benchmark": "~2.1.4",
     "chai": "~4.3.0",
     "codecov": "~3.8.0",
