@@ -9,6 +9,77 @@ import { sort } from "./sort";
 import { formatter } from "./rules";
 import { extract, extractFloat, extractInteger } from "./utils";
 
+/**
+ * The `Address` class is designed to wrap a Postcode Address File (PAF)
+ * record and provide utility methods to make this data more readily
+ * consumable for humans
+ *
+ * `Address` requires an object of type `AddressRecord` to be instantiated
+ * which is comprised of fields readily found on PAF
+ *
+ * `Address` can be used to
+ * - Compute address lines based on premise and locality information
+ * - Sensibly compute a `premise` label based on (sub) building name and number
+ * - Sensibly compute `number` and `unit` labels based on (sub) building name and number
+ * - Sensibly sort an array of addresses
+ *
+ * @example
+ * ```typescript
+ * // Formatting an address
+ *
+ * const address = new Address({
+ * 	postcode: "WS11 5SB",
+ * 	post_town: "CANNOCK",
+ * 	dependant_locality: "",
+ * 	double_dependant_locality: "",
+ * 	thoroughfare: "Pye Green Road",
+ * 	building_number: "",
+ * 	building_name: "Flower House 189A",
+ * 	sub_building_name: "",
+ * 	dependant_thoroughfare: "",
+ * 	organisation_name: 'S D Alcott Florists',
+ * });
+ *
+ * console.log(address.formattedAddress());
+ *
+ * //
+ * //	{
+ * //		postcode: 'WS11 5SB',
+ * //		post_town: 'CANNOCK',
+ * //		line_1: 'S D Alcott Florists',
+ * //		line_2: 'Flower House',
+ * //		line_3: '189a Pye Green Road',
+ * //		unit: ""
+ * //		number: "189a"
+ * //		premise: "Flower House, 189a"
+ * //	}
+ * //
+ * ```
+ *
+ * @example
+ * ```typescript
+ * // Formatting an address
+ *
+ *const addresses = await query("SELECT * FROM postcode_address_file LIMIT 10");
+ *
+ * addresses
+ * 	.map(address => new Address(address)) // Instantiate an `Address` instances
+ * 	.sort(Address.sort)  								  // Now sort
+ *
+ * 	// Print an example to console
+ * 	.forEach(address => console.log(address.line_1));
+ * 	// "190 Elm Road"
+ * 	// "190a Elm Road"
+ * 	// "191 Elm Road"
+ * 	// "191a Elm Road"
+ * 	// "192 Elm Road"
+ * 	// "193 Elm Road"
+ * 	// "193a Elm Road"
+ * 	// "197 Elm Road"
+ * 	// "197a Elm Road"
+ * 	// "199 Elm Road"
+ * ```
+ */
 export class Address {
   readonly merge_sub_and_building: boolean;
   readonly postcode_inward: string;
@@ -47,77 +118,6 @@ export class Address {
 
   public cache: FormattedAddress | null;
 
-  /**
-   * The `Address` class is designed to wrap a Postcode Address File (PAF)
-   * record and provide utility methods to make this data more readily
-   * consumable for humans
-   *
-   * `Address` requires an object of type `AddressRecord` to be instantiated
-   * which is comprised of fields readily found on PAF
-   *
-   * `Address` can be used to
-   * - Compute address lines based on premise and locality information
-   * - Sensibly compute a `premise` label based on (sub) building name and number
-   * - Sensibly compute `number` and `unit` labels based on (sub) building name and number
-   * - Sensibly sort an array of addresses
-   *
-   * @example
-   * ```typescript
-   * // Formatting an address
-   *
-   * const address = new Address({
-   * 	postcode: "WS11 5SB",
-   * 	post_town: "CANNOCK",
-   * 	dependant_locality: "",
-   * 	double_dependant_locality: "",
-   * 	thoroughfare: "Pye Green Road",
-   * 	building_number: "",
-   * 	building_name: "Flower House 189A",
-   * 	sub_building_name: "",
-   * 	dependant_thoroughfare: "",
-   * 	organisation_name: 'S D Alcott Florists',
-   * });
-   *
-   * console.log(address.formattedAddress());
-   *
-   * //
-   * //	{
-   * //		postcode: 'WS11 5SB',
-   * //		post_town: 'CANNOCK',
-   * //		line_1: 'S D Alcott Florists',
-   * //		line_2: 'Flower House',
-   * //		line_3: '189a Pye Green Road',
-   * //		unit: ""
-   * //		number: "189a"
-   * //		premise: "Flower House, 189a"
-   * //	}
-   * //
-   * ```
-   *
-   * @example
-   * ```typescript
-   * // Formatting an address
-   *
-   *const addresses = await query("SELECT * FROM postcode_address_file LIMIT 10");
-   *
-   * addresses
-   * 	.map(address => new Address(address)) // Instantiate an `Address` instances
-   * 	.sort(Address.sort)  								  // Now sort
-   *
-   * 	// Print an example to console
-   * 	.forEach(address => console.log(address.line_1));
-   * 	// "190 Elm Road"
-   * 	// "190a Elm Road"
-   * 	// "191 Elm Road"
-   * 	// "191a Elm Road"
-   * 	// "192 Elm Road"
-   * 	// "193 Elm Road"
-   * 	// "193a Elm Road"
-   * 	// "197 Elm Road"
-   * 	// "197a Elm Road"
-   * 	// "199 Elm Road"
-   * ```
-   */
   constructor(data: AddressRecord) {
     this.postcode = extract(data, "postcode");
     this.post_town = extract(data, "post_town").toUpperCase();
