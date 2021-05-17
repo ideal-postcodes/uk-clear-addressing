@@ -5,7 +5,7 @@ import {
   AddressJSON,
   FormattedAddress,
 } from "./types";
-import { sort } from "./sort";
+import { sort, sortingElems } from "./sort";
 import { formatter } from "./rules";
 import { extract, extractFloat, extractInteger } from "./utils";
 
@@ -279,4 +279,4 @@ export class Address {
   }
 }
 
-export { AddressRecord };
+export { AddressRecord, sortingElems };
