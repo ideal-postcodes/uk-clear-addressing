@@ -1,5 +1,8 @@
 import { Address } from "./index";
 
+/**
+ * Formatted premise attributes
+ */
 export interface FormattedPremise {
   premise: string;
   number: string;
@@ -9,6 +12,9 @@ export interface FormattedPremise {
   line_3: string;
 }
 
+/**
+ * Formatted Address. Includes premise specific attributes as well as some locality information (e.g. post town, postcode)
+ */
 export interface FormattedAddress extends FormattedPremise {
   post_town: string;
   postcode: string;
@@ -99,6 +105,9 @@ export interface NumericExtractor {
   (address: AddressRecord, elem: keyof AddressRecord): number | EmptyString;
 }
 
+/**
+ * Raw PAF input object for address parsing
+ */
 export interface RawAddress {
   postcode_inward: string;
   postcode_outward: string;
