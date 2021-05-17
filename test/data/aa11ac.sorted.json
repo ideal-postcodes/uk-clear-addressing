@@ -1,5 +1,5 @@
 [
-{
+  {
     "building_name": "Priory Court",
     "sub_building_name": "",
     "building_number": "1",
@@ -12,8 +12,8 @@
     "po_box": "",
     "thoroughfare": "Kingshill Road",
     "dependant_thoroughfare": ""
-},
-{
+  },
+  {
     "building_name": "Priory Court",
     "sub_building_name": "",
     "building_number": "2",
@@ -26,8 +26,8 @@
     "po_box": "",
     "thoroughfare": "Kingshill Road",
     "dependant_thoroughfare": ""
-},
-{
+  },
+  {
     "building_name": "Priory Court",
     "sub_building_name": "",
     "building_number": "3",
@@ -40,8 +40,8 @@
     "po_box": "",
     "thoroughfare": "Kingshill Road",
     "dependant_thoroughfare": ""
-},
-{
+  },
+  {
     "building_name": "Priory Court",
     "sub_building_name": "",
     "building_number": "4",
@@ -54,8 +54,8 @@
     "po_box": "",
     "thoroughfare": "Kingshill Road",
     "dependant_thoroughfare": ""
-},
-{
+  },
+  {
     "building_name": "Priory Court",
     "sub_building_name": "",
     "building_number": "5",
@@ -68,8 +68,8 @@
     "po_box": "",
     "thoroughfare": "Kingshill Road",
     "dependant_thoroughfare": ""
-},
-{
+  },
+  {
     "building_name": "Priory Court",
     "sub_building_name": "A",
     "building_number": "",
@@ -82,8 +82,8 @@
     "po_box": "",
     "thoroughfare": "Kingshill Road",
     "dependant_thoroughfare": ""
-},
-{
+  },
+  {
     "building_name": "Priory Court",
     "sub_building_name": "B",
     "building_number": "",
@@ -96,8 +96,8 @@
     "po_box": "",
     "thoroughfare": "Kingshill Road",
     "dependant_thoroughfare": ""
-},
-{
+  },
+  {
     "building_name": "Priory Court",
     "sub_building_name": "C",
     "building_number": "",
@@ -110,8 +110,8 @@
     "po_box": "",
     "thoroughfare": "Kingshill Road",
     "dependant_thoroughfare": ""
-},
-{
+  },
+  {
     "building_name": "Priory Court",
     "sub_building_name": "D",
     "building_number": "",
@@ -124,8 +124,8 @@
     "po_box": "",
     "thoroughfare": "Kingshill Road",
     "dependant_thoroughfare": ""
-},
-{
+  },
+  {
     "building_name": "Priory Court",
     "sub_building_name": "E",
     "building_number": "",
@@ -138,4 +138,5 @@
     "po_box": "",
     "thoroughfare": "Kingshill Road",
     "dependant_thoroughfare": ""
-}]
+  }
+]
