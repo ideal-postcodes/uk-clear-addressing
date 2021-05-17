@@ -1,3 +1,10 @@
+# [4.1.0](https://github.com/ideal-postcodes/uk-clear-addressing/compare/4.0.0...4.1.0) (2021-05-17)
+
+
+### Features
+
+* **Sort:** Export sorting attributes ([f0625f4](https://github.com/ideal-postcodes/uk-clear-addressing/commit/f0625f415b24175b5f207dc985c740ff167daa9d))
+
 # [4.0.0](https://github.com/ideal-postcodes/uk-clear-addressing/compare/3.0.0...4.0.0) (2021-03-05)
 
 
