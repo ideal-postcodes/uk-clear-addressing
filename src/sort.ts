@@ -3,7 +3,10 @@ import { nameException } from "./utils";
 import { SortingElems } from "./types";
 import { alphanum } from "@cablanchard/koelle-sort";
 
-const sortingElems: ReadonlyArray<SortingElems> = [
+/**
+ * Determines the sort order of Address.sort
+ */
+export const sortingElems: Array<SortingElems> = [
   "building_number",
   "building_name",
   "sub_building_name",
