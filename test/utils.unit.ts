@@ -28,8 +28,8 @@ describe("Utils", () => {
   describe("hasUnitPrefix", () => {
     describe("when string has unit prefix", () => {
       unitPrefixes
-        .map(prefix => `${prefix} ${generateBuildingNumber()}`)
-        .forEach(testCase => {
+        .map((prefix) => `${prefix} ${generateBuildingNumber()}`)
+        .forEach((testCase) => {
           it(`returns true for ${testCase}`, () => {
             assert.isTrue(hasUnitPrefix(testCase));
           });
@@ -40,7 +40,7 @@ describe("Utils", () => {
       new Array(10)
         .fill(null)
         .map(() => generateBuildingNumber())
-        .forEach(testCase => {
+        .forEach((testCase) => {
           it(`returns false for ${testCase}`, () => {
             assert.isFalse(hasUnitPrefix(testCase));
           });

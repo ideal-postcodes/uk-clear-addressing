@@ -1,5 +1,5 @@
 [
-{
+  {
     "building_name": "",
     "sub_building_name": "",
     "building_number": "188",
@@ -12,8 +12,8 @@
     "po_box": "",
     "thoroughfare": "Elm Road",
     "dependant_thoroughfare": ""
-},
-{
+  },
+  {
     "building_name": "",
     "sub_building_name": "",
     "building_number": "189",
@@ -26,8 +26,8 @@
     "po_box": "",
     "thoroughfare": "Elm Road",
     "dependant_thoroughfare": ""
-},
-{
+  },
+  {
     "building_name": "",
     "sub_building_name": "",
     "building_number": "190",
@@ -40,8 +40,8 @@
     "po_box": "",
     "thoroughfare": "Elm Road",
     "dependant_thoroughfare": ""
-},
-{
+  },
+  {
     "building_name": "190a",
     "sub_building_name": "",
     "building_number": "",
@@ -54,8 +54,8 @@
     "po_box": "",
     "thoroughfare": "Elm Road",
     "dependant_thoroughfare": ""
-},
-{
+  },
+  {
     "building_name": "",
     "sub_building_name": "",
     "building_number": "191",
@@ -68,8 +68,8 @@
     "po_box": "",
     "thoroughfare": "Elm Road",
     "dependant_thoroughfare": ""
-},
-{
+  },
+  {
     "building_name": "191a",
     "sub_building_name": "",
     "building_number": "",
@@ -82,8 +82,8 @@
     "po_box": "",
     "thoroughfare": "Elm Road",
     "dependant_thoroughfare": ""
-},
-{
+  },
+  {
     "building_name": "",
     "sub_building_name": "",
     "building_number": "192",
@@ -96,8 +96,8 @@
     "po_box": "",
     "thoroughfare": "Elm Road",
     "dependant_thoroughfare": ""
-},
-{
+  },
+  {
     "building_name": "",
     "sub_building_name": "",
     "building_number": "193",
@@ -110,8 +110,8 @@
     "po_box": "",
     "thoroughfare": "Elm Road",
     "dependant_thoroughfare": ""
-},
-{
+  },
+  {
     "building_name": "193a",
     "sub_building_name": "",
     "building_number": "",
@@ -124,8 +124,8 @@
     "po_box": "",
     "thoroughfare": "Elm Road",
     "dependant_thoroughfare": ""
-},
-{
+  },
+  {
     "building_name": "",
     "sub_building_name": "",
     "building_number": "197",
@@ -138,8 +138,8 @@
     "po_box": "",
     "thoroughfare": "Elm Road",
     "dependant_thoroughfare": ""
-},
-{
+  },
+  {
     "building_name": "197a",
     "sub_building_name": "",
     "building_number": "",
@@ -152,8 +152,8 @@
     "po_box": "",
     "thoroughfare": "Elm Road",
     "dependant_thoroughfare": ""
-},
-{
+  },
+  {
     "building_name": "",
     "sub_building_name": "",
     "building_number": "199",
@@ -166,8 +166,8 @@
     "po_box": "",
     "thoroughfare": "Elm Road",
     "dependant_thoroughfare": ""
-},
-{
+  },
+  {
     "building_name": "199a",
     "sub_building_name": "",
     "building_number": "",
@@ -180,8 +180,8 @@
     "po_box": "",
     "thoroughfare": "Elm Road",
     "dependant_thoroughfare": ""
-},
-{
+  },
+  {
     "building_name": "",
     "sub_building_name": "",
     "building_number": "203",
@@ -194,8 +194,8 @@
     "po_box": "",
     "thoroughfare": "Elm Road",
     "dependant_thoroughfare": ""
-},
-{
+  },
+  {
     "building_name": "",
     "sub_building_name": "",
     "building_number": "204",
@@ -208,8 +208,8 @@
     "po_box": "",
     "thoroughfare": "Elm Road",
     "dependant_thoroughfare": ""
-},
-{
+  },
+  {
     "building_name": "",
     "sub_building_name": "",
     "building_number": "205",
@@ -222,8 +222,8 @@
     "po_box": "",
     "thoroughfare": "Elm Road",
     "dependant_thoroughfare": ""
-},
-{
+  },
+  {
     "building_name": "",
     "sub_building_name": "",
     "building_number": "206",
@@ -236,8 +236,8 @@
     "po_box": "",
     "thoroughfare": "Elm Road",
     "dependant_thoroughfare": ""
-},
-{
+  },
+  {
     "building_name": "",
     "sub_building_name": "",
     "building_number": "207",
@@ -250,8 +250,8 @@
     "po_box": "",
     "thoroughfare": "Elm Road",
     "dependant_thoroughfare": ""
-},
-{
+  },
+  {
     "building_name": "207a",
     "sub_building_name": "",
     "building_number": "",
@@ -264,4 +264,5 @@
     "po_box": "",
     "thoroughfare": "Elm Road",
     "dependant_thoroughfare": ""
-}]
+  }
+]
