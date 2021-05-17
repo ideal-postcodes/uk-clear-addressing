@@ -5,23 +5,25 @@ import { join } from "path";
 import { assert } from "chai";
 import { Address } from "../src/index";
 import { AddressRecord } from "../src/types";
+import { sortingElems } from "../src/index";
+import { sortingElems as canonElems } from "../src/sort";
 
 /**
  * Reads JSON files that match `*.sorted.json`
  * These files represent sorted responses
  */
 const testCases: Address[][] = readdirSync(join(__dirname, "data"))
-  .filter(file => file.match(/\.sorted\.json$/))
-  .map(file => <AddressRecord[]>require(`./data/${file}`))
-  .map(addressRecords => {
-    return addressRecords.map(record => new Address(record));
+  .filter((file) => file.match(/\.sorted\.json$/))
+  .map((file) => <AddressRecord[]>require(`./data/${file}`))
+  .map((addressRecords) => {
+    return addressRecords.map((record) => new Address(record));
   });
 
 const sortingError = (results: Address[], expected: Address[]): string => {
   const toString = (a: Address): string => {
     const formatted = a.formattedAddress();
     return [formatted.line_1, formatted.line_2, formatted.line_3]
-      .filter(e => e !== "")
+      .filter((e) => e !== "")
       .join(", ");
   };
   const expectedList = expected.map(toString).join("\n");
@@ -81,7 +83,7 @@ function shuffle<T>(array: T[]): T[] {
 }
 
 describe("sort", () => {
-  testCases.forEach(testAddresses => {
+  testCases.forEach((testAddresses) => {
     it("correctly sorts addresses", () => {
       const sortedAddresses = shuffle(testAddresses);
       sortedAddresses.sort(Address.sort);
@@ -107,8 +109,14 @@ describe("sort", () => {
     const addresses = [new Address(data), new Address(data), new Address(data)];
     const sortedAddresses = addresses.slice().sort(Address.sort);
     assert.equal(sortedAddresses.length, addresses.length);
-    addresses.forEach(address => {
-      assert.isTrue(sortedAddresses.some(a => a === address));
+    addresses.forEach((address) => {
+      assert.isTrue(sortedAddresses.some((a) => a === address));
     });
+  });
+});
+
+describe("sortingElems", () => {
+  it("exports sorting elems", () => {
+    assert.equal(sortingElems, canonElems);
   });
 });
