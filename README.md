@@ -44,7 +44,7 @@ npm install uk-clear-addressing
 
 #### Extract formatted address lines
 
-Use the [Address](https://uk-clear-addressing.ideal-postcodes.dev/classes/address.html) class to parse a [PAF Record](https://uk-clear-addressing.ideal-postcodes.dev/interfaces/pafrecord.html)
+Use the [Address](https://uk-clear-addressing.ideal-postcodes.dev/classes/index.address.html) class to parse a [PAF Record](https://uk-clear-addressing.ideal-postcodes.dev/interfaces/pafrecord.html)
 
 [Formatted address lines](https://uk-clear-addressing.ideal-postcodes.dev/interfaces/formattedaddress.html) can be extracted using instance accessors like `line_1`, `line_2`, `line_3`, `premise`, `number` and `unit`
 
@@ -73,7 +73,7 @@ const {
 
 #### Extract a formatted address object
 
-Alternatively, extract a [formatted address object](https://uk-clear-addressing.ideal-postcodes.dev/interfaces/formattedaddress.html) using the [`formattedAddress`](https://uk-clear-addressing.ideal-postcodes.dev/classes/address.html#formattedaddress) method.
+Alternatively, extract a [formatted address object](https://uk-clear-addressing.ideal-postcodes.dev/interfaces/formattedaddress.html) using the [`formattedAddress`](https://uk-clear-addressing.ideal-postcodes.dev/classes/index.address.html#formattedaddress) method.
 
 ```javascript
 const { Address } = require('uk-clear-addressing');
@@ -160,7 +160,7 @@ Caretakers Flat
 
 ### Sorting Addresses
 
-[`Address.sort`](https://uk-clear-addressing.ideal-postcodes.dev/classes/address.html#sort) implements a comparison function, which allows you to compare [`Address`](https://uk-clear-addressing.ideal-postcodes.dev/classes/address.html) instances. This can readily be passed into `Array.prototype.sort`
+[`Address.sort`](https://uk-clear-addressing.ideal-postcodes.dev/modules/sort.html#sort-1) implements a comparison function, which allows you to compare [`Address`](https://uk-clear-addressing.ideal-postcodes.dev/classes/index.address.html) instances. This can readily be passed into `Array.prototype.sort`
 
 ```javascript
 const addresses = await query("SELECT * FROM postcode_address_file LIMIT 10");
