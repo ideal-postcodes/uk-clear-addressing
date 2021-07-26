@@ -91,7 +91,7 @@
     "@ideal-postcodes/doc-assets": "~1.0.6",
     "@types/benchmark": "~2.1.0",
     "@types/chai": "~4.2.0",
-    "@types/mocha": "~8.2.0",
+    "@types/mocha": "~9.0.0",
     "@types/node": "~16.3.3",
     "benchmark": "~2.1.4",
     "chai": "~4.3.0",
