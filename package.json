@@ -22,7 +22,7 @@
   "scripts": {
     "prepublish": "npm run build",
     "semantic-release": "semantic-release --no-ci",
-    "test": "npm run nyc && npm run lint",
+    "test": "npm run nyc",
     "nyc": "nyc mocha",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "lint": "tslint --project tsconfig.json -c tslint.json",
