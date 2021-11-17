@@ -1,9 +1,13 @@
 {
-  "entryPoints": ["./src/index.ts", "./src/rules.ts", "./src/sort.ts", "./src/types.ts", "./src/utils.ts"],
+  "entryPoints": [
+    "./src/index.ts",
+    "./src/rules.ts",
+    "./src/sort.ts",
+    "./src/types.ts",
+    "./src/utils.ts"
+  ],
   "hideGenerator": true,
-  "disableOutputCheck": true,
   "out": "docs/",
   "excludeNotDocumented": true,
-  "excludePrivate": true,
-  "theme": "./node_modules/@ideal-postcodes/doc-assets"
+  "excludePrivate": true
 }
