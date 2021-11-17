@@ -170,6 +170,7 @@ describe("Rules", () => {
         line_3: "High Street",
       });
     });
+
     it("handles name exception in sub building name", () => {
       const base = new Address({
         thoroughfare: "High Street",
@@ -186,6 +187,24 @@ describe("Rules", () => {
         line_3: "",
       });
     });
+
+    it("handles name exception in building name - 19a", () => {
+      const base = new Address({
+        thoroughfare: "Flaxfields End",
+        building_name: "Elisa Court 19a",
+        sub_building_name: "1",
+      });
+
+      assert.deepEqual(rule6(base), {
+        premise: "1, Elisa Court, 19a",
+        unit: "1",
+        number: "19a",
+        line_1: "1 Elisa Court",
+        line_2: "19a Flaxfields End",
+        line_3: "",
+      });
+    });
+
     it("handles name exception in building name", () => {
       const base = new Address({
         thoroughfare: "High Street",
@@ -202,6 +221,7 @@ describe("Rules", () => {
         line_3: "",
       });
     });
+
     it("handles sub and building merges", () => {
       const base = new Address({
         thoroughfare: "High Street",
