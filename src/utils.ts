@@ -71,7 +71,8 @@ export const prependLocality = (
 //   "Units",
 // ];
 
-const unitPrefixRegex = /^(back\sof|blocks?|building|maisonettes?|rear\sof|shops?|stalls?|suites?|units?)/i;
+const unitPrefixRegex =
+  /^(back\sof|blocks?|building|maisonettes?|rear\sof|shops?|stalls?|suites?|units?)/i;
 
 /**
  * Test for whether a string begins with a unit prefix
@@ -92,9 +93,8 @@ const nameExceptionRegex = /^(\d|\d.*\d|\d(.*\d)?[a-z]|[a-z])$/i;
  * ii) First and penultimate characters are numeric, last character is alphabetic (eg 12A’)
  * iii) Building Name has only one character (eg ‘A’)
  */
-export const nameException = (n: string): boolean => {
-  return n.match(nameExceptionRegex) !== null;
-};
+export const nameException = (n: string): boolean =>
+  n.match(nameExceptionRegex) !== null;
 
 const singleCharacterRegex = /^[A-Z]$/i;
 
@@ -104,7 +104,7 @@ const singleCharacterRegex = /^[A-Z]$/i;
 export const isSingleCharacter = (c: string): boolean =>
   c.match(singleCharacterRegex) !== null;
 
-const BUILDING_RANGE_REGEX = /^(\d.*\D.*\d|\d(.*\d)?[a-z]|[a-z])$/i;
+const BUILDING_RANGE_REGEX = /^(\d.*\D.*\d|\d+(.*\d+)?[a-z]|[a-z])$/i;
 
 export const appendOrganisationInfo = (
   elems: AddressElements,

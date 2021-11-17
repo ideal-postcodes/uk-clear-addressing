@@ -14,9 +14,8 @@ import {
  * Rule 1 - No building name, number or sub building name
  * No premise elements detected (typically organisation name)
  */
-export const rule1: AddressFormatter = (address) => {
-  return combinePremise(premiseLocalities(address), address, "", "", "");
-};
+export const rule1: AddressFormatter = (address) =>
+  combinePremise(premiseLocalities(address), address, "", "", "");
 
 /**
  * Rule 2 - Building number only
@@ -148,31 +147,33 @@ export const rule6: AddressFormatter = (address) => {
   let premise;
   let number = "";
   const result = premiseLocalities(address);
-  if (nameException(sub_building_name)) {
-    premise = `${formatElem(sub_building_name)} ${building_name}`;
-    result.push(premise);
-  } else if (nameException(building_name)) {
+  const sub_range_match = checkBuildingRange(building_name);
+  if (nameException(building_name)) {
     premise = `${sub_building_name}, ${building_name}`;
     number = building_name;
     prependLocality(result, building_name);
     result.push(sub_building_name);
+  } else if (sub_range_match && !hasUnitPrefix(building_name)) {
+    // Check if name contains number range
+    premise = `${sub_building_name}, ${sub_range_match.name}, ${sub_range_match.range}`;
+    prependLocality(result, sub_range_match.range);
+    number = sub_range_match.range;
+    if (nameException(sub_building_name)) {
+      result.push(`${formatElem(sub_building_name)} ${sub_range_match.name}`);
+    } else {
+      result.push(sub_range_match.name);
+      result.push(address.sub_building_name);
+    }
+  } else if (nameException(sub_building_name)) {
+    premise = `${formatElem(sub_building_name)} ${building_name}`;
+    result.push(premise);
   } else if (address.merge_sub_and_building) {
     premise = `${sub_building_name}, ${building_name}`;
     result.push(premise);
   } else {
-    const sub_range_match = checkBuildingRange(building_name);
-    if (sub_range_match && !hasUnitPrefix(building_name)) {
-      // Check if name contains number range
-      premise = `${sub_building_name}, ${sub_range_match.name}, ${sub_range_match.range}`;
-      prependLocality(result, sub_range_match.range);
-      number = sub_range_match.range;
-      result.push(sub_range_match.name);
-      result.push(address.sub_building_name);
-    } else {
-      premise = `${sub_building_name}, ${building_name}`;
-      result.push(building_name);
-      result.push(sub_building_name);
-    }
+    premise = `${sub_building_name}, ${building_name}`;
+    result.push(building_name);
+    result.push(sub_building_name);
   }
   return combinePremise(result, address, premise, number, sub_building_name);
 };
