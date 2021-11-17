@@ -1,3 +1,10 @@
+## [4.1.1](https://github.com/ideal-postcodes/uk-clear-addressing/compare/4.1.0...4.1.1) (2021-11-17)
+
+
+### Bug Fixes
+
+* **Sub + Building Name:** Detect address range ([cbffe30](https://github.com/ideal-postcodes/uk-clear-addressing/commit/cbffe306d3d9fff28fac958acebaaa480acc85f4))
+
 # [4.1.0](https://github.com/ideal-postcodes/uk-clear-addressing/compare/4.0.0...4.1.0) (2021-05-17)
 
 
