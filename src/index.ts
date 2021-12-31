@@ -279,4 +279,4 @@ export class Address {
   }
 }
 
-export { AddressRecord, sortingElems };
+export { AddressRecord, sortingElems, sort };
