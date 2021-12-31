@@ -1,3 +1,10 @@
+# [4.2.0](https://github.com/ideal-postcodes/uk-clear-addressing/compare/4.1.1...4.2.0) (2021-12-31)
+
+
+### Features
+
+* **Sort:** Export pure sort scoring method ([2e6b9de](https://github.com/ideal-postcodes/uk-clear-addressing/commit/2e6b9def89c4079df5835c751a9291f33003fa41))
+
 ## [4.1.1](https://github.com/ideal-postcodes/uk-clear-addressing/compare/4.1.0...4.1.1) (2021-11-17)
 
 
