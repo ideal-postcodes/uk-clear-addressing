@@ -96,7 +96,7 @@
     "benchmark": "~2.1.4",
     "chai": "~4.3.0",
     "codecov": "~3.8.0",
-    "mocha": "~9.1.0",
+    "mocha": "~9.2.1",
     "nyc": "~15.1.0",
     "prettier": "~2.5.1",
     "semantic-release": "~17.4.0",
