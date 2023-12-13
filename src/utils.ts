@@ -127,9 +127,7 @@ export const combinePremise = (
   unit: string
 ): FormattedPremise => {
   const premiseElements = elems.slice();
-  console.log(4, premiseElements);
   appendOrganisationInfo(premiseElements, address);
-  console.log(5, premiseElements);
   const [line_1, line_2, ...line_3] = premiseElements.reverse();
   return {
     premise,
