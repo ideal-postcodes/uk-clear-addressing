@@ -6,8 +6,6 @@
 
 ![CI](https://github.com/ideal-postcodes/uk-clear-addressing/workflows/CI/badge.svg)
 ![Release](https://github.com/ideal-postcodes/uk-clear-addressing/workflows/Release/badge.svg)
-[![Dependency Status](https://david-dm.org/ideal-postcodes/uk-clear-addressing.png)](https://david-dm.org/ideal-postcodes/uk-clear-addressing)
-[![Coverage Status](https://coveralls.io/repos/github/ideal-postcodes/uk-clear-addressing/badge.svg?branch=master)](https://coveralls.io/github/ideal-postcodes/uk-clear-addressing?branch=master)
 [![Try uk-clear-addressing on RunKit](https://badge.runkitcdn.com/uk-clear-addressing.svg)](https://npm.runkit.com/uk-clear-addressing)
 
 Parses Postcode Address File records into correctly formatted address recognised by Royal Mail according to its Clear Addressing Guidelines.
