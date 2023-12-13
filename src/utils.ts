@@ -127,7 +127,9 @@ export const combinePremise = (
   unit: string
 ): FormattedPremise => {
   const premiseElements = elems.slice();
+  console.log(4, premiseElements);
   appendOrganisationInfo(premiseElements, address);
+  console.log(5, premiseElements);
   const [line_1, line_2, ...line_3] = premiseElements.reverse();
   return {
     premise,
@@ -147,6 +149,9 @@ export const checkBuildingRange = (
 ): BuildingRangeMatch | void => {
   const tokens = building_name.split(" ");
   const range = tokens.pop() || "";
+  const tokenCopy = [...tokens];
+  const rangeCheck = tokenCopy.pop() || "";
+  if(isSingleCharacter(rangeCheck)) return
   if (range.match(BUILDING_RANGE_REGEX)) {
     return {
       range,
