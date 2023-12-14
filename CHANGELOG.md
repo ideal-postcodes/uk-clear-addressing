@@ -1,3 +1,10 @@
+## [4.2.1](https://github.com/ideal-postcodes/uk-clear-addressing/compare/4.2.0...4.2.1) (2023-12-14)
+
+
+### Bug Fixes
+
+* **Acronyms:** Building name check ([f43a741](https://github.com/ideal-postcodes/uk-clear-addressing/commit/f43a74157102c5a385f49eedb90427acf0d23544))
+
 # [4.2.0](https://github.com/ideal-postcodes/uk-clear-addressing/compare/4.1.1...4.2.0) (2021-12-31)
 
 
