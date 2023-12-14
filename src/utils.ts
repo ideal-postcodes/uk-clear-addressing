@@ -147,9 +147,11 @@ export const checkBuildingRange = (
 ): BuildingRangeMatch | void => {
   const tokens = building_name.split(" ");
   const range = tokens.pop() || "";
-  const tokenCopy = [...tokens];
-  const rangeCheck = tokenCopy.pop() || "";
-  if(isSingleCharacter(rangeCheck)) return
+
+  // Check if final token is single character [A-Z]
+  const rangeCheck = [...tokens].pop() || "";
+  if (isSingleCharacter(rangeCheck)) return;
+
   if (range.match(BUILDING_RANGE_REGEX)) {
     return {
       range,
