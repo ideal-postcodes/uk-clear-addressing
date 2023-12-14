@@ -1254,6 +1254,27 @@
     {
       "expected": {
         "line_1": "Flat 401",
+        "line_2": "Wallscourt Park Residences",
+        "line_3": "E Coldharbour Lane",
+        "post_town": "BRISTOL",
+        "postcode": "BS16 1ZX",
+        "number": "E",
+        "unit": "Flat 401",
+        "premise": "Flat 401, Wallscourt Park Residences, E"
+      },
+      "fixture": {
+        "post_town": "BRISTOL",
+        "thoroughfare": "Coldharbour Lane",
+        "postcode": "BS16 1ZX",
+        "building_number": "",
+        "building_name": "Wallscourt Park Residences E",
+        "sub_building_name": "Flat 401"
+      },
+      "description": "Regression: Improperly breaking building name"
+    },
+    {
+      "expected": {
+        "line_1": "Flat 401",
         "line_2": "Wallscourt Park Residences U W E",
         "line_3": "Coldharbour Lane",
         "post_town": "BRISTOL",

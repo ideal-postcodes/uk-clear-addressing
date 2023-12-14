@@ -67,6 +67,23 @@ describe("Rules", () => {
         line_3: "",
       });
     });
+
+    it("handles sub range match", () => {
+      const base = new Address({
+        thoroughfare: "High Street",
+        building_name: "Foo A",
+      });
+
+      assert.deepEqual(rule3(base), {
+        premise: "Foo, A",
+        unit: "",
+        number: "A",
+        line_1: "Foo",
+        line_2: "A High Street",
+        line_3: "",
+      });
+    });
+
     it("handles sub range match", () => {
       const base = new Address({
         thoroughfare: "High Street",
