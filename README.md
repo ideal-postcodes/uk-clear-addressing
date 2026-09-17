@@ -24,7 +24,6 @@ Produces consistent address lines, a post town line and a postcode line.
 
 ## Links
 
-- [API Documentation](https://uk-clear-addressing.ideal-postcodes.dev)
 - [More information on Postcode Address File data attributes](https://ideal-postcodes.co.uk/documentation/paf-data)
 - [PAF Programmer's Guide](https://js.ideal-postcodes.co.uk/guide.pdf)
 - [Try uk-clear-addressing on RunKit](https://npm.runkit.com/uk-clear-addressing)
@@ -42,9 +41,9 @@ npm install uk-clear-addressing
 
 #### Extract formatted address lines
 
-Use the [Address](https://uk-clear-addressing.ideal-postcodes.dev/classes/index.address.html) class to parse a [PAF Record](https://uk-clear-addressing.ideal-postcodes.dev/interfaces/pafrecord.html)
+Use the [Address](https://github.com/ideal-postcodes/uk-clear-addressing/blob/master/src/index.ts) class to parse a [PAF Record](https://github.com/ideal-postcodes/uk-clear-addressing/blob/master/src/types.ts)
 
-[Formatted address lines](https://uk-clear-addressing.ideal-postcodes.dev/interfaces/formattedaddress.html) can be extracted using instance accessors like `line_1`, `line_2`, `line_3`, `premise`, `number` and `unit`
+[Formatted address lines](https://github.com/ideal-postcodes/uk-clear-addressing/blob/master/src/types.ts) can be extracted using instance accessors like `line_1`, `line_2`, `line_3`, `premise`, `number` and `unit`
 
 ```javascript
 const { Address } = require("uk-clear-addressing");
@@ -71,7 +70,7 @@ const {
 
 #### Extract a formatted address object
 
-Alternatively, extract a [formatted address object](https://uk-clear-addressing.ideal-postcodes.dev/interfaces/formattedaddress.html) using the [`formattedAddress`](https://uk-clear-addressing.ideal-postcodes.dev/classes/index.address.html#formattedaddress) method.
+Alternatively, extract a [formatted address object](https://github.com/ideal-postcodes/uk-clear-addressing/blob/master/src/types.ts) using the [`formattedAddress`](https://github.com/ideal-postcodes/uk-clear-addressing/blob/master/src/index.ts) method.
 
 ```javascript
 const { Address } = require('uk-clear-addressing');
@@ -158,7 +157,7 @@ Caretakers Flat
 
 ### Sorting Addresses
 
-[`Address.sort`](https://uk-clear-addressing.ideal-postcodes.dev/modules/sort.html#sort-1) implements a comparison function, which allows you to compare [`Address`](https://uk-clear-addressing.ideal-postcodes.dev/classes/index.address.html) instances. This can readily be passed into `Array.prototype.sort`
+[`Address.sort`](https://github.com/ideal-postcodes/uk-clear-addressing/blob/master/src/sort.ts) implements a comparison function, which allows you to compare [`Address`](https://github.com/ideal-postcodes/uk-clear-addressing/blob/master/src/index.ts) instances. This can readily be passed into `Array.prototype.sort`
 
 ```javascript
 const addresses = await query("SELECT * FROM postcode_address_file LIMIT 10");
