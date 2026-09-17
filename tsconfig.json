@@ -1,9 +1,11 @@
 {
   "extends": "@cablanchard/tsconfig",
   "compilerOptions": {
+    "rootDir": "src",
     "outDir": "dist",
     "target": "ES2016",
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "types": ["node", "mocha"]
   },
   "include": ["src/**/*"]
 }
