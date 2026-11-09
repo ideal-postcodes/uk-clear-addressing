@@ -65,7 +65,7 @@
     "@types/chai": "5.2.3",
     "@types/mocha": "10.0.10",
     "@types/node": "22.20.3",
-    "chai": "6.2.2",
+    "chai": "6.3.0",
     "mocha": "12.0.1",
     "prettier": "3.9.7",
     "semantic-release": "25.0.9",
