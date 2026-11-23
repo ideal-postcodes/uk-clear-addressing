@@ -68,7 +68,7 @@
     "chai": "6.2.2",
     "mocha": "12.0.1",
     "prettier": "3.9.7",
-    "semantic-release": "25.0.9",
+    "semantic-release": "26.0.1",
     "source-map-support": "0.5.21",
     "ts-node": "10.9.2",
     "typedoc": "0.28.20",
